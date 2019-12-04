@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32dbc6426644b1a4db998bdc3c597607, type: 3}
+  m_Name: Storage
+  m_EditorClassIdentifier: 
+  assetName: Storage
+  description: Storage
+  freeTimeOnly: 0
+  icon: {fileID: 0}
+  sceneObject: {fileID: 376387745688784639, guid: 590d49d70320aef46928c447085b401a,
+    type: 3}
+  craftingHelper: {fileID: 1473592014378138386, guid: f3dbc56a8aa942244862a589136fef6d,
+    type: 3}

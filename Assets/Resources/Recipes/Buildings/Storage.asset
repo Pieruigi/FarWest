@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49c9f6de59c2334f8e4add017800360, type: 3}
+  m_Name: Storage
+  m_EditorClassIdentifier: 
+  assetName: Storage
+  description: Are your pockets full?
+  freeTimeOnly: 0
+  icon: {fileID: 21300000, guid: 484a882ae22a9c0489bcb71f6ebbcc42, type: 3}
+  workbenchOnly: 1
+  output: {fileID: 11400000, guid: b889e801a34ebae4b9ea2f46543d2e8c, type: 2}
+  resources:
+  - item: {fileID: 11400000, guid: 75a3c97497b3f9049b39bf21f72fa89e, type: 2}
+    amount: 25
+  - item: {fileID: 11400000, guid: 1ad6115b9595bb446baeeb10937e7f37, type: 2}
+    amount: 25
+  - item: {fileID: 11400000, guid: c2a63bddea2c94549a70601cc8eb87f3, type: 2}
+    amount: 30
+  - item: {fileID: 11400000, guid: a04d2395556c7024eb93452894ea9b6e, type: 2}
+    amount: 20
+  - item: {fileID: 11400000, guid: a9928a00fea5b4243bd339852ab5456f, type: 2}
+    amount: 20

@@ -204,13 +204,19 @@ public class InventoryUI : MonoBehaviour
 
                                 //(slotHit.gameObject.GetComponent<SlotUI>().GetType() != typeof(CraftingSlotUI) || slotHit.gameObject.GetComponent<CraftingSlotUI>().CheckItem())
                                 bool ok = true;
+                                bool switchItems = false;
                                 if (targetId == sourceId)
                                     ok = false;
 
                                 if (craftingEnabled && targetId < inventoryCapacity)
                                 {
-                                    if (target != null && (target.Item != source.Item || target.Amount >= source.Item.SlotMaxAmount))
+                                    if (target != null && target.Item == source.Item && target.Amount >= source.Item.SlotMaxAmount)
                                         ok = false;
+
+                                    if (target != null && target.Item != source.Item)
+                                        switchItems = true;
+                                    //if (target != null && (target.Item != source.Item || target.Amount >= source.Item.SlotMaxAmount))
+                                    //    ok = false;
                                 }
 
                                 if (craftingEnabled && targetId >= inventoryCapacity)
@@ -248,8 +254,22 @@ public class InventoryUI : MonoBehaviour
                                         Item srcItem = source.Item;
 
                                         // Move item
-                                        RemoveItem(1, sourceId);
-                                        AddItem(srcItem, 1, targetId);
+                                        if (!switchItems)
+                                        {
+                                            RemoveItem(1, sourceId);
+                                            AddItem(srcItem, 1, targetId);
+                                        }
+                                        else
+                                        {
+                                            Item sourceItem = source.Item;
+                                            int sourceAmount = source.Amount;
+                                            Item targetItem = target.Item;
+                                            int targetAmount = target.Amount;
+                                            RemoveItem(sourceAmount, sourceId);
+                                            RemoveItem(targetAmount, targetId);
+                                            AddItem(targetItem, targetAmount, sourceId);
+                                            AddItem(sourceItem, sourceAmount, targetId);
+                                        }
 
                                         // Update UI
                                         UpdateSlotsUI();

@@ -23,6 +23,10 @@ public class Loot : MonoBehaviour
 
     float upOffset = 1;
 
+    float lifeTime = 10;
+
+    bool isDying = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,11 +34,16 @@ public class Loot : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag(Constants.TagPlayer);
         inventory = GameObject.FindObjectOfType<Inventory>();
+
+        StartCoroutine(LifeTime());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isDying)
+            return;
+
         if (!isPicking)
         {
             float sqrDist = (player.transform.position - transform.position).sqrMagnitude;
@@ -65,7 +74,7 @@ public class Loot : MonoBehaviour
         }
         else
         {
-            StartCoroutine(PickUp());
+            PickUp();
         }
     }
 
@@ -74,7 +83,7 @@ public class Loot : MonoBehaviour
 
     }
 
-    IEnumerator PickUp()
+    void PickUp()
     {
         isPicking = true;
 
@@ -82,8 +91,27 @@ public class Loot : MonoBehaviour
         
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().useGravity = false;
-        pickMove = LeanTween.move(gameObject, player.transform.position + Vector3.up * upOffset, 1).setEaseInOutElastic();
-        LeanTween.scale(gameObject, Vector3.zero, 0.9f);
+        pickMove = LeanTween.move(gameObject, player.transform.position + Vector3.up * upOffset, 1).setEaseInOutBounce();
+        //LeanTween.scale(gameObject, Vector3.zero, 0.9f).setEaseInOutElastic();
+        //yield return new WaitForSeconds(1f);
+        //GameObject.Destroy(gameObject);
+        StartCoroutine(Kill());
+    }
+
+    IEnumerator LifeTime()
+    {
+        yield return new WaitForSeconds(lifeTime);
+
+        if (isPicking)
+            yield break;
+
+        StartCoroutine(Kill());
+    }
+
+    IEnumerator Kill()
+    {
+        isDying = true;
+        LeanTween.scale(gameObject, Vector3.zero, 0.9f).setEaseInOutElastic();
         yield return new WaitForSeconds(1f);
         GameObject.Destroy(gameObject);
     }

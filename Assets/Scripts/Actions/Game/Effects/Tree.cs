@@ -38,6 +38,15 @@ namespace SS
             lootAction.OnRestored += HandleOnRestored;
             //parent = transform.parent;
             
+            if(lootAction.LootCurrent == 0)
+            {
+                GetComponent<Rigidbody>().isKinematic = true;
+                //transform.parent = parent;
+                transform.localPosition = Vector3.zero;
+                transform.localRotation = Quaternion.identity;
+                transform.localScale = Vector3.zero;
+                gameObject.SetActive(false);
+            }
         }
 
 

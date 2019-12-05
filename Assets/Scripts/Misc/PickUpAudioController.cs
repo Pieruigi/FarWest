@@ -29,6 +29,6 @@ public class PickUpAudioController : MonoBehaviour
 
         source.clip = clip;
         source.loop = false;
-        source.Play();
+        source.PlayDelayed(0.6f);
     }
 }

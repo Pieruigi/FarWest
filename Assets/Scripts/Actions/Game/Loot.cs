@@ -99,7 +99,7 @@ public class Loot : MonoBehaviour
         rb.isKinematic = true;
         rb.useGravity = false;
         pickMove = LeanTween.move(gameObject, player.transform.position + Vector3.up * upOffset, 1).setEaseInOutBounce();
-         
+       // azz  
         GameObject.FindObjectOfType<PickUpAudioController>().Play();
         StartCoroutine(Kill());
     }

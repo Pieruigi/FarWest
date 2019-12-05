@@ -23,9 +23,13 @@ public class Loot : MonoBehaviour
 
     float upOffset = 1;
 
-    float lifeTime = 10;
+    float lifeTime = 120;
 
     bool isDying = false;
+
+    bool pickeable = false;
+
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -35,17 +39,20 @@ public class Loot : MonoBehaviour
         player = GameObject.FindGameObjectWithTag(Constants.TagPlayer);
         inventory = GameObject.FindObjectOfType<Inventory>();
 
+        rb = GetComponent<Rigidbody>();
+
         StartCoroutine(LifeTime());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDying)
+        if (isDying || !pickeable)
             return;
 
         if (!isPicking)
         {
+           
             float sqrDist = (player.transform.position - transform.position).sqrMagnitude;
 
             if (sqrDist < sqrPickRange)
@@ -89,12 +96,14 @@ public class Loot : MonoBehaviour
 
         inventory.AddItem(item);
         
-        GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<Rigidbody>().useGravity = false;
+        rb.isKinematic = true;
+        rb.useGravity = false;
         pickMove = LeanTween.move(gameObject, player.transform.position + Vector3.up * upOffset, 1).setEaseInOutBounce();
         //LeanTween.scale(gameObject, Vector3.zero, 0.9f).setEaseInOutElastic();
         //yield return new WaitForSeconds(1f);
         //GameObject.Destroy(gameObject);
+
+        GameObject.FindObjectOfType<PickUpAudioController>().Play();
         StartCoroutine(Kill());
     }
 
@@ -114,5 +123,17 @@ public class Loot : MonoBehaviour
         LeanTween.scale(gameObject, Vector3.zero, 0.9f).setEaseInOutElastic();
         yield return new WaitForSeconds(1f);
         GameObject.Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (!rb)
+            return;
+        if (collision.gameObject.layer == LayerMask.NameToLayer(Constants.LayerNameGround))
+        {
+            pickeable = true;
+
+        }
     }
 }

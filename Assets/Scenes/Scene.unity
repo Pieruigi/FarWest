@@ -20990,6 +20990,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SCShader: {fileID: 4800000, guid: 4fdcdc5a6b74a464d9e8c305b85c0c1f, type: 3}
   Distortion: 4.6
+--- !u!1 &1563907563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8086878034280571076, guid: 11ef39c4708eb704ba0d5fde35a0184c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8086878033546899113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1563907564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563907563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a60479f64c2b464ab7583c4f41687be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 2079002990}
+  clip: {fileID: 8300000, guid: e71ce5d370f3aba44a4eca2c517dd6ae, type: 3}
 --- !u!1 &1566540274
 GameObject:
   m_ObjectHideFlags: 0
@@ -23221,7 +23241,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 8086878033546899113}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1563907563}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9d589050fab5a94495f8d509ea75462, type: 3}

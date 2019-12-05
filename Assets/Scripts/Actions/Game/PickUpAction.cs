@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * No longer used; use Loot instead.
+ * */
 namespace SS
 {
     //[ExecuteInEditMode]

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // Name convention:
 // The game executable is fileName.exe
@@ -240,9 +241,9 @@ public class MainManager : MonoBehaviour
 
     public void ResetGame()
     {
-        CacheManager.Instance.Clear();
         
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+
+        MessageBox.Show(MessageBox.Types.YesNo, "All your progress will be lost! Are you sure you want to procede?", () => DoResetGame());
     }
 
     private void SetResolutionForScreenSaver()
@@ -263,5 +264,14 @@ public class MainManager : MonoBehaviour
         var proc = System.Diagnostics.Process.Start(procInfo);
 
         return proc;
+    }
+
+    void DoResetGame()
+    {
+        CacheManager.Instance.Clear();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+
+       
     }
 }

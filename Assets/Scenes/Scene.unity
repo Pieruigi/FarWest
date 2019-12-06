@@ -30632,6 +30632,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8086878034588156976, guid: 11ef39c4708eb704ba0d5fde35a0184c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086878033720939435, guid: 11ef39c4708eb704ba0d5fde35a0184c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -52
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086878033720939437, guid: 11ef39c4708eb704ba0d5fde35a0184c,
+        type: 3}
+      propertyPath: numberOfSlots
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11ef39c4708eb704ba0d5fde35a0184c, type: 3}
 --- !u!224 &8086878033546899114 stripped

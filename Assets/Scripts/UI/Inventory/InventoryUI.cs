@@ -856,6 +856,9 @@ public class InventoryUI : MonoBehaviour
 
     private void OpenQuantitySelector(int max, Sprite icon, UnityAction<int> callback)
     {
+        Debug.Log("max:" + max);
+        Debug.Log("icon:" + icon);
+
         QuantitySelectorUI quantitySelectorUI = GameObject.FindObjectOfType<QuantitySelectorUI>();
         quantitySelectorUI.Show(icon, max, callback);
 

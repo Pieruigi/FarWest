@@ -40,7 +40,7 @@ public class Inventory: MonoBehaviour
     public UnityAction OnBeltChanged;
 
     //[SerializeField]
-    int numberOfSlots = 15;
+    int numberOfSlots = 20;
     public int NumberOfSlots
     {
         get { return numberOfSlots; }

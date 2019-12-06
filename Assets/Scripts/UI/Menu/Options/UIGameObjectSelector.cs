@@ -10,7 +10,8 @@ public class UIGameObjectSelector : UIOnOffSelector
 
     public override void Commit()
     {
-        gameObj.SetActive(GetCurrentOption());
+        if(GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
+            gameObj.SetActive(GetCurrentOption());
     }
 
 

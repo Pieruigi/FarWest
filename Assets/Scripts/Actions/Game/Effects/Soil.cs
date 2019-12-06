@@ -11,6 +11,8 @@ namespace SS
         [SerializeField]
         LootAction lootAction;
 
+        float offset = -0.04f;
+
         private void Awake()
         {
             lootAction.OnExhausted += HandleOnExhausted;
@@ -20,7 +22,8 @@ namespace SS
         // Start is called before the first frame update
         void Start()
         {
-
+            if (lootAction.LootCurrent == 0)
+                transform.localPosition = new Vector3(transform.localPosition.x, offset, transform.localPosition.z);
         }
 
         // Update is called once per frame
@@ -38,7 +41,7 @@ namespace SS
         {
             yield return new WaitForSeconds(1);
 
-            LeanTween.moveLocalY(gameObject, -0.04f, 1).setEaseOutElastic();
+            LeanTween.moveLocalY(gameObject, offset, 1).setEaseOutElastic();
 
         }
 

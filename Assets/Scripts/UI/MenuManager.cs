@@ -16,6 +16,8 @@ public class MenuManager : MonoBehaviour
 
     bool isOpened = false;
 
+    MainManager mainManager;
+
     private void Awake()
     {
       
@@ -25,6 +27,8 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainManager = GameObject.FindObjectOfType<MainManager>();
+
         playerController = GameObject.FindObjectOfType<PlayerController>();
 
         if (GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
@@ -42,6 +46,9 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (mainManager.IsScreenSaver)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             

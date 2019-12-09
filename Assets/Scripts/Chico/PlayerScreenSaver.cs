@@ -32,7 +32,7 @@ public class PlayerScreenSaver : MonoBehaviour
     int loopCount = 0; // The actual loop id
 
     // Idle
-    float idleRate = 0f; // From 0 to 1
+    float idleRate = 0.5f; // From 0 to 1
     int idleAnimationCount = 1; // The number of available idle animations
     int idleAnimationId = -1; // The current idle animation
     float minIdleLength = 4; // The minimum length in seconds

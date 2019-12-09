@@ -63,6 +63,12 @@ public class InventoryUI : MonoBehaviour
     bool multiple = false;
     GameObject drawingIco;
     bool raycastDisabled = false;
+    public bool OnOffInputEnabled
+    {
+        get { return !raycastDisabled; }
+        set { raycastDisabled = !value; }
+    }
+
     bool keepSelection = false;
 
     bool isOpened = false;
@@ -115,11 +121,11 @@ public class InventoryUI : MonoBehaviour
             {
                 Open(true, false); // Open and enable crafting system without workbench recipes
             }
-            //else
-            //{
-            //    if(!raycastDisabled)
-            //        Close();
-            //}
+            else
+            {
+                if(!raycastDisabled)
+                    Close();
+            }
         }
 
 

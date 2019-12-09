@@ -10,6 +10,8 @@ public class RecipeFilterName : MonoBehaviour
 
     bool noEvent = false;
 
+    InventoryUI inventoryUI;
+
     private void Awake()
     {
         input = GetComponent<InputField>();
@@ -18,14 +20,18 @@ public class RecipeFilterName : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        inventoryUI = GetComponentInParent<InventoryUI>();
         input.onValueChanged.AddListener(OnValueChanged);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (input.isFocused)
+            inventoryUI.OnOffInputEnabled = false;
+        else
+            inventoryUI.OnOffInputEnabled = true;
+
     }
 
     private void OnEnable()

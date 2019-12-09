@@ -225,6 +225,12 @@ public class InventoryUI : MonoBehaviour
                                     //    ok = false;
                                 }
 
+                                if (!craftingEnabled)
+                                {
+                                    if (target != null && target.Item != source.Item)
+                                        switchItems = true;
+                                }
+
                                 if (craftingEnabled && targetId >= inventoryCapacity)
                                 {
                                     Recipe recipe = craftingSystem.Recipe;
@@ -240,11 +246,7 @@ public class InventoryUI : MonoBehaviour
 
                                     }
 
-
-
-
-                                    //Debug.Log("recItem:" + craftingSystem.Recipe.Resources[targetId - inventoryCapacity].Item);
-                                    //Debug.Log("crafSlot:" + craftingSystem.Slots[targetId - inventoryCapacity]);
+                                    
                                 }
 
 

@@ -186,7 +186,7 @@ public class PlayerScreenSaver : MonoBehaviour
             
 
         currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
-        currentAction = freeTimeActions[0]; ////////////////////////////// TO REMOVE //////////////////////////////////////
+        //currentAction = freeTimeActions[0]; ////////////////////////////// TO REMOVE //////////////////////////////////////
 
         // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )
         if (currentAction.CameraCloseDisabled) 
@@ -253,7 +253,7 @@ public class PlayerScreenSaver : MonoBehaviour
         currentAction.FreeTimeActionController?.ActionEnterCompleted(currentAction);
 
         currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
-        currentLoopId = currentAction.LoopAnimationIds[0]; /////////////////////////////////// TEST ONLY //////////////////////////////////
+        //currentLoopId = currentAction.LoopAnimationIds[0]; /////////////////////////////////// TEST ONLY //////////////////////////////////
 
         animator.SetFloat(animIdParameter, currentLoopId);
         animator.SetTrigger(animLoopParameter);

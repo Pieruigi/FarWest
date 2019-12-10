@@ -121,7 +121,7 @@ public class DayNightCycle : MonoBehaviour
         dayTimeInSec = (float)(dt.TimeOfDay.TotalSeconds * speedMul);
         dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
 
-        dayTimeInSec = 42000; // 21.600: 06, 43.200: 12
+        dayTimeInSec = 81000; // 21.600: 06, 43.200: 12; 18: 64.800 ////////////////////////// TO REMOVE ////////////////////////
 
         // Sets and starts rotating the sun
         float angle = (dayTimeInSec * 360f / NumberOfSecondsInOneDay) + 270f;

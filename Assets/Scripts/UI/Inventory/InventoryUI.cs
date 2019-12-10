@@ -72,6 +72,12 @@ public class InventoryUI : MonoBehaviour
     bool keepSelection = false;
 
     bool isOpened = false;
+    public bool IsOpended
+    {
+        get { return isOpened; }
+        set { isOpened = value; }
+    }
+
     bool craftingEnabled = false;
     public bool CraftingEnabled
     {
@@ -87,6 +93,8 @@ public class InventoryUI : MonoBehaviour
 
     AudioSource source;
 
+    MenuManager menuManager;
+
     #region FILTERS
     string searchString;
     List<System.Type> filters;
@@ -96,6 +104,7 @@ public class InventoryUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        menuManager = GameObject.FindObjectOfType<MenuManager>();
         inventory = GameObject.FindObjectOfType<Inventory>();
         craftingSystem = GameObject.FindObjectOfType<CraftingSystem>();
         storage = GameObject.FindObjectOfType<Storage>();
@@ -117,7 +126,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (!isOpened)
+            if (!isOpened && !menuManager.IsOpened)
             {
                 Open(true, false); // Open and enable crafting system without workbench recipes
             }
@@ -486,6 +495,7 @@ public class InventoryUI : MonoBehaviour
         panelStorage.SetActive(false);
         playerController.SetInputEnabled(true);
 
+
         OnClose?.Invoke();
     }
 
@@ -785,6 +795,8 @@ public class InventoryUI : MonoBehaviour
 
         // Fill slots
         UpdateSlotsUI();
+
+        
 
         OnOpen?.Invoke();
     }

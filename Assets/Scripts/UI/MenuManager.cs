@@ -15,8 +15,14 @@ public class MenuManager : MonoBehaviour
     private PlayerController playerController;
 
     bool isOpened = false;
+    public bool IsOpened
+    {
+        get { return isOpened; }
+    }
 
     MainManager mainManager;
+
+    InventoryUI inventoryUI;
 
     private void Awake()
     {
@@ -27,6 +33,7 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        inventoryUI = GameObject.FindObjectOfType<InventoryUI>();
         mainManager = GameObject.FindObjectOfType<MainManager>();
 
         playerController = GameObject.FindObjectOfType<PlayerController>();
@@ -55,7 +62,8 @@ public class MenuManager : MonoBehaviour
             if (isOpened)
                 Close();
             else
-                Open();
+                if(!inventoryUI.IsOpended)
+                    Open();
             
             
         }

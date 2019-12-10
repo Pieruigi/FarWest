@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TrailerUIHelper : MonoBehaviour
 {
+    [SerializeField]
+    GameObject cursorUI;
+
     bool isEnabled = true;
 
     GameObject belt;
@@ -30,6 +33,7 @@ public class TrailerUIHelper : MonoBehaviour
             belt.SetActive(isEnabled);
             clock.SetActive(isEnabled);
             health.SetActive(isEnabled);
+            cursorUI.SetActive(isEnabled);
         }    
     }
 }

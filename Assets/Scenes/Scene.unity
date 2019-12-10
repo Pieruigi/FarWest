@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 1608948}
   - component: {fileID: 1608947}
   - component: {fileID: 1608946}
+  - component: {fileID: 1608945}
   m_Layer: 5
   m_Name: ClockUI
   m_TagString: Untagged
@@ -139,6 +140,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!328 &1608945
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608944}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: e9de040753f8a7b4b8282cf86c0bbe14, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _MainTex
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
 --- !u!114 &1608946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16189,6 +16224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae01f7ad5fd10ff458fad9f42bdeabd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorUI: {fileID: 1426457090}
 --- !u!1 &1238979153
 GameObject:
   m_ObjectHideFlags: 0
@@ -18126,7 +18162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spritesFolder: Sprites/Luke
-  speed: 20
+  speed: 8
   loop: 1
   autoPlay: 1
 --- !u!114 &1372150337
@@ -18280,7 +18316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spritesFolder: Sprites/FraLo
-  speed: 20
+  speed: 8
   loop: 1
   autoPlay: 1
 --- !u!114 &1382794417
@@ -18851,7 +18887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1426457091
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21332,6 +21368,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 2079002990}
   clip: {fileID: 8300000, guid: e71ce5d370f3aba44a4eca2c517dd6ae, type: 3}
+--- !u!328 &1563907565
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563907563}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: e9de040753f8a7b4b8282cf86c0bbe14, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _MainTex
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
 --- !u!1 &1566540274
 GameObject:
   m_ObjectHideFlags: 0
@@ -21567,7 +21637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spritesFolder: Sprites/Music
-  speed: 20
+  speed: 8
   loop: 1
   autoPlay: 1
 --- !u!114 &1571722449
@@ -24959,7 +25029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spritesFolder: Sprites/Pier
-  speed: 20
+  speed: 8
   loop: 1
   autoPlay: 1
 --- !u!114 &1812848938
@@ -28220,7 +28290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spritesFolder: Sprites/LukePier
-  speed: 20
+  speed: 8
   loop: 1
   autoPlay: 1
 --- !u!114 &2058477019

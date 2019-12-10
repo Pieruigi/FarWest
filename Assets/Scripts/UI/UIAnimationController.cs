@@ -41,24 +41,15 @@ public class UIAnimationController : MonoBehaviour
 
         image = GetComponent<Image>();
 
-        sprites = new List<Sprite>(Resources.LoadAll<Sprite>(spritesFolder));
-
-        Debug.Log("sprites.count:" + sprites.Count);
-
-        Debug.Log("-1%12="+ ( -3 % 12) );
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    private void OnEnable()
-    {
         if (autoPlay)
             Play();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -112,6 +103,9 @@ public class UIAnimationController : MonoBehaviour
 
     public void Play()
     {
+        if (sprites == null)
+            LoadSprites();
+
         isPlaying = true;
         if(speed>0)
             currentId = 0;
@@ -132,5 +126,15 @@ public class UIAnimationController : MonoBehaviour
     {
         Debug.Log("NewId:" + currentId);
         image.sprite = sprites[currentId];
+    }
+
+    void LoadSprites()
+    {
+        sprites = new List<Sprite>(Resources.LoadAll<Sprite>(spritesFolder));
+
+        Debug.Log("sprites.count:" + sprites.Count);
+
+        Debug.Log("-1%12=" + (-3 % 12));
+        
     }
 }

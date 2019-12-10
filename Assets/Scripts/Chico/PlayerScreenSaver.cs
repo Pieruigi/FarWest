@@ -178,6 +178,13 @@ public class PlayerScreenSaver : MonoBehaviour
         Debug.Log("I'm doing something.............");
 
         // Get randam action
+        if (freeTimeActions == null || freeTimeActions.Count == 0)
+        {
+            isBusy = false;
+            return;
+        }
+            
+
         currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
         currentAction = freeTimeActions[0]; ////////////////////////////// TO REMOVE //////////////////////////////////////
 

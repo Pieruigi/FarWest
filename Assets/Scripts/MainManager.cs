@@ -103,6 +103,10 @@ public class MainManager : MonoBehaviour
         {
             if (Input.anyKeyDown)
                 Application.Quit();
+
+                if (Input.GetAxis("Mouse X")!=0 || Input.GetAxis("Mouse Y") != 0)
+                Application.Quit();
+
         }
         else
         {

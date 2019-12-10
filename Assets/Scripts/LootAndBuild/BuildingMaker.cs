@@ -197,6 +197,16 @@ public class BuildingMaker : MonoBehaviour
 
         LeanTween.scale(obj, Vector3.one, 1f).setEaseOutElastic();
 
+        yield return new WaitForSeconds(1);
+
+        UnityEngine.AI.NavMeshObstacle obs = obj.GetComponent<UnityEngine.AI.NavMeshObstacle>();
+        if (obs)
+        {
+            obs.enabled = false;
+            yield return new WaitForSeconds(0.5f);
+            obs.enabled = true;
+        }
+
         SetEnable(false);
       
     }

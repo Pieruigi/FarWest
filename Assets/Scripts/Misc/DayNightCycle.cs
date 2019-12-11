@@ -9,7 +9,7 @@ public class DayNightCycle : MonoBehaviour
     public static int NumberOfSecondsInOneDay = 24 * 60 * 60; // How many seconds in one day
 
     [SerializeField]
-    float speedMul = 1000;
+    float speedMul = 1;
 
     [Header("Ambient Light")]
     [SerializeField]
@@ -100,17 +100,6 @@ public class DayNightCycle : MonoBehaviour
     string groundColorPropertyName = "_GroundColor";
     string exposurePropertyName = "_Exposure";
 
-
-    //float moonSpeed = 360f / (29f * NumberOfSecondsInOneDay);
-    
-
-    //int timePlayed = 0;
-    //float timeElapsed = 0; // For how long Chico has been leaving on the peak
-    //public float TimeElapsed
-    //{
-    //    get { return timeElapsed; }
-    //}
-
     private void Awake()
     {
         if (skyColors.Length != equatorColors.Length || skyColors.Length != groundColors.Length)
@@ -121,7 +110,7 @@ public class DayNightCycle : MonoBehaviour
         dayTimeInSec = (float)(dt.TimeOfDay.TotalSeconds * speedMul);
         dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
 
-        dayTimeInSec = 81000; // 21.600: 06, 43.200: 12; 18: 64.800 ////////////////////////// TO REMOVE ////////////////////////
+        //dayTimeInSec = 81000; // 21.600: 06, 43.200: 12; 18: 64.800 ////////////////////////// TO REMOVE ////////////////////////
 
         // Sets and starts rotating the sun
         float angle = (dayTimeInSec * 360f / NumberOfSecondsInOneDay) + 270f;

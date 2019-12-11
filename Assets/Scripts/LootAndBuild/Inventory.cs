@@ -264,8 +264,8 @@ public class Inventory: MonoBehaviour
 
     public bool NoRoomForItem(Item item)
     {
-        if (item.IsUnique && ItemExists(item))
-            return true;
+        //if (item.IsUnique && ItemExists(item))
+        //    return true;
         
 
         for(int i=0; i<numberOfSlots; i++)

@@ -534,7 +534,13 @@ public class InventoryUI : MonoBehaviour
     {
         if (craftingSystem.Recipe.Output.GetType() == typeof(Item) && inventory.NoRoomForItem(craftingSystem.Recipe.Output as Item))
         {
-            ShowErrorMessage("No room for the item you want to craft:" + craftingSystem.Recipe.Output.name);
+            ShowErrorMessage("No room for the item " + craftingSystem.Recipe.Output.name);
+            return;
+        }
+
+        if (craftingSystem.Recipe.Output.GetType() == typeof(Item) && (craftingSystem.Recipe.Output as Item).IsUnique && inventory.ItemExists((craftingSystem.Recipe.Output as Item)))
+        {
+            ShowErrorMessage("You already have the " + craftingSystem.Recipe.Output.name);
             return;
         }
 

@@ -95,6 +95,8 @@ public class InventoryUI : MonoBehaviour
 
     MenuManager menuManager;
 
+    QuantitySelectorUI quantitySelectorUI;
+
     #region FILTERS
     string searchString;
     List<System.Type> filters;
@@ -104,6 +106,7 @@ public class InventoryUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        quantitySelectorUI =  GameObject.FindObjectOfType<QuantitySelectorUI>();
         menuManager = GameObject.FindObjectOfType<MenuManager>();
         inventory = GameObject.FindObjectOfType<Inventory>();
         craftingSystem = GameObject.FindObjectOfType<CraftingSystem>();
@@ -124,6 +127,9 @@ public class InventoryUI : MonoBehaviour
 
     void Update()
     {
+        if (quantitySelectorUI.IsActive)
+            return;
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (!isOpened && !menuManager.IsOpened)
@@ -312,7 +318,7 @@ public class InventoryUI : MonoBehaviour
 
                                         // Open slider
                                         OpenQuantitySelector(max, source.Item.Icon, MoveItemCallback);
-
+                                        
                                     }
                                 }
                             }
@@ -879,12 +885,13 @@ public class InventoryUI : MonoBehaviour
         Debug.Log("max:" + max);
         Debug.Log("icon:" + icon);
 
-        QuantitySelectorUI quantitySelectorUI = GameObject.FindObjectOfType<QuantitySelectorUI>();
+        //QuantitySelectorUI quantitySelectorUI = GameObject.FindObjectOfType<QuantitySelectorUI>();
         quantitySelectorUI.Show(icon, max, callback);
 
         raycastDisabled = true; // Avoid to pick items with the slider opened
        
         keepSelection = true;
+
     }
 
     private void MoveItemCallback(int count)
@@ -933,11 +940,11 @@ public class InventoryUI : MonoBehaviour
             // Update UI
             UpdateSlotsUI();
 
+            Debug.LogWarning("Dropping...");
         }
 
         Reset();
     }
 
-    
     #endregion
 }

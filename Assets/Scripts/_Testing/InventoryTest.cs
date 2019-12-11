@@ -35,7 +35,7 @@ public class InventoryTest : MonoBehaviour
         Debug.Log("hammer.code:" + hammer.Code);
         Inventory inv = GameObject.FindObjectOfType<Inventory>();
 
-        inv.AddItem(shovel, 1);
+        
         inv.AddItem(wood, 40);
         inv.AddItem(rope, 20);
         inv.AddItem(stone, 20);
@@ -46,6 +46,7 @@ public class InventoryTest : MonoBehaviour
         //inv.AddItem(torch, 1);
         //inv.AddItem(pickaxe, 1);
         inv.AddItem(knife, 1);
+        inv.AddItem(shovel, 1);
         //inv.AddItem(hammer, 1, 0);
     }
 }

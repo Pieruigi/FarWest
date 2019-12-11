@@ -30,6 +30,15 @@ namespace SS
             lootAction.OnExhausted += HandleOnExhausted;
             lootAction.OnRestored += HandleOnRestored;
 
+            if(lootAction.LootCurrent == 0)
+            {
+                GetComponent<Rigidbody>().isKinematic = true;
+                GetComponent<Collider>().enabled = false;
+                transform.localPosition = Vector3.zero;
+                transform.localRotation = Quaternion.identity;
+                transform.localScale = Vector3.zero;
+                gameObject.SetActive(true);
+            }
         }
 
         // Update is called once per frame
@@ -58,9 +67,9 @@ namespace SS
             gameObject.SetActive(true);
 
             // Reset color
-            Color c = GetComponent<MeshRenderer>().material.color;
-            c.a = 1;
-            LeanTween.color(gameObject, c, 0.5f);
+            //Color c = GetComponent<MeshRenderer>().material.color;
+            //c.a = 1;
+            //LeanTween.color(gameObject, c, 0.5f);
 
             // Pop up
             transform.localScale = Vector3.zero;

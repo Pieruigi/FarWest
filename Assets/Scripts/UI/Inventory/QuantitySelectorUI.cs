@@ -22,6 +22,11 @@ public class QuantitySelectorUI : MonoBehaviour
 
     private UnityAction<int> callback; // Returns zero if you press "cancel", otherwise returns the number of selected elements
     
+    public bool IsActive
+    {
+        get { return transform.GetChild(0).gameObject.activeSelf; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +42,11 @@ public class QuantitySelectorUI : MonoBehaviour
             count = (int)slider.value;
             textCount.text = count.ToString();
         }
+    }
+
+    private void OnDisable()
+    {
+        
     }
 
     private void Init(Sprite icon, int max, UnityAction<int> callback)

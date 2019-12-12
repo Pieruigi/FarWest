@@ -14,7 +14,7 @@ public class UIScreenSaverTimerSelector : UISelector<int>
 
     public override void Commit()
     {
-        mainManager.SetScreenSaverTimeOut(GetCurrentOption());
+        mainManager.SetScreenSaverTimeOut(GetCurrentOption() * 60);
     }
 
     protected override void InitOptionList()
@@ -31,7 +31,9 @@ public class UIScreenSaverTimerSelector : UISelector<int>
             return;
 
         int timeOut = mainManager.GetScreenSaverTimeOut();
-        SetOption(timeOut);
+        Debug.Log("TimeOut from regedit:" + timeOut);
+        
+        SetOption(timeOut/60 - 1);
 
 
     }

@@ -58,7 +58,7 @@ public class DayNightCycle : MonoBehaviour
     public float SpeedMultiplier
     {
         get { return speedMul; }
-        set { speedMul = value; }
+        set { speedMul = value; UpdateSpeed(); }
     }
 
     float dayTimeInSec;
@@ -90,6 +90,7 @@ public class DayNightCycle : MonoBehaviour
     float moonTime;
     float moonRevolutionSpeed;
 
+    float lastTime;
    
     float moonColorTime;
 
@@ -110,7 +111,7 @@ public class DayNightCycle : MonoBehaviour
         dayTimeInSec = (float)(dt.TimeOfDay.TotalSeconds);// * speedMul);
         dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
 
-        //dayTimeInSec = 81000; // 21.600: 06, 43.200: 12; 18: 64.800 ////////////////////////// TO REMOVE ////////////////////////
+        //dayTimeInSec = 43000; // 21.600: 06, 43.200: 12; 18: 64.800 ////////////////////////// TO REMOVE ////////////////////////
 
         // Sets and starts rotating the sun
         float angle = (dayTimeInSec * 360f / NumberOfSecondsInOneDay) + 270f;
@@ -132,7 +133,11 @@ public class DayNightCycle : MonoBehaviour
 
         // Set skybox shader parameters
         if (sunSizeArray.Length > 0)
+        {
             ltDescSunSize = LeanTween.value(gameObject, OnSunSizeUpdate, sunSizeArray[fromId], sunSizeArray[toId], time);
+            ltDescSunSize.passed = passed;
+        }
+            
 
         if (atmosphereThicknessArray.Length > 0)
         {
@@ -159,6 +164,7 @@ public class DayNightCycle : MonoBehaviour
             Debug.Log(string.Format("SuLightInit:{0},{1}", fromId, toId));
             ltDescSunLightPower = LeanTween.value(gameObject, OnSunLightPowerUpdate, sunLightIntensityArray[fromId], sunLightIntensityArray[toId], sunLightPowerTime);
             ltDescSunLightPower.passed = passed;
+         
         }
         if (sunLightColorArray != null)
         {
@@ -188,25 +194,16 @@ public class DayNightCycle : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //CacheManager.OnSave += HandleOnSave;
-
-        //float.TryParse(CacheManager.GetValue(Constants.CacheKeyTimeElapsed), out timeElapsed);
-
-    }
 
     // Update is called once per frame
     void Update()
     {
-        int timeSegmentLength = NumberOfSecondsInOneDay / skyColors.Length;
-        float passed = (dayTimeInSec % timeSegmentLength) / speedMul;
-
-        //timeElapsed += Time.deltaTime * speedMul;
 
         dayTimeInSec += Time.deltaTime * speedMul;
         dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
+
+        int timeSegmentLength = NumberOfSecondsInOneDay / skyColors.Length;
+        float passed = (dayTimeInSec % timeSegmentLength) / speedMul;
 
         // Rotate the sun and starts
         transform.Rotate(Vector3.right, rotSpeed * Time.deltaTime * speedMul);
@@ -295,7 +292,6 @@ public class DayNightCycle : MonoBehaviour
        
     }
 
-
     void OnColorSkyUpdate(Color value)
     {
         RenderSettings.ambientSkyColor = value;
@@ -381,5 +377,73 @@ public class DayNightCycle : MonoBehaviour
 
     }
 
+    void UpdateSpeed()
+    {
+        int timeSegmentLength = NumberOfSecondsInOneDay / skyColors.Length;
+        float passed = (dayTimeInSec % timeSegmentLength) / speedMul;
+
+        time = NumberOfSecondsInOneDay / skyColors.Length / speedMul; // LeanTween interpolation duration in seconds
+
+        ltDescColorSky.time = time;
+        ltDescColorEquator.time = time;
+        ltDescColorGround.time = time;
+        ltDescColorSky.passed = passed;
+        ltDescColorEquator.passed = passed;
+        ltDescColorGround.passed = passed;
+
+        if (sunSizeArray.Length > 0)
+        {
+            ltDescSunSize.time = time;
+            ltDescSunSize.passed = passed;
+        }
+
+
+        if (atmosphereThicknessArray.Length > 0)
+        {
+            ltDescAtmThick.time = time;
+            ltDescAtmThick.passed = passed;
+        }
+        if (skyTintArray.Length > 0)
+        {
+            ltDescSkyTint.time = time;
+            ltDescSkyTint.passed = passed;
+        }
+        if (exposureArray.Length > 0)
+        {
+            ltDescExposure.time = time;
+            ltDescExposure.passed = passed;
+        }
+
+        // Set sun light
+        sunLight = GetComponent<Light>();
+        if (sunLightIntensityArray != null)
+        {
+            sunLightPowerTime = NumberOfSecondsInOneDay / sunLightIntensityArray.Length / speedMul;
+            ltDescSunLightPower.passed = passed;
+            ltDescSunLightPower.time = sunLightPowerTime;
+        }
+        if (sunLightColorArray != null)
+        {
+            sunLightColorTime = NumberOfSecondsInOneDay / sunLightColorArray.Length / speedMul;
+            
+            ltDescSunLightColor.time = sunLightColorTime;
+            ltDescSunLightColor.passed = passed;
+        }
+
+
+        // Set up moon
+        if (moon)
+        {
+
+            moonTime = moonRevolutionInSeconds / speedMul;
+            moonRevolutionSpeed = 360f / moonTime;
+            //ltDescMoonRevolution = LeanTween.value(gameObject, OnMoonRevolutionUpdate, 0, 360, moonTime);
+
+            float t = NumberOfSecondsInOneDay / moonColors.Length / speedMul;
+            ltDescMoonColor.time = t;
+            ltDescMoonColor.passed = passed;
+        }
+
+    }
 
 }

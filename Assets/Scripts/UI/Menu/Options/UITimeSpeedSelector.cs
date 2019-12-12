@@ -25,6 +25,7 @@ public class UITimeSpeedSelector : UISelector<int>
             return;
 
         dayNightCycle.SpeedMultiplier = GetCurrentOption();
+
     }
 
     protected override void InitOptionList()

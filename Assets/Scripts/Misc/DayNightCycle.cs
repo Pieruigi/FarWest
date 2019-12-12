@@ -107,7 +107,7 @@ public class DayNightCycle : MonoBehaviour
 
         // Calculate day time in seconds ( depending on the speed daytime may be different from the current daytime )
         DateTime dt = DateTime.Now;
-        dayTimeInSec = (float)(dt.TimeOfDay.TotalSeconds * speedMul);
+        dayTimeInSec = (float)(dt.TimeOfDay.TotalSeconds);// * speedMul);
         dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
 
         //dayTimeInSec = 81000; // 21.600: 06, 43.200: 12; 18: 64.800 ////////////////////////// TO REMOVE ////////////////////////

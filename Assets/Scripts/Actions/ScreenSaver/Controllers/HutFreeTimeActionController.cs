@@ -52,7 +52,7 @@ public class HutFreeTimeActionController : FreeTimeActionController
 
     IEnumerator ResetAnimSpeed()
     {
-        float r = Random.Range(10, 20);
+        float r = Random.Range(10, 300);
 
         yield return new WaitForSeconds(r);
 

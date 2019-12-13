@@ -107,6 +107,7 @@ public class DayNightCycle : MonoBehaviour
 
     private void Awake()
     {
+        //speedMul = 1000;
         if (skyColors.Length != equatorColors.Length || skyColors.Length != groundColors.Length)
             throw new System.Exception("DayNightCycle error - skyColors, equatorColors and groundColors can not have different length.");
 
@@ -204,15 +205,11 @@ public class DayNightCycle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //speedMul = 1000;
         timeFix += Time.deltaTime * speedMul; // If I remove this the clock gets wrong
-
-
-        dayTimeInSec = timeFix + initialTime;// * speedMul;
-
-        
-        //dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
-        Debug.Log("Time:" + dayTimeInSec);
-
+        dayTimeInSec = timeFix + initialTime;
+        dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
+       
         int timeSegmentLength = NumberOfSecondsInOneDay / skyColors.Length;
         float passed = (dayTimeInSec % timeSegmentLength) / speedMul;
 

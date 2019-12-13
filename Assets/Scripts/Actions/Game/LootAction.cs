@@ -66,6 +66,8 @@ namespace SS
         }
 
         //int equipmentMultiplier = 4;
+        Collider actionCollider;
+
 
         protected override void Awake()
         {
@@ -78,6 +80,13 @@ namespace SS
         protected override void Start()
         {
             base.Start();
+
+            actionCollider = GetComponent<Collider>();
+
+            if(lootCurrent == 0)
+            {
+                actionCollider.enabled = false;
+            }
         }
 
 
@@ -92,6 +101,7 @@ namespace SS
                 {
                     growingElapsed = 0;
                     lootCurrent = lootMax;
+                    actionCollider.enabled = true;
 
                     OnRestored?.Invoke(this);
                 }
@@ -173,8 +183,9 @@ namespace SS
             if (lootCurrent == 0)
             {
                 OnExhausted?.Invoke(this);
-
+                
                 StopExecuting();
+                actionCollider.enabled = false;
             }
 
 

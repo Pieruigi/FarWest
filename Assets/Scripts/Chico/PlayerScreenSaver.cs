@@ -1,5 +1,4 @@
 ﻿//#define SS_TEST
-//#define SS_ANIM_TEST
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -262,7 +261,7 @@ public class PlayerScreenSaver : MonoBehaviour
         currentAction.FreeTimeActionController?.ActionEnterCompleted(currentAction);
 
         currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
-#if SS_ANIM_TEST
+#if SS_TEST
         currentLoopId = currentAction.LoopAnimationIds[0];
 #endif
 

@@ -36,8 +36,11 @@ public class Destroyer : MonoBehaviour
         if (playerController.Equipped != ItemCollection.GetAssetByCode("ItemHammer"))
             return;
 
+        playerController.SetInputEnabled(false);
+        MessageBox.Show(MessageBox.Types.YesNo, "Do you want to destroy it?", DestroyYes, DestroyNo); 
        
-        StartCoroutine(DoDestroy());
+
+        //StartCoroutine(DoDestroy());
         
     }
 
@@ -58,7 +61,7 @@ public class Destroyer : MonoBehaviour
         // Play particle system
         GameObject.FindObjectOfType<BuildingMaker>().PsBuildingDustPlay(transform.position);
 
-        playerController.SetInputEnabled(false);
+        //playerController.SetInputEnabled(false);
         playerController.transform.rotation = target.rotation;
         Animator anim = playerController.GetComponent<Animator>();
 
@@ -71,6 +74,16 @@ public class Destroyer : MonoBehaviour
         yield return new WaitForSeconds(1.1f);
 
         SpawnManager.Unspawn(transform.parent.gameObject);
+        playerController.SetInputEnabled(true);
+    }
+
+    void DestroyYes()
+    {
+        StartCoroutine(DoDestroy());
+    }
+
+    void DestroyNo()
+    {
         playerController.SetInputEnabled(true);
     }
 }

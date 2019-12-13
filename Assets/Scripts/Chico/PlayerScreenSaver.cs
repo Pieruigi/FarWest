@@ -1,5 +1,5 @@
-﻿#define SS_TEST
-#define SS_ANIM_TEST
+﻿//#define SS_TEST
+//#define SS_ANIM_TEST
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

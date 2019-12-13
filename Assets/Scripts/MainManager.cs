@@ -1,4 +1,4 @@
-﻿#define FORCE_SCREENSAVER  // For test on editor
+﻿//#define FORCE_SCREENSAVER  // For test on editor
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

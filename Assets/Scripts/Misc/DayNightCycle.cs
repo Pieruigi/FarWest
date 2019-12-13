@@ -103,6 +103,7 @@ public class DayNightCycle : MonoBehaviour
     string exposurePropertyName = "_Exposure";
 
     float timeFix;
+    float initialTime;
 
     private void Awake()
     {
@@ -113,7 +114,8 @@ public class DayNightCycle : MonoBehaviour
         DateTime dt = DateTime.Now;
         dayTimeInSec = (float)(dt.TimeOfDay.TotalSeconds);// * speedMul);
         dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
-        timeFix = dayTimeInSec;
+        initialTime = dayTimeInSec;
+        //timeFix = dayTimeInSec;
 
         //dayTimeInSec = 43000; // 21.600: 06, 43.200: 12; 18: 64.800 ////////////////////////// TO REMOVE ////////////////////////
 
@@ -205,7 +207,7 @@ public class DayNightCycle : MonoBehaviour
         timeFix += Time.deltaTime * speedMul; // If I remove this the clock gets wrong
 
 
-        dayTimeInSec = timeFix;// * speedMul;
+        dayTimeInSec = timeFix + initialTime;// * speedMul;
 
         
         //dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;

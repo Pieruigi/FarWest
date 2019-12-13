@@ -20,6 +20,6 @@ public class TimeUITest : MonoBehaviour
     {
 
         //txt.text = string.Format("{0}:{1}:{2}", dnc.DayTimeInSeconds / 3600, (dnc.DayTimeInSeconds / 60)%60 , dnc.DayTimeInSeconds % 60);
-        txt.text = string.Format("{0}:{1}", dnc.DayTimeInSeconds / 3600, (dnc.DayTimeInSeconds / 60) % 60);
+        txt.text = string.Format("{0}:{1}:{2}", dnc.DayTimeInSeconds / 3600, (dnc.DayTimeInSeconds / 60) % 60, dnc.DayTimeInSeconds % 60);
     }
 }

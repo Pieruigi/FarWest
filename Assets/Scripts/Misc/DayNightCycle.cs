@@ -61,7 +61,8 @@ public class DayNightCycle : MonoBehaviour
         set { speedMul = value; UpdateSpeed(); }
     }
 
-    float dayTimeInSec;
+    private float dayTimeInSec;
+
     public int DayTimeInSeconds
     {
         get { return (int)Mathf.Round(dayTimeInSec); }
@@ -100,6 +101,8 @@ public class DayNightCycle : MonoBehaviour
     string skyTintPropertyName = "_SkyTint";
     string groundColorPropertyName = "_GroundColor";
     string exposurePropertyName = "_Exposure";
+
+    float timeFix;
 
     private void Awake()
     {
@@ -198,9 +201,14 @@ public class DayNightCycle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeFix += Time.deltaTime * speedMul; // If I remove this the clock gets wrong
 
-        dayTimeInSec += Time.deltaTime * speedMul;
-        dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
+
+        dayTimeInSec = timeFix;// * speedMul;
+
+        
+        //dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
+        Debug.Log("Time:" + dayTimeInSec);
 
         int timeSegmentLength = NumberOfSecondsInOneDay / skyColors.Length;
         float passed = (dayTimeInSec % timeSegmentLength) / speedMul;

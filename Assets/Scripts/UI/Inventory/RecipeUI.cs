@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RecipeUI : MonoBehaviour
+public class RecipeUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
     Image imageIcon;
@@ -44,5 +45,16 @@ public class RecipeUI : MonoBehaviour
     {
         inventoryUI.PlayClick();
         inventoryUI.RecipeChanged();
+    }
+
+    public virtual void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!"".Equals(recipe.Description))
+            inventoryUI.ShowItemDescription(recipe.Description);
+    }
+
+    public virtual void OnPointerExit(PointerEventData eventData)
+    {
+        inventoryUI.HideItemDescription();
     }
 }

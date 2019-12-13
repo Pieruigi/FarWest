@@ -182,8 +182,11 @@ public class BuildingMaker : MonoBehaviour
         
         yield return new WaitForSeconds(time);
 
-        
+        //
+        // Built
+        //
 
+        Destroy(helper);
         GameObject obj = SpawnManager.Spawn((instance.recipe.Output as Building).SceneObject);
 
 

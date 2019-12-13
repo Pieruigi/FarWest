@@ -29,7 +29,12 @@ public class CacheManager
 
     private Dictionary<string, string> cache = new Dictionary<string, string>();
 
+#if UNITY_EDITOR
+    protected string cachePath = Application.persistentDataPath + "/sav_editor.txt";
+#else
     protected string cachePath = Application.persistentDataPath + "/sav.txt";
+#endif
+
     public string CachePath
     {
         get { return cachePath; }
@@ -41,7 +46,7 @@ public class CacheManager
         cachePath = path;
     }
 
-    #region PUBLIC
+#region PUBLIC
     public static void Create(string path)
     {
         if (instance != null)
@@ -126,17 +131,17 @@ public class CacheManager
         cache.Clear();
         File.Delete(cachePath);
     }
-    #endregion
+#endregion
 
-    #region UTILITY
+#region UTILITY
    
 
-    #endregion
+#endregion
 
 
 
 
-    #region PRIVATE
+#region PRIVATE
     private void StringToCache(string str)
     {
         string[] splits = str.Split(';');
@@ -168,7 +173,7 @@ public class CacheManager
     }
 
 
-    #endregion
+#endregion
 }
 
 public class CacheUtility

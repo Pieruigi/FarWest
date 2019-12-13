@@ -61,7 +61,7 @@ MonoBehaviour:
   equipmentAnimationId: 4
   lootMax: 8
   lootUnit: 2
-  growingTime: 480
+  growingTime: 360
   forceMul: {x: 1, y: 1, z: 1}
   torqueMul: {x: 1, y: 1, z: 1}
   objectList:

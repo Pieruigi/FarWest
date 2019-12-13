@@ -111,6 +111,8 @@ public class ScreenSaverCameraManager : MonoBehaviour
 
         Camera newCam = tmp[Random.Range(0, tmp.Count)];
 
+        //newCam = tmp[5];
+
         if (newCam == currentCamera)
             yield break;
 

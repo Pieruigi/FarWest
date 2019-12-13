@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   assetName: Axe
-  description: Recipe to craft an axe
+  description: Craft an axe
   freeTimeOnly: 0
   icon: {fileID: 21300000, guid: 8c8f642b5e8c71a4bb8b4ef70058f95c, type: 3}
   workbenchOnly: 0

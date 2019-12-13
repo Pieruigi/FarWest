@@ -154,6 +154,20 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.060301498
+        functionName: OnActionMessage
+        data: TakeJournal
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9514238
+        functionName: OnActionMessage
+        data: LeaveJournal
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -186,6 +200,20 @@ ModelImporter:
       - time: 0.9069149
         functionName: OnAnimationExitCompleted
         data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.16080408
+        functionName: OnActionMessage
+        data: DoorOpen
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7001675
+        functionName: OnActionMessage
+        data: DoorClose
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

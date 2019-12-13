@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Torch
   m_EditorClassIdentifier: 
   assetName: Torch
-  description: Recipe to craft a torch
+  description: Craft a torch
   freeTimeOnly: 0
   icon: {fileID: 21300000, guid: b117ebbaa8a9b2748a53206793ef8fb6, type: 3}
   workbenchOnly: 0

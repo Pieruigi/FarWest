@@ -28,13 +28,15 @@ public class HutFreeTimeActionController : FreeTimeActionController
     {
         if(message == "DoorOpen")
         {
-            LeanTween.rotateY(door, 60, 2);
+            //LeanTween.rotateY(door, 60, 2);
+            LeanTween.rotateLocal(door, -60f * Vector3.up, 2f);
             return;
         }
 
         if (message == "DoorClose")
         {
-            LeanTween.rotateY(door, 0, 1);
+            LeanTween.rotateLocal(door, Vector3.zero, 1f);
+            //LeanTween.rotateY(door, 0, 1);
             return;
         }
 

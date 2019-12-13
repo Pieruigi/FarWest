@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Workbench
   m_EditorClassIdentifier: 
   assetName: Workbench
-  description: You mobile worktable to create big stuff
+  description: Your worktable to create big stuffs
   freeTimeOnly: 0
   icon: {fileID: 21300000, guid: f7aaf2f85f70f1f4d8dfe7440216442d, type: 3}
   workbenchOnly: 0

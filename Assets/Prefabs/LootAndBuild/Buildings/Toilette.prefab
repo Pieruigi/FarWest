@@ -326,6 +326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 3520309870161124678}
+  journalPrefab: {fileID: 8573008674210897083, guid: e15350aa4029f4341ade7325b4d1ce39,
+    type: 3}
 --- !u!82 &6116800554701749555
 AudioSource:
   m_ObjectHideFlags: 0
@@ -514,8 +516,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4402304, y: 2.1519306, z: 1.5828409}
-  m_Center: {x: 0.05890417, y: 1.0259653, z: 0.012401104}
+  m_Size: {x: 1.4402304, y: 2.0808227, z: 1.5828409}
+  m_Center: {x: 0.058904175, y: 1.0615193, z: 0.012401104}
 --- !u!114 &1751938364768124892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,8 +744,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7825313, y: 2.5190318, z: 1.6510134}
-  m_Center: {x: -0.016439676, y: 1.1540698, z: 0.00986433}
+  m_Size: {x: 1.7825313, y: 2.243924, z: 1.6510134}
+  m_Center: {x: -0.016439676, y: 1.2916237, z: 0.00986433}
 --- !u!1001 &6367778324837880273
 PrefabInstance:
   m_ObjectHideFlags: 0

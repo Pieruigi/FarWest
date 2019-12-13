@@ -384,64 +384,107 @@ public class DayNightCycle : MonoBehaviour
 
         time = NumberOfSecondsInOneDay / skyColors.Length / speedMul; // LeanTween interpolation duration in seconds
 
-        ltDescColorSky.time = time;
-        ltDescColorEquator.time = time;
-        ltDescColorGround.time = time;
-        ltDescColorSky.passed = passed;
-        ltDescColorEquator.passed = passed;
-        ltDescColorGround.passed = passed;
+
+        if(ltDescColorSky != null)
+        {
+            ltDescColorSky.time = time;
+            ltDescColorSky.passed = passed;
+        }
+            
+
+        if (ltDescColorEquator != null)
+        {
+            ltDescColorEquator.time = time;
+            ltDescColorEquator.passed = passed;
+        }
+            
+
+        if (ltDescColorGround != null)
+        {
+            ltDescColorGround.time = time;
+            ltDescColorGround.passed = passed;
+        }
+            
 
         if (sunSizeArray.Length > 0)
         {
-            ltDescSunSize.time = time;
-            ltDescSunSize.passed = passed;
+            if (ltDescSunSize != null)
+            {
+                ltDescSunSize.time = time;
+                ltDescSunSize.passed = passed;
+            }
+            
         }
 
 
         if (atmosphereThicknessArray.Length > 0)
         {
-            ltDescAtmThick.time = time;
-            ltDescAtmThick.passed = passed;
+            if (ltDescAtmThick != null)
+            {
+                ltDescAtmThick.time = time;
+                ltDescAtmThick.passed = passed;
+            }
+            
         }
         if (skyTintArray.Length > 0)
         {
-            ltDescSkyTint.time = time;
-            ltDescSkyTint.passed = passed;
+            if (ltDescSkyTint != null)
+            {
+                ltDescSkyTint.time = time;
+                ltDescSkyTint.passed = passed;
+            }
+     
         }
         if (exposureArray.Length > 0)
         {
-            ltDescExposure.time = time;
-            ltDescExposure.passed = passed;
+            if (ltDescExposure != null)
+            {
+                ltDescExposure.time = time;
+                ltDescExposure.passed = passed;
+            }
+
         }
 
         // Set sun light
         sunLight = GetComponent<Light>();
         if (sunLightIntensityArray != null)
         {
-            sunLightPowerTime = NumberOfSecondsInOneDay / sunLightIntensityArray.Length / speedMul;
-            ltDescSunLightPower.passed = passed;
-            ltDescSunLightPower.time = sunLightPowerTime;
+            if(ltDescSunLightPower != null)
+            {
+                sunLightPowerTime = NumberOfSecondsInOneDay / sunLightIntensityArray.Length / speedMul;
+
+                ltDescSunLightPower.passed = passed;
+                ltDescSunLightPower.time = sunLightPowerTime;
+            }
+            
         }
         if (sunLightColorArray != null)
         {
-            sunLightColorTime = NumberOfSecondsInOneDay / sunLightColorArray.Length / speedMul;
+            if(ltDescSunLightColor != null)
+            {
+                sunLightColorTime = NumberOfSecondsInOneDay / sunLightColorArray.Length / speedMul;
+
+                ltDescSunLightColor.time = sunLightColorTime;
+                ltDescSunLightColor.passed = passed;
+            }
             
-            ltDescSunLightColor.time = sunLightColorTime;
-            ltDescSunLightColor.passed = passed;
         }
 
 
         // Set up moon
         if (moon)
         {
+            if(ltDescMoonColor != null)
+            {
+                moonTime = moonRevolutionInSeconds / speedMul;
+                moonRevolutionSpeed = 360f / moonTime;
+                //ltDescMoonRevolution = LeanTween.value(gameObject, OnMoonRevolutionUpdate, 0, 360, moonTime);
 
-            moonTime = moonRevolutionInSeconds / speedMul;
-            moonRevolutionSpeed = 360f / moonTime;
-            //ltDescMoonRevolution = LeanTween.value(gameObject, OnMoonRevolutionUpdate, 0, 360, moonTime);
-
-            float t = NumberOfSecondsInOneDay / moonColors.Length / speedMul;
-            ltDescMoonColor.time = t;
-            ltDescMoonColor.passed = passed;
+                float t = NumberOfSecondsInOneDay / moonColors.Length / speedMul;
+                ltDescMoonColor.time = t;
+                ltDescMoonColor.passed = passed;
+            }
+            
         }
 
     }

@@ -70,7 +70,7 @@ MonoBehaviour:
     type: 3}
   lootVerticalOffset: 0.5
   equipment: {fileID: 11400000, guid: c5b5a36c4eddc8e4ab0b68baaadd2823, type: 2}
-  equipmentMultiplier: 1.43
+  equipmentMultiplier: 2.5
   equipmentAnimationId: 4
   lootMax: 12
   lootUnit: 3
@@ -265,6 +265,7 @@ MonoBehaviour:
   source: {fileID: 4493109258429671001}
   fallingClip: {fileID: 8300000, guid: 2941c9816995f664f8bf6d7e3015565e, type: 3}
   growingClip: {fileID: 8300000, guid: 1da7e2cee68f1a74cab25efc99f21052, type: 3}
+  fallingLeafs: {fileID: 0}
 --- !u!1 &5774871731465472064
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hammer
   m_EditorClassIdentifier: 
   assetName: Hammer
-  description: Recipe to craft an hammer
+  description: Craft an hammer
   freeTimeOnly: 0
   icon: {fileID: 21300000, guid: 4effdfef9ccb5bf4fa43da2dfb4cc99e, type: 3}
   workbenchOnly: 0

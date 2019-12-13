@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#define SS_TEST
+#define SS_ANIM_TEST
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -32,7 +34,11 @@ public class PlayerScreenSaver : MonoBehaviour
     int loopCount = 0; // The actual loop id
 
     // Idle
+#if SS_TEST
+    float idleRate = 0f; // From 0 to 1
+#else
     float idleRate = 0.5f; // From 0 to 1
+#endif
     int idleAnimationCount = 1; // The number of available idle animations
     int idleAnimationId = -1; // The current idle animation
     float minIdleLength = 4; // The minimum length in seconds
@@ -186,7 +192,10 @@ public class PlayerScreenSaver : MonoBehaviour
             
 
         currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
-        //currentAction = freeTimeActions[0]; ////////////////////////////// TO REMOVE //////////////////////////////////////
+
+#if SS_TEST
+        currentAction = freeTimeActions[0]; 
+#endif
 
         // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )
         if (currentAction.CameraCloseDisabled) 
@@ -253,7 +262,9 @@ public class PlayerScreenSaver : MonoBehaviour
         currentAction.FreeTimeActionController?.ActionEnterCompleted(currentAction);
 
         currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
-        //currentLoopId = currentAction.LoopAnimationIds[0]; /////////////////////////////////// TEST ONLY //////////////////////////////////
+#if SS_ANIM_TEST
+        currentLoopId = currentAction.LoopAnimationIds[0];
+#endif
 
         animator.SetFloat(animIdParameter, currentLoopId);
         animator.SetTrigger(animLoopParameter);

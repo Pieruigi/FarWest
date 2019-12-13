@@ -113,6 +113,7 @@ public class DayNightCycle : MonoBehaviour
         DateTime dt = DateTime.Now;
         dayTimeInSec = (float)(dt.TimeOfDay.TotalSeconds);// * speedMul);
         dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
+        timeFix = dayTimeInSec;
 
         //dayTimeInSec = 43000; // 21.600: 06, 43.200: 12; 18: 64.800 ////////////////////////// TO REMOVE ////////////////////////
 

@@ -111,8 +111,9 @@ public class BuildingMaker : MonoBehaviour
             instance.player.SetInputEnabled(false);
             
             instance.helper = GameObject.Instantiate((instance.recipe.Output as Building).CraftingHelper);
-            OnEnabled?.Invoke();
             instance.isEnabled = true;
+            
+            OnEnabled?.Invoke();
                          
         }
         else

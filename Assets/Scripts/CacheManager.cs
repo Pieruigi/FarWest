@@ -29,11 +29,7 @@ public class CacheManager
 
     private Dictionary<string, string> cache = new Dictionary<string, string>();
 
-#if UNITY_EDITOR
-    protected string cachePath = Application.persistentDataPath + "/sav_editor.txt";
-#else
     protected string cachePath = Application.persistentDataPath + "/sav.txt";
-#endif
 
     public string CachePath
     {

@@ -76,7 +76,12 @@ public class MainManager : MonoBehaviour
 
 
         // Load data from save file or cloud
+#if UNITY_EDITOR
+        CacheManager.Create(Application.persistentDataPath + "/sav_editor.txt");
+#else
         CacheManager.Create(Application.persistentDataPath + "/sav.txt");
+#endif
+
         ProfileCacheManager.Create(Application.persistentDataPath + "/prf.txt");
         CacheManager.Instance.Load();
         ProfileCacheManager.Instance.Load();

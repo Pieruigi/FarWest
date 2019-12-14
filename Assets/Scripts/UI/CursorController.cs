@@ -24,6 +24,12 @@ public class CursorController : MonoBehaviour
 
     bool isVisible = false;
 
+    bool forceNotVisible = false;
+    public bool ForceNotVisible
+    {
+        set { forceNotVisible = value; }
+    }
+
     private void Awake()
     {
         if (GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
@@ -46,7 +52,14 @@ public class CursorController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        
+        if (forceNotVisible)
+        {
+            if (Cursor.visible)
+                Cursor.visible = false;
+
+            return;
+        }
+
         if(playerController.IsInputEnabled && Input.GetMouseButton(0))
         {
             if (Cursor.visible)

@@ -38,6 +38,14 @@ public class BuildingMaker : MonoBehaviour
 
     AudioSource source;
 
+    Camera buildingCamera;
+    Camera gameCamera;
+    FadeInOut fadeInOut;
+    public static Camera BuildingCamera
+    {
+        get { return instance.buildingCamera; }
+    }
+
     private void Awake()
     {
         if (!instance)
@@ -55,7 +63,13 @@ public class BuildingMaker : MonoBehaviour
     {
         player = GameObject.FindObjectOfType<PlayerController>();
         inventory = GameObject.FindObjectOfType<Inventory>();
-        source = GetComponentInChildren<AudioSource>();         
+        source = GetComponentInChildren<AudioSource>();
+
+        buildingCamera = GetComponentInChildren<Camera>();
+        gameCamera = Camera.main;
+        buildingCamera.gameObject.SetActive(false);
+        fadeInOut = GameObject.FindObjectOfType<FadeInOut>();
+     
     }
 
     // Update is called once per frame
@@ -105,23 +119,38 @@ public class BuildingMaker : MonoBehaviour
 
     public static void SetEnable(bool value)
     {
+
         if (value)
         {
             instance.isBuilding = false;
             instance.player.SetInputEnabled(false);
-            
+
             instance.helper = GameObject.Instantiate((instance.recipe.Output as Building).CraftingHelper);
-            instance.isEnabled = true;
+
+            instance.buildingCamera.GetComponent<BuildingCamera>().Init(instance.helper);
+            instance.gameCamera.gameObject.SetActive(false);
+            instance.buildingCamera.gameObject.SetActive(true);
+
             
+            instance.isEnabled = true;
+
+
             OnEnabled?.Invoke();
-                         
         }
+            
         else
         {
-            instance.player.SetInputEnabled(true);
+            if (!instance.gameCamera.gameObject.activeSelf)
+                instance.gameCamera.gameObject.SetActive(true);
+            if (instance.buildingCamera.gameObject.activeSelf)
+                instance.buildingCamera.gameObject.SetActive(false);
 
             if (instance.helper)
                 Destroy(instance.helper);
+            
+
+            instance.player.SetInputEnabled(true);
+
             instance.recipe = null;
             instance.isEnabled = false;
 
@@ -146,6 +175,10 @@ public class BuildingMaker : MonoBehaviour
         buildPos = helper.transform.position;
         buildRot = helper.transform.rotation;
 
+        fadeInOut.FadeOut();
+        gameCamera.gameObject.SetActive(true);
+        buildingCamera.gameObject.SetActive(false);
+        fadeInOut.FadeIn();
 
         player.MoveToTarget(bh.Target.position, OnDestinationReached);
 
@@ -221,4 +254,6 @@ public class BuildingMaker : MonoBehaviour
             return;
         StartCoroutine(DoBuild());
     }
+
+  
 }

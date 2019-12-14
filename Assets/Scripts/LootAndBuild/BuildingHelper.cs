@@ -50,12 +50,15 @@ public class BuildingHelper : MonoBehaviour
             return;
 
         // Adjust position depending on the mouse
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = BuildingMaker.BuildingCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask(Constants.LayerNameGround)))
+        if (Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask(Constants.LayerNameGround)))
         {
+            Debug.Log("hit:" + hit.point);
             transform.position = hit.point;
         }
+   
+        
     }
 
     private void OnDestroy()
@@ -72,7 +75,7 @@ public class BuildingHelper : MonoBehaviour
         {
             
             count++;
-            if(count == 1)
+            if(count >= 1)
             {
                 for (int i = 0; i < materials.Length; i++)
                 {

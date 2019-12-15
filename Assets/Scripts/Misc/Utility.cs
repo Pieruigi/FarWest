@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Text;
+using System.Runtime.InteropServices;
 
 public enum ErrorCode { GenericError, InventoryFull, DuplicatedTool, NotEmpty, NotEnoughResources }
 
@@ -27,6 +29,15 @@ public class CustomException: Exception
 
 public class Utility
 {
+    [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+    public static extern int GetShortPathName(
+                [MarshalAs(UnmanagedType.LPTStr)]
+                   string path,
+                [MarshalAs(UnmanagedType.LPTStr)]
+                   StringBuilder shortPath,
+                int shortPathLength
+                );
+
     public static Vector3 GetRandomPointOnMesh(Mesh mesh)
 
     {

@@ -159,9 +159,20 @@ public class MainManager : MonoBehaviour
 
     public bool EnableScreenSaver()
     {
-        string cmd = string.Format("/c reg add {3} /v {2} /t REG_SZ /d {0}/{1}.scr /f", appFolderName, appFileName, regKeyScreenSaver, regPathScreenSaver);
+        //string filePath = "\"" + appFolderName.Replace("\\", "/") + "/" + appFileName + ".scr\"";
+        string filePath = appFolderName + "\\" + appFileName + ".scr";
+
+        System.Text.StringBuilder strBuild = new System.Text.StringBuilder(65000);
+        int ret = Utility.GetShortPathName(filePath, strBuild, strBuild.Capacity);
+
+        if (ret <= 0)
+            return false;
+
+        //string cmd = string.Format("/c reg add {3} /v {2} /t REG_SZ /d {0}/{1}.scr /f", appFolderName, appFileName, regKeyScreenSaver, regPathScreenSaver);
+        string cmd = string.Format("/c reg add {2} /v {1} /t REG_SZ /d {0} /f", strBuild.Replace("\\", "/").ToString(), regKeyScreenSaver, regPathScreenSaver);
 
         Debug.Log("CMD:" + cmd);
+        //return false;
         //var procInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", cmd);
         //procInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
 

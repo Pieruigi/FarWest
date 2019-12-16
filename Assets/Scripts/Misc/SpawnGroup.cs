@@ -65,7 +65,7 @@ public class SpawnGroup : MonoBehaviour
                 obj.transform.position = point.position;
                 obj.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
                 obj.transform.localScale *= Random.Range(sizeMin, sizeMax);
-
+                
         }
 
     }

@@ -27,6 +27,7 @@ public class TransformCacher : Cacher
 
     protected override void Start()
     {
+       
         string data = CacheManager.Instance.GetValue(name);
 
       

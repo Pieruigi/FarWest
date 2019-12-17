@@ -10,8 +10,13 @@ public class CampfireFreeTimeActionController : FreeTimeActionController
     [SerializeField]
     List<GameObject> prefabs;
 
+    //[SerializeField]
+    //List<AudioClip> clips;
+
     GameObject currentObject;
     GameObject player; 
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +66,16 @@ public class CampfireFreeTimeActionController : FreeTimeActionController
             StartCoroutine(ThrowMarshmallow());
             return;
         }
+
+        if ("StartPlayingBanjo".Equals(message))
+        {
+            StartPlayingBanjo();
+        }
+
+        if ("StopPlayingBanjo".Equals(message))
+        {
+            StopPlayingBanjo();
+        }
     }
 
     IEnumerator DoLightForceOn()
@@ -104,5 +119,18 @@ public class CampfireFreeTimeActionController : FreeTimeActionController
         yield return new WaitForSeconds(1);
         Utility.ObjectPopOut(currentObject);
         currentObject = null;
+    }
+
+    void StartPlayingBanjo()
+    {
+        AudioSource source = currentObject.GetComponent<AudioSource>();
+        //source.clip = clips[0];
+        source.Play();
+    }
+
+    void StopPlayingBanjo()
+    {
+        AudioSource source = currentObject.GetComponent<AudioSource>();
+        source.Stop();
     }
 }

@@ -182,6 +182,7 @@ for(int ii = 0 ; ii < indices.Length; ii+=3)
 
         g.transform.localPosition = Vector3.zero;
         g.transform.localRotation = Quaternion.identity;
+        g.transform.localScale = Vector3.zero;
 
         LeanTween.scale(g, Vector3.one, 1f).setEaseOutElastic();
 

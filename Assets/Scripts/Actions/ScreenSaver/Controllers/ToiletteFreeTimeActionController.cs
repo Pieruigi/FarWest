@@ -10,6 +10,21 @@ public class ToiletteFreeTimeActionController : FreeTimeActionController
     [SerializeField]
     GameObject journalPrefab;
 
+    [SerializeField]
+    AudioClip painClip;
+
+    [SerializeField]
+    List<AudioClip> fartClips;
+
+    [SerializeField]
+    AudioClip doorOpen;
+
+    [SerializeField]
+    AudioClip doorClose;
+
+    [SerializeField]
+    AudioClip doorCreaking;
+
     bool slamingDoor;
 
     float angleMax = 70;
@@ -22,16 +37,36 @@ public class ToiletteFreeTimeActionController : FreeTimeActionController
 
     GameObject journal;
 
+    ChicoFXController fxCtrl;
+
+    bool fartEnable = false;
+
+    float fartTime = 5;
+    float fartRate = 0.35f;
+    float fartElapsed = 0;
+
+    AudioSource doorSource;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag(Constants.TagPlayer);
+        fxCtrl = player.GetComponent<ChicoFXController>();
+        doorSource = door.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!fartEnable)
+            return;
+
+        fartElapsed += Time.deltaTime;
+        if(fartElapsed > fartTime)
+        {
+            fartElapsed = 0;
+            TryFart();
+        }
     }
 
     public override void ActionMessage(string message)
@@ -39,14 +74,16 @@ public class ToiletteFreeTimeActionController : FreeTimeActionController
         if (message == "DoorOpen")
         {
             LeanTween.rotateLocal(door, -75f * Vector3.up, 0.6f);
-            //LeanTween.rotateY(door, 60, 0.6f);
+            doorSource.clip = doorOpen;
+            doorSource.Play();
             return;
         }
 
         if (message == "DoorClose")
         {
             LeanTween.rotateLocal(door, Vector3.zero, 0.5f);
-            //LeanTween.rotateY(door, 0, 0.5f);
+            doorSource.clip = doorClose;
+            doorSource.Play();
             return;
         }
 
@@ -74,6 +111,22 @@ public class ToiletteFreeTimeActionController : FreeTimeActionController
             TakeJournal(false);
             return;
         }
+
+        if(message == "PlayPainClip")
+        {
+            PlayPainClip();
+        }
+
+        if (message == "StartFarting")
+        {
+            fartEnable = true;
+            fartElapsed = 0;
+        }
+
+        if (message == "StopFarting")
+        {
+            fartEnable = false;
+        }
     }
 
     IEnumerator SlamingDoor()
@@ -83,6 +136,9 @@ public class ToiletteFreeTimeActionController : FreeTimeActionController
             float r = Random.Range(0f, 1f);
             if(r <= 0.2f) // Slam
             {
+                doorSource.clip = doorCreaking;
+                doorSource.Play();
+
                 float angle = Random.Range(angleMin, angleMax);
                 float time = Random.Range(timeMax, timeMax);
 
@@ -90,6 +146,9 @@ public class ToiletteFreeTimeActionController : FreeTimeActionController
 
                 time = Random.Range(1.5f, 4f);
                 yield return new WaitForSeconds(time);
+
+                doorSource.clip = doorCreaking;
+                doorSource.Play();
 
                 time = Random.Range(timeMin, timeMax);
                 LeanTween.rotateLocal(door, Vector3.zero, time).setEaseOutBack();
@@ -112,6 +171,21 @@ public class ToiletteFreeTimeActionController : FreeTimeActionController
         else
         {
             Destroy(journal);
+        }
+    }
+
+    void PlayPainClip()
+    {
+        fxCtrl.Play(painClip, false);
+    }
+
+    void TryFart()
+    {
+        float r = Random.Range(0f, 1f);
+        if(r < fartRate)
+        {
+            int rc = Random.Range(0, fartClips.Count);
+            fxCtrl.Play(fartClips[rc], false);
         }
     }
 }

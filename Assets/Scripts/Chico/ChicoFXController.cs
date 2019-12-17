@@ -49,8 +49,6 @@ public class ChicoFXController : MonoBehaviour
     [SerializeField]
     AudioSource source;
 
-
-
     PlayerController playerController;
 
     // Start is called before the first frame update
@@ -69,6 +67,7 @@ public class ChicoFXController : MonoBehaviour
         
     }
 
+    
     void HandleOnLootStopped()
     {
         StopPlaying();
@@ -153,7 +152,7 @@ public class ChicoFXController : MonoBehaviour
         source.Stop();
     }
 
-    void PlayRandom(List<AudioClip> clips, bool loop = false, float volume = 1)
+    public void PlayRandom(List<AudioClip> clips, bool loop = false, float volume = 1)
     {
         int r = Random.Range(0, clips.Count);
 
@@ -164,7 +163,7 @@ public class ChicoFXController : MonoBehaviour
         //source.Play();
     }
 
-    void Play(AudioClip clip, bool loop = false, float volume = 1)
+    public void Play(AudioClip clip, bool loop = false, float volume = 1)
     {
         source.clip = clip;
         source.loop = loop;

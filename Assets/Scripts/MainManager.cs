@@ -1,5 +1,4 @@
-﻿//#define FORCE_SCREENSAVER  // For test on editor
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -66,7 +65,7 @@ public class MainManager : MonoBehaviour
         if (isScreenSaver)
             appFileName = appFileName.Replace(scrFilePattern,"");
 
-#if FORCE_SCREENSAVER
+#if FORCE_SS
         isScreenSaver = true; 
 #endif
 

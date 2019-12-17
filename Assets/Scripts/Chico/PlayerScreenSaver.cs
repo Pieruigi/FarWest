@@ -1,5 +1,4 @@
-﻿//#define SS_TEST
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -33,7 +32,7 @@ public class PlayerScreenSaver : MonoBehaviour
     int loopCount = 0; // The actual loop id
 
     // Idle
-#if SS_TEST
+#if FORCE_SS
     float idleRate = 0f; // From 0 to 1
 #else
     float idleRate = 0.5f; // From 0 to 1
@@ -192,7 +191,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
         currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
 
-#if SS_TEST
+#if FORCE_SS
         currentAction = freeTimeActions[0]; 
 #endif
 
@@ -261,7 +260,7 @@ public class PlayerScreenSaver : MonoBehaviour
         currentAction.FreeTimeActionController?.ActionEnterCompleted(currentAction);
 
         currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
-#if SS_TEST
+#if FORCE_SS
         currentLoopId = currentAction.LoopAnimationIds[0];
 #endif
 
@@ -309,7 +308,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void OnAnimationExitCompleted()
     {
-        currentAction = null;
+        
         isBusy = false;
         agent.enabled = true;
         animator.applyRootMotion = false;
@@ -318,6 +317,8 @@ public class PlayerScreenSaver : MonoBehaviour
         cameraManager.CameraCloseDisabled = false;
 
         currentAction.FreeTimeActionController?.ActionExitCompleted(currentAction);
+
+        currentAction = null;
     }
 
     void OnActionMessage(string message)

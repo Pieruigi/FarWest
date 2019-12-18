@@ -8,7 +8,7 @@ public class DayNightCycle : MonoBehaviour
    
     public static int NumberOfSecondsInOneDay = 24 * 60 * 60; // How many seconds in one day
 
-    [SerializeField]
+    //[SerializeField]
     float speedMul = 1;
 
     [Header("Ambient Light")]
@@ -105,9 +105,15 @@ public class DayNightCycle : MonoBehaviour
     float timeFix;
     float initialTime;
 
+#if FORCE_SS
+        float testSpeedMul = 1000;
+#endif
+
     private void Awake()
     {
-        //speedMul = 1000;
+#if FORCE_SS
+        //speedMul = testSpeedMul;
+#endif
         if (skyColors.Length != equatorColors.Length || skyColors.Length != groundColors.Length)
             throw new System.Exception("DayNightCycle error - skyColors, equatorColors and groundColors can not have different length.");
 
@@ -118,7 +124,9 @@ public class DayNightCycle : MonoBehaviour
         initialTime = dayTimeInSec;
         //timeFix = dayTimeInSec;
 
-        //dayTimeInSec = 43000; // 21.600: 06, 43.200: 12; 18: 64.800 ////////////////////////// TO REMOVE ////////////////////////
+#if FORCE_SS
+        //dayTimeInSec = 45000; // 21.600: 06, 43.200: 12; 18: 64.800 
+#endif
 
         // Sets and starts rotating the sun
         float angle = (dayTimeInSec * 360f / NumberOfSecondsInOneDay) + 270f;
@@ -205,7 +213,10 @@ public class DayNightCycle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //speedMul = 1000;
+#if FORCE_SS
+        //speedMul = testSpeedMul;
+#endif
+
         timeFix += Time.deltaTime * speedMul; // If I remove this the clock gets wrong
         dayTimeInSec = timeFix + initialTime;
         dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;

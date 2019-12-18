@@ -18,11 +18,17 @@ public class ScreenSaverCameraManager : MonoBehaviour
 
     FadeInOut fadeInOut;
 
-    float minTime = 6;
-    float maxTime = 10;
+    float minTime = 30;
+    float maxTime = 120;
     float time = 0;
 
     Camera currentCamera;
+
+
+#if FORCE_SS
+    int testCam = 12;
+#endif
+
     public Camera CurrentCamera
     {
         get { return currentCamera; }
@@ -82,6 +88,10 @@ public class ScreenSaverCameraManager : MonoBehaviour
             // Setting random camera
             time = Random.Range(minTime, maxTime);
             currentCamera = cameras[Random.Range(0, cameras.Count)];
+
+#if FORCE_SS
+            //currentCamera = cameras[testCam];
+#endif
             currentCamera.gameObject.SetActive(true);
         }
     }
@@ -111,7 +121,9 @@ public class ScreenSaverCameraManager : MonoBehaviour
 
         Camera newCam = tmp[Random.Range(0, tmp.Count)];
 
-        //newCam = tmp[5];
+#if FORCE_SS
+        //newCam = tmp[testCam];
+#endif
 
         if (newCam == currentCamera)
             yield break;

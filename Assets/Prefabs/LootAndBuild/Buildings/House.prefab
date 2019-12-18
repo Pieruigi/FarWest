@@ -56,7 +56,7 @@ MonoBehaviour:
   - owner: {fileID: 266528151}
     target: {fileID: 2403284330017902681}
     cameraCloseDisabled: 1
-    freeTimeActionController: {fileID: 0}
+    freeTimeActionController: {fileID: 780193930}
     enterAnimationId: -1
     exitAnimationId: -1
     loopAnimationIds: 05000000
@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 7603845399630193172}
   - component: {fileID: 780193930}
   - component: {fileID: 2113616513931736324}
+  - component: {fileID: 1222359511}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -565,6 +566,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 6355721732100422340}
+  doorOpen: {fileID: 8300000, guid: c49da969ce936744e8f37677892a96a9, type: 3}
+  doorClose: {fileID: 8300000, guid: fef77c2263fb9b447b75445f8ffe13ce, type: 3}
+  steps:
+  - {fileID: 8300000, guid: 6ef307a7d628d4f42b0fb32575ed1e55, type: 3}
+  - {fileID: 8300000, guid: 87ea823a05bbc004a83d6336a05173b0, type: 3}
+  wistle: {fileID: 8300000, guid: 1cb7ca1c92f48dc4e9dbda31a27c2792, type: 3}
+  bonesScreeck: {fileID: 8300000, guid: bf12e90280e56e54f9057cbfc64cd337, type: 3}
+  floorCreaking: {fileID: 8300000, guid: f69b9d3bfb0158a4d87cc80b8fa5c37d, type: 3}
+  squeeze:
+  - {fileID: 8300000, guid: 013d08917520f6142bea2c301bfd0316, type: 3}
+  - {fileID: 8300000, guid: d7d5c89264358fd4b86742e51bc5107b, type: 3}
+  floorKicks:
+  - {fileID: 8300000, guid: a0e15916934cb4e458e5ecc7ee638285, type: 3}
+  - {fileID: 8300000, guid: 99f6f41cdb9bce14fadbf1276dc0cfa6, type: 3}
+  - {fileID: 8300000, guid: c0813c902229bdd4faa4ef8da9966867, type: 3}
+  handWork: {fileID: 8300000, guid: 1953bcc5b12310d479b55a42c13d304b, type: 3}
+  hopJump: {fileID: 8300000, guid: 7b2d7d57b837b794ea411ddfa240099d, type: 3}
+  woodHit: {fileID: 8300000, guid: 05f839a43d802f04aafc5c77fa6ef293, type: 3}
 --- !u!82 &2113616513931736324
 AudioSource:
   m_ObjectHideFlags: 0
@@ -662,6 +681,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1222359511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4807570563270277799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b87b65635b7080489e9da5e20108aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5824525767876830323
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +782,8 @@ GameObject:
   - component: {fileID: 4145782657491251789}
   - component: {fileID: 8036684945446635535}
   - component: {fileID: 5646963447637473034}
+  - component: {fileID: 452559463}
+  - component: {fileID: 452559462}
   m_Layer: 0
   m_Name: HouseDoorL
   m_TagString: Door
@@ -818,6 +851,115 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!82 &452559463
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355721732100422340}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 6861422871178685153, guid: d0aea98e5fbcd8041944cb32fdb5ca2c,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &452559462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355721732100422340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b87b65635b7080489e9da5e20108aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6976193100813124297
 GameObject:
   m_ObjectHideFlags: 0

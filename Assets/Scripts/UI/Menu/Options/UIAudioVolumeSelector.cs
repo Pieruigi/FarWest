@@ -46,7 +46,7 @@ public class UIAudioVolumeSelector : UISelector<int>
         if ((mainManager.IsScreenSaver && !isScreensaver) || (!mainManager.IsScreenSaver && isScreensaver))
             return;
 
-        int v = 8 * GetCurrentOption() - 60;
+        int v = 8 * GetCurrentOption() - 80;
         
         
         switch (mixerType)

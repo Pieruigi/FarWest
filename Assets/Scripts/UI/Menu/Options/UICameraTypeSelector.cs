@@ -35,6 +35,12 @@ public class UICameraTypeSelector : UISelector<int>
         if (option < 0)
             return "All";
         else
-            return cameras[option].name;
+        {
+            if (cameras[option].name.ToLower() == "camera")
+                return cameras[option].transform.parent.name;
+            else
+                return cameras[option].name;
+        }
+            
     }
 }

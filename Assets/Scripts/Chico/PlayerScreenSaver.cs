@@ -33,7 +33,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
     // Idle
 #if FORCE_SS
-    float idleRate = 0f; // From 0 to 1
+    float idleRate = 1f; // From 0 to 1
 #else
     float idleRate = 0.5f; // From 0 to 1
 #endif
@@ -192,7 +192,7 @@ public class PlayerScreenSaver : MonoBehaviour
         currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
 
 #if FORCE_SS
-        currentAction = freeTimeActions[0]; 
+        currentAction = freeTimeActions[1]; 
 #endif
 
         // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )

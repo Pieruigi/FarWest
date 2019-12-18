@@ -76,7 +76,7 @@ MonoBehaviour:
   freeTimeActions:
   - owner: {fileID: 793938997791533481}
     target: {fileID: 1150160789}
-    cameraCloseDisabled: 0
+    cameraCloseDisabled: 1
     freeTimeActionController: {fileID: 1270468068}
     enterAnimationId: 2
     exitAnimationId: 2

@@ -18,6 +18,7 @@ public class Constants
     public const string TagPlayer = "Player";
     public const string TagCameraClose = "CameraClose";
     public const string TagDoor = "Door";
+    public const string TagHat = "Hat";
 
     //
     // Methods

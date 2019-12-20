@@ -11,11 +11,21 @@ public class Fluff : MonoBehaviour
     [SerializeField]
     GameObject beard;
 
-    float moustacheTime = ( 60 * 60 * 24 ) /*one day */ * 2;
-    bool moustacheVisible = false;
+    float moustacheTime = 10;//( 60 * 60 * 24 ) /*one day */ * 2;
 
-    float beardTime = (60 * 60 * 24) /*one day */ * 5;
+    bool moustacheVisible = false;
+    public bool HasMoustache
+    {
+        get { return moustacheVisible; }
+    }
+
+    float beardTime = ( 60 * 60 * 24 ) /*one day */ * 5;
     bool beardVisible = false;
+    public bool HasBeard
+    {
+        get { return beardVisible; }
+    }
+
 
     float fluffElapsed;
 
@@ -61,6 +71,22 @@ public class Fluff : MonoBehaviour
                 LeanTween.scale(beard, Vector3.one, 1f).setEaseOutElastic();
             }
         }
+    }
+
+    public void Shave()
+    {
+        fluffElapsed = 0;
+        if (moustacheVisible)
+        {
+            moustacheVisible = false;
+            LeanTween.scale(moustache, Vector3.zero, 1f).setEaseOutElastic();
+        }
+        if (beardVisible)
+        {
+            beardVisible = false;
+            LeanTween.scale(beard, Vector3.zero, 1f).setEaseOutElastic();
+        }
+
     }
 
     void HandleOnSave()

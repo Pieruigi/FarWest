@@ -33,7 +33,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
     // Idle
 #if FORCE_SS
-    float idleRate = 1f; // From 0 to 1
+    float idleRate = 0f; // From 0 to 1
 #else
     float idleRate = 0.5f; // From 0 to 1
 #endif
@@ -50,6 +50,12 @@ public class PlayerScreenSaver : MonoBehaviour
     const string actionEnter = "ScreenSaverActionEnter";
     const string actionExit = "ScreenSaverActionExit";
     const string setObjectCreationTime = "CreationTime";
+
+    private void Awake()
+    {
+        if (!GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
+            Destroy(this);
+    }
 
     // Start is called before the first frame update
     void Start()

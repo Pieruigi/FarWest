@@ -36,7 +36,7 @@ public class InventoryTest : MonoBehaviour
         Inventory inv = GameObject.FindObjectOfType<Inventory>();
 
 
-        //inv.AddItem(hammer, 1, 0);
+        inv.AddItem(hammer, 1, 0);
         //inv.AddItem(axe, 1, 1);
         //inv.AddItem(knife, 1, 2);
         //inv.AddItem(shovel, 1, 3);

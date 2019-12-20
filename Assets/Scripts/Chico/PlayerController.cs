@@ -53,9 +53,11 @@ public class PlayerController : MonoBehaviour
     UnityAction<bool> moveCallback;
 
     float cursorSize = 16f;
+
     private void Awake()
     {
-        
+        if (GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
+            Destroy(this);
     }
 
     // Start is called before the first frame update
@@ -147,13 +149,19 @@ public class PlayerController : MonoBehaviour
                         
                         if (Input.GetMouseButtonDown(0))
                         {
-                            isActionKeyDown = true;
-                            actionDestroy = false;
+                            if(selectedObject == null || (selectedObject.GetComponent<Action>() && selectedObject.GetComponent<Action>().CanBeDone()))
+                            {
+                                isActionKeyDown = true;
+                                actionDestroy = false;
+                                isDestroyKeyDown = false;
+                            }
+                            
                         }
                         else
                         {
                             isDestroyKeyDown = true;
                             actionDestroy = true;
+                            isActionKeyDown = false;
                         }
                         
                         if (isDoingAction)
@@ -246,7 +254,7 @@ public class PlayerController : MonoBehaviour
             if (clickedObject && !actionDestroy) 
             {
                 // Do some action
-                if (!clickedObject.GetComponent<Action>().KeepPressed || isActionKeyDown)
+                if ((clickedObject.GetComponent<Action>() && !clickedObject.GetComponent<Action>().KeepPressed) || isActionKeyDown)
                 {
                     isDoingAction = true;
                     clickedObject.SendMessage(Constants.MethodExecute);
@@ -442,5 +450,10 @@ public class PlayerController : MonoBehaviour
     void OnPickUpExit()
     {
         SetInputEnabled(true);
+    }
+
+    void OnActionMessage(string message)
+    {
+        clickedObject.GetComponent<Action>()?.ActionMessage(message);
     }
 }

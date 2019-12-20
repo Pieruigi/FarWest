@@ -100,6 +100,8 @@ namespace SS
         string lootAnimStr = "Loot";
         string lootAnimIdStr = "LootId";
 
+        Transform lastTarget;
+
         #region PRIVATE
         PlayerController playerController;
         protected PlayerController PlayerController
@@ -143,6 +145,10 @@ namespace SS
 
         public virtual void StartExecuting()
         {
+            
+            float angle = Vector3.SignedAngle (playerController.transform.forward, lastTarget.forward, Vector3.up);
+            LeanTween.rotateAround(playerController.gameObject, Vector3.up, angle, 0.5f);
+
             //elapsed = 0;
             didSomething = false;
             isExecuting = true;
@@ -151,11 +157,11 @@ namespace SS
 
             if (onEnterAnimId >= 0)
             {
-                float angle = Vector3.SignedAngle(playerController.transform.forward, transform.position - playerController.transform.position, Vector3.up);
-                LeanTween.rotate(playerController.gameObject, new Vector3(0, angle + playerController.transform.eulerAngles.y, 0), 0.1f);
+                //float angle = Vector3.SignedAngle(playerController.transform.forward, transform.position - playerController.transform.position, Vector3.up);
+                //LeanTween.rotate(playerController.gameObject, new Vector3(0, angle + playerController.transform.eulerAngles.y, 0), 0.1f);
 
 
-                Debug.Log("Angle:" + angle);
+                //Debug.Log("Angle:" + angle);
                 playerController.GetComponent<Animator>().SetFloat(lootAnimIdStr, onEnterAnimId);
                 playerController.GetComponent<Animator>().SetBool(lootAnimStr, true);
             }
@@ -167,14 +173,16 @@ namespace SS
             switch (reachingMode)
             {
                 case ReachingMode.Point:
-                    return GetClosestTarget();
+                    lastTarget = GetClosestTarget();
+                    return lastTarget;
 
                 default:
-
+                    lastTarget = transform;
                     return transform;
 
             }
         }
+
 
         /**
          * Returns true if all prerequisites are satisfied, otherwise false; for example you can't cut down a tree without having an axe.
@@ -223,6 +231,11 @@ namespace SS
             return ret;
             
 
+            
+        }
+
+        public virtual void ActionMessage(string message)
+        {
             
         }
 

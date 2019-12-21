@@ -6,6 +6,7 @@ namespace SS
 {
     public class WashbasinAction : Action
     {
+        [Header("Objects")]
         [SerializeField]
         GameObject foamBrushPrefab;
 
@@ -14,6 +15,20 @@ namespace SS
 
         [SerializeField]
         GameObject foamPrefab;
+
+        [Header("Audio")]
+        [SerializeField]
+        List<AudioClip> brushClips;
+
+        [SerializeField]
+        List<AudioClip> shaveClips;
+
+        [SerializeField]
+        List<AudioClip> washClips;
+
+        [SerializeField]
+        AudioClip happyClip;
+
 
         Fluff fluff;
 
@@ -31,6 +46,9 @@ namespace SS
         GameObject tool;
         GameObject foam;
 
+        AudioSource toolSource;
+        ChicoFXController chicofx;
+
         // Start is called before the first frame update
         protected override void Start()
         {
@@ -43,6 +61,7 @@ namespace SS
             head = new List<Transform>(PlayerController.GetComponentsInChildren<Transform>()).Find(g => g.name.ToLower().Equals("head.x"));
             hatPosDefault = hat.localPosition;
             hatRotDefault = hat.localEulerAngles;
+            chicofx = PlayerController.GetComponent<ChicoFXController>();
         }
 
         public override bool DoSomething()
@@ -95,6 +114,19 @@ namespace SS
 
             if (message == "ReleaseBlade")
                 ReleaseBlade();
+
+            if (message == "PlayWash")
+                PlayWash();
+
+            if (message == "PlayBrush")
+                PlayBrush();
+
+            if (message == "PlayBlade")
+                PlayBlade();
+
+            if (message == "PlayHumming")
+                PlayHumming();
+
         }
 
         private void Shave()
@@ -119,6 +151,7 @@ namespace SS
         void TakeBrush()
         {
             tool = Utility.ObjectPopIn(foamBrushPrefab, handR);
+            toolSource = tool.GetComponent<AudioSource>();
         }
 
         IEnumerator TakeBlade()
@@ -127,6 +160,7 @@ namespace SS
 
             yield return new WaitForSeconds(1f);
             tool = Utility.ObjectPopIn(bladePrefab, handR);
+            toolSource = tool.GetComponent<AudioSource>();
         }
 
         void ShowFoam()
@@ -157,6 +191,28 @@ namespace SS
             fluff.Shave();
         }
 
+        void PlayWash()
+        {
+            toolSource.clip = washClips[Random.Range(0, washClips.Count)];
+            toolSource.Play();
+        }
+
+        void PlayBrush()
+        {
+            toolSource.clip = brushClips[Random.Range(0, brushClips.Count)];
+            toolSource.Play();
+        }
+
+        void PlayBlade()
+        {
+            toolSource.clip = shaveClips[Random.Range(0, shaveClips.Count)];
+            toolSource.Play();
+        }
+
+        void PlayHumming()
+        {
+            chicofx.Play(happyClip);
+        }
     }
 
 }

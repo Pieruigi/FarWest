@@ -121,7 +121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5101649157698284246}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.091, y: 0, z: 0.771}
+  m_LocalPosition: {x: 0.005566992, y: 0, z: 0.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6025779384570951115}
@@ -212,6 +212,21 @@ MonoBehaviour:
     type: 3}
   foamPrefab: {fileID: 5156228943452606905, guid: ec22158406b3b95419348dc4d8d76fed,
     type: 3}
+  brushClips:
+  - {fileID: 8300000, guid: c9b476b38713e6e4d9ec8655c55bc8c7, type: 3}
+  - {fileID: 8300000, guid: eb09b84a240b248468f63ae81b636697, type: 3}
+  - {fileID: 8300000, guid: 5d20f458e818edf419ef56993ff89a10, type: 3}
+  shaveClips:
+  - {fileID: 8300000, guid: f6e4bdebbc4048740b39d3cec2233ccd, type: 3}
+  - {fileID: 8300000, guid: 1342fdaf8e1baed43b371a5c784d2a9c, type: 3}
+  - {fileID: 8300000, guid: 9d81a942eb21a5c44b1e43c007594ece, type: 3}
+  - {fileID: 8300000, guid: 8465766ad4294f04c93a00aec49f771a, type: 3}
+  - {fileID: 8300000, guid: 3c8fd9758a1cb2d45aab59131963754c, type: 3}
+  - {fileID: 8300000, guid: 994b55b38744ca44e97bf07bc50b7ab2, type: 3}
+  washClips:
+  - {fileID: 8300000, guid: 6d63751fefe817142921cf017f79a28c, type: 3}
+  - {fileID: 8300000, guid: 5c8675ab3dc32784f9fec625135080f5, type: 3}
+  happyClip: {fileID: 8300000, guid: d969d4cc2f0c78b46a558a1b9208f596, type: 3}
 --- !u!1 &6715238923349970882
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +272,7 @@ GameObject:
   - component: {fileID: 6772636636538398261}
   - component: {fileID: 2882336620618562946}
   - component: {fileID: 1256807593}
+  - component: {fileID: 1835421632}
   m_Layer: 0
   m_Name: Washbasin
   m_TagString: Untagged
@@ -468,6 +484,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d4fb35690d2b4c41b39d0d7b04c78ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  washClips:
+  - {fileID: 8300000, guid: 6d63751fefe817142921cf017f79a28c, type: 3}
+  - {fileID: 8300000, guid: 5c8675ab3dc32784f9fec625135080f5, type: 3}
+  squeezeClip: {fileID: 8300000, guid: 6fffaad283d99d847aa8324e6d09ae50, type: 3}
+  washFaceClip: {fileID: 8300000, guid: c02f5ef24a7eb2e4d807ce3f7d1326b3, type: 3}
+--- !u!114 &1835421632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333135301766793176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b87b65635b7080489e9da5e20108aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1706971140

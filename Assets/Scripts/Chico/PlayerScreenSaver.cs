@@ -35,7 +35,7 @@ public class PlayerScreenSaver : MonoBehaviour
 #if FORCE_SS
     float idleRate = 0f; // From 0 to 1
     int testLoopId = 0;
-    int testActionId = 1;
+    int testActionId = 0;
 #else
     float idleRate = 0.5f; // From 0 to 1
 #endif
@@ -48,6 +48,7 @@ public class PlayerScreenSaver : MonoBehaviour
     const string animEnterParameter = "SSEnter";
     const string animExitParameter = "SSExit";
     const string animLoopParameter = "SSLoop";
+    const string animLoopExitParameter = "SSLoopExit";
 
     const string actionEnter = "ScreenSaverActionEnter";
     const string actionExit = "ScreenSaverActionExit";
@@ -293,13 +294,20 @@ public class PlayerScreenSaver : MonoBehaviour
 
         if (loopCount < currentLoopCount)
         {
-
             Reloop();
         }
         else
         {
-            animator.SetFloat(animIdParameter, currentAction.ExitAnimationId);
-            animator.SetTrigger(animExitParameter);
+            if(currentAction.ExitAnimationId >= 0)
+            {
+                animator.SetFloat(animIdParameter, currentAction.ExitAnimationId);
+                animator.SetTrigger(animExitParameter);
+            }
+            else
+            {
+                animator.SetTrigger(animLoopExitParameter); 
+            }
+            
         
             currentAction.FreeTimeActionController?.ActionExitStart(currentAction);
         }

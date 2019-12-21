@@ -67,11 +67,11 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
-      heightFromFeet: 1
+      heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -83,16 +83,121 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.08987941
+      - time: 0.08868799
         functionName: OnActionMessage
         data: ReleaseHat
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
-        functionName: OnAnimationLoopCompleted
-        data: 
+      - time: 0.19164038
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.21204732
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.230199
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.25332287
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.27643746
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.2981759
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.46441644
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4870973
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5053844
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.52751493
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.544164
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5615142
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.70750165
+        functionName: OnActionMessage
+        data: PlaySqueeze
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.71653116
+        functionName: OnActionMessage
+        data: PlaySqueeze
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7240091
+        functionName: OnActionMessage
+        data: PlaySqueeze
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7336203
+        functionName: OnActionMessage
+        data: PlaySqueeze
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
@@ -107,6 +212,34 @@ ModelImporter:
       - time: 0.94266737
         functionName: OnActionMessage
         data: PutHatOnHead
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: OnAnimationLoopCompleted
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.742637
+        functionName: OnActionMessage
+        data: PlaySqueeze
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.32348704
+        functionName: OnActionMessage
+        data: PlayWashFace
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.57834685
+        functionName: OnActionMessage
+        data: PlayWashFace
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

@@ -29,6 +29,10 @@ public class UICameraTypeSelector : UISelector<int>
             Options.Add(i);
     }
 
+    private void Update()
+    {
+        ForceInteractablesOff(true);
+    }
 
     protected override string FormatOptionString(int option)
     {

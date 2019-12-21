@@ -11,7 +11,7 @@ public class Fluff : MonoBehaviour
     [SerializeField]
     GameObject beard;
 
-    float moustacheTime = 10;//( 60 * 60 * 24 ) /*one day */ * 2;
+    float moustacheTime = ( 60 * 60 * 24 ) /*one day */ * 2;
 
     bool moustacheVisible = false;
     public bool HasMoustache

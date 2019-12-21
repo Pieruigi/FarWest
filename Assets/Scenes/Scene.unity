@@ -18416,24 +18416,6 @@ RectTransform:
   m_AnchoredPosition: {x: 408.8, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1252845666 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5211366997099945352, guid: cb20ab8932e9c0b47956cf3cdc255d3f,
-    type: 3}
-  m_PrefabInstance: {fileID: 4283930098750009302}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1252845676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252845666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b87b65635b7080489e9da5e20108aa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1260360260
 GameObject:
   m_ObjectHideFlags: 0
@@ -22729,8 +22711,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504773540}
-  m_LocalRotation: {x: 0.017708655, y: 0.98214346, z: -0.12356142, w: 0.14075948}
-  m_LocalPosition: {x: -0.7250698, y: 2.39, z: 2.4776142}
+  m_LocalRotation: {x: 0.06240784, y: 0.85927063, z: -0.10810285, w: 0.49605745}
+  m_LocalPosition: {x: -2.2355788, y: 2.39, z: 1.2909341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1399941851}
@@ -32904,25 +32886,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1559305664, guid: cb20ab8932e9c0b47956cf3cdc255d3f, type: 3}
-      propertyPath: rolloffMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1559305664, guid: cb20ab8932e9c0b47956cf3cdc255d3f, type: 3}
-      propertyPath: MaxDistance
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 1559305664, guid: cb20ab8932e9c0b47956cf3cdc255d3f, type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3834488413162316056, guid: cb20ab8932e9c0b47956cf3cdc255d3f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Hat
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1559305665, guid: cb20ab8932e9c0b47956cf3cdc255d3f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb20ab8932e9c0b47956cf3cdc255d3f, type: 3}
 --- !u!4 &5006512735256176397 stripped
 Transform:

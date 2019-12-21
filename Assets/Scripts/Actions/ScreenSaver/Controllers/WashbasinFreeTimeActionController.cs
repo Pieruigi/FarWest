@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class WashbasinFreeTimeActionController : FreeTimeActionController
 {
+    [SerializeField]
+    List<AudioClip> washClips;
+
+    [SerializeField]
+    AudioClip squeezeClip;
+
+    [SerializeField]
+    AudioClip washFaceClip;
 
     Transform hat;
     Transform handL;
@@ -13,6 +21,7 @@ public class WashbasinFreeTimeActionController : FreeTimeActionController
     Vector3 hatRotDefault;
 
     GameObject player;
+    ChicoFXController chicofx;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +33,8 @@ public class WashbasinFreeTimeActionController : FreeTimeActionController
         head = new List<Transform>(player.GetComponentsInChildren<Transform>()).Find(g => g.name.ToLower().Equals("head.x"));
         hatPosDefault = hat.localPosition;
         hatRotDefault = hat.localEulerAngles;
+
+        chicofx = player.GetComponent<ChicoFXController>();
     }
 
     // Update is called once per frame
@@ -43,5 +54,30 @@ public class WashbasinFreeTimeActionController : FreeTimeActionController
 
         if (message == "PutHatOnHead")
             StartCoroutine(WashbasinUtility.DoPutOnHead(hat, head, hatPosDefault, hatRotDefault));
+
+        if (message == "PlayWash")
+            PlayWash();
+
+        if (message == "PlaySqueeze")
+            PlaySqueeze();
+
+        if (message == "PlayWashFace")
+            PlayWashFace();
+
+    }
+
+    void PlayWash()
+    {
+        chicofx.PlayRandom(washClips);
+    }
+
+    void PlaySqueeze()
+    {
+        chicofx.Play(squeezeClip);
+    }
+
+    void PlayWashFace()
+    {
+        chicofx.Play(washFaceClip);
     }
 }

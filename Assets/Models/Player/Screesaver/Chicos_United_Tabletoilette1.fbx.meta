@@ -67,11 +67,11 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
-      heightFromFeet: 1
+      heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -83,9 +83,30 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.06782533
+      - time: 0.06702729
         functionName: OnActionMessage
         data: ReleaseHat
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.42522198
+        functionName: OnActionMessage
+        data: PlaySqueeze
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.44508088
+        functionName: OnActionMessage
+        data: PlaySqueeze
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.46365952
+        functionName: OnActionMessage
+        data: PlaySqueeze
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
@@ -107,6 +128,41 @@ ModelImporter:
       - time: 1
         functionName: OnAnimationLoopCompleted
         data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7669181
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7849788
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.79773945
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.85352176
+        functionName: OnActionMessage
+        data: PlayWash
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8676302
+        functionName: OnActionMessage
+        data: PlayWash
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

@@ -8,7 +8,7 @@ public class DustStormController : MonoBehaviour
     [SerializeField]
     ParticleSystem psDustStorm;
 
-    float rate = 0.2f;
+    float rate = 0.5f;
 
     float checkEveryInSec = 600f; // Very ten minutes
 

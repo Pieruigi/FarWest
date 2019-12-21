@@ -34,6 +34,8 @@ public class PlayerScreenSaver : MonoBehaviour
     // Idle
 #if FORCE_SS
     float idleRate = 0f; // From 0 to 1
+    int testLoopId = 0;
+    int testActionId = 1;
 #else
     float idleRate = 0.5f; // From 0 to 1
 #endif
@@ -131,6 +133,10 @@ public class PlayerScreenSaver : MonoBehaviour
                         else // No enter animation, loop directly
                         {
                             currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
+#if FORCE_SS
+                            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+#endif
+
                             animator.SetFloat(animIdParameter, currentLoopId);
                         
                             animator.SetTrigger(animLoopParameter);
@@ -198,7 +204,7 @@ public class PlayerScreenSaver : MonoBehaviour
         currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
 
 #if FORCE_SS
-        currentAction = freeTimeActions[1]; 
+        currentAction = freeTimeActions[testActionId]; 
 #endif
 
         // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )
@@ -207,6 +213,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
         currentLoopCount = Random.Range(currentAction.MinLoopCount, currentAction.MaxLoopCount + 1);
         loopCount = 0;
+
 
         if (currentAction.Target)
             MoveTo(currentAction.Target.position);
@@ -267,7 +274,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
         currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
 #if FORCE_SS
-        currentLoopId = currentAction.LoopAnimationIds[0];
+        currentLoopId = currentAction.LoopAnimationIds[testLoopId];
 #endif
 
         animator.SetFloat(animIdParameter, currentLoopId);

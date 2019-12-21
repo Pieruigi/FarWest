@@ -1,17 +1,11 @@
 fileFormatVersion: 2
-guid: a207224cfb612c646a97d9b8551be55a
+guid: bd346e5c63d34024aae387322a1bd1be
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: -1585649964282318493
-    second: SS_HutEnter
-  - first:
-      74: -6499507706356498633
-    second: SS_HutLoop
-  - first:
-      74: 4589821318362856114
-    second: SS_HutExit
+    second: SS_Washbasin2
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -26,23 +20,25 @@ ModelImporter:
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'pinky2.l'
-      : position error = 1.368191 mm\n\t'ring2.l' : position error = 1.110307 mm\n\t'middle2.l'
-      : position error = 1.300997 mm\n\t'index2.l' : position error = 1.040336 mm\n\t'ring2.r'
-      : position error = 1.600386 mm\n\t'pinky2.r' : position error = 1.971242 mm\n\t'index2.r'
-      : position error = 1.499902 mm\n\t'middle1.r' : position error = 1.014043 mm\n\t'middle2.r'
-      : position error = 1.874815 mm\n"
+      copied configuration does not match position in animation file:\n\t'ring2.l'
+      : position error = 1.888038 mm\n\t'pinky2.l' : position error = 2.326088 mm\n\t'index2.l'
+      : position error = 1.769111 mm\n\t'middle2.l' : position error = 2.211786 mm\n\t'pinky2.r'
+      : position error = 2.342924 mm\n\t'index2.r' : position error = 1.782130 mm\n\t'ring2.r'
+      : position error = 1.901851 mm\n\t'middle2.r' : position error = 2.228261 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'root|mp_rigAction' has import animation warnings
-      that might lower retargeting quality:\n\t'pinky1.l' has translation animation
-      that will be discarded.\n\t'ring1.l' has translation animation that will be
-      discarded.\n\t'ring2.l' has translation animation that will be discarded.\n\t'middle1.l'
-      has translation animation that will be discarded.\n\t'middle2.l' has translation
-      animation that will be discarded.\n\t'index1.l' has translation animation that
-      will be discarded.\n\t'index2.l' has translation animation that will be discarded.\n\t'ring1.r'
+      that might lower retargeting quality:\n\t'ring1.l' has translation animation
+      that will be discarded.\n\t'ring2.l' has translation animation that will be
+      discarded.\n\t'pinky1.l' has translation animation that will be discarded.\n\t'pinky2.l'
+      has translation animation that will be discarded.\n\t'index1.l' has translation
+      animation that will be discarded.\n\t'index2.l' has translation animation that
+      will be discarded.\n\t'middle1.l' has translation animation that will be discarded.\n\t'middle2.l'
       has translation animation that will be discarded.\n\t'pinky1.r' has translation
-      animation that will be discarded.\n\t'index1.r' has translation animation that
-      will be discarded.\n\t'middle1.r' has translation animation that will be discarded.\n"
+      animation that will be discarded.\n\t'pinky2.r' has translation animation that
+      will be discarded.\n\t'ring1.r' has translation animation that will be discarded.\n\t'ring2.r'
+      has translation animation that will be discarded.\n\t'middle1.r' has translation
+      animation that will be discarded.\n\t'middle2.r' has translation animation that
+      will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -56,11 +52,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: SS_HutEnter
+      name: SS_Washbasin2
       takeName: root|mp_rigAction
       internalID: 0
       firstFrame: 0
-      lastFrame: 134
+      lastFrame: 664
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -73,91 +69,27 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.12223667
-        functionName: PlaySteps
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.32639793
+      - time: 0.05205873
         functionName: OnActionMessage
-        data: PlayerStepsWood
+        data: TakeHat
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.45903772
+      - time: 0.08987941
         functionName: OnActionMessage
-        data: PlayerStepsWood
+        data: ReleaseHat
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5721716
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: OnAnimationEnterCompleted
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.6723017
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9622886
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: SS_HutLoop
-      takeName: root|mp_rigAction
-      internalID: 0
-      firstFrame: 135
-      lastFrame: 1009
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
       - time: 1
         functionName: OnAnimationLoopCompleted
         data: 
@@ -165,192 +97,16 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.03921568
+      - time: 0.90911716
         functionName: OnActionMessage
-        data: PlayerStepsWood
+        data: TakeHat
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.0627451
+      - time: 0.94266737
         functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.09215686
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.11960786
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.14509803
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.16666667
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.20196079
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.8382353
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.8656863
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.8872549
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.90882355
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9323529
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9509804
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.96862745
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.99607843
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.24940616
-        functionName: OnActionMessage
-        data: Wistle
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.72921616
-        functionName: OnActionMessage
-        data: BonesScreeck
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: SS_HutExit
-      takeName: root|mp_rigAction
-      internalID: 0
-      firstFrame: 1010
-      lastFrame: 1099
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.89810425
-        functionName: OnAnimationExitCompleted
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.19375837
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.35370603
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.47204146
-        functionName: OnActionMessage
-        data: PlayerStepsWood
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.5786736
-        functionName: PlaySteps
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.80624163
-        functionName: PlaySteps
-        data: 
+        data: PutHatOnHead
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

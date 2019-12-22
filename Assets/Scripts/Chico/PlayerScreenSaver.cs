@@ -43,6 +43,7 @@ public class PlayerScreenSaver : MonoBehaviour
     int idleAnimationId = -1; // The current idle animation
     float minIdleLength = 4; // The minimum length in seconds
     float maxIdleLength = 7; // The maximum length in seconds
+    bool forceIdle = false;
 
     const string animIdParameter = "SSId";
     const string animEnterParameter = "SSEnter";
@@ -174,11 +175,20 @@ public class PlayerScreenSaver : MonoBehaviour
     {
         Debug.Log("I'm thinking....");
         isBusy = true;
-        float r = Random.Range(0f, 1f);
-        if (r <= idleRate)
+        if (forceIdle)
+        {
+            forceIdle = false;
             StartDoingNothing();
+        }
         else
-            StartDoingSomething();
+        {
+            float r = Random.Range(0f, 1f);
+            if (r <= idleRate)
+                StartDoingNothing();
+            else
+                StartDoingSomething();
+        }
+        
     }
 
     void StartDoingNothing()
@@ -302,14 +312,17 @@ public class PlayerScreenSaver : MonoBehaviour
             {
                 animator.SetFloat(animIdParameter, currentAction.ExitAnimationId);
                 animator.SetTrigger(animExitParameter);
+                currentAction.FreeTimeActionController?.ActionExitStart(currentAction);
             }
             else
             {
-                animator.SetTrigger(animLoopExitParameter); 
+                animator.SetTrigger(animLoopExitParameter);
+                OnAnimationExitCompleted();
+                
             }
             
         
-            currentAction.FreeTimeActionController?.ActionExitStart(currentAction);
+            
         }
             
 
@@ -331,6 +344,7 @@ public class PlayerScreenSaver : MonoBehaviour
     {
         
         isBusy = false;
+        forceIdle = true;
         agent.enabled = true;
         animator.applyRootMotion = false;
 
@@ -340,6 +354,7 @@ public class PlayerScreenSaver : MonoBehaviour
         currentAction.FreeTimeActionController?.ActionExitCompleted(currentAction);
 
         currentAction = null;
+        
     }
 
     void OnActionMessage(string message)

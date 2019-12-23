@@ -20,7 +20,7 @@ public class ConditionalHideAttribute : PropertyAttribute
 
     public ConditionalHideAttribute(string conditionalSourceField, bool hideInInspector)
     {
-        Debug.Log("CondHide constructor");
+      
         this.ConditionalSourceField = conditionalSourceField;
         this.HideInInspector = hideInInspector;
     }

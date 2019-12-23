@@ -19,7 +19,6 @@ public class BeltUI : MonoBehaviour
         }
         else
         {
-            Debug.Log("BeltUI awaking........");
             beltSlotList = new List<BeltSlotUI>(GetComponentsInChildren<BeltSlotUI>());
             inventory = GameObject.FindObjectOfType<Inventory>();
             inventory.OnBeltChanged += HandleOnBeltChanged;
@@ -30,10 +29,6 @@ public class BeltUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //inventory = GameObject.FindObjectOfType<Inventory>();
-        //inventory.OnBeltChanged += HandleOnBeltChanged;
-        Debug.Log("Starting BeltUI........");
-
         InventoryUI iUI = GameObject.FindObjectOfType<InventoryUI>();
 
         iUI.OnOpen += SetDisable;
@@ -42,13 +37,6 @@ public class BeltUI : MonoBehaviour
         BuildingMaker.OnEnabled += SetDisable;
         BuildingMaker.OnDisabled += SetEnable;
 
-        //string data = CacheManager.GetValue(Constants.CacheKeyInventory);
-        //if(data != null)
-        //{
-        //    for(int i=0; i<5)
-        //}
-
-        //beltSlotList = new List<BeltSlotUI>(GetComponentsInChildren<BeltSlotUI>());
     }
 
     // Update is called once per frame
@@ -57,10 +45,6 @@ public class BeltUI : MonoBehaviour
         
     }
 
-    //public void AddBeltSlotUI(BeltSlotUI slotUI)
-    //{
-    //    beltSlotList.Add(slotUI);
-    //}
 
     void HandleOnBeltChanged()
     {

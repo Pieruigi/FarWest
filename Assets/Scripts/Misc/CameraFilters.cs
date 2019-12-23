@@ -27,7 +27,7 @@ public class CameraFilters : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
             filters.Add(transform.GetChild(i).gameObject);
 
-        Debug.Log("Filters.Count:" + filters.Count);
+       
     }
 
 

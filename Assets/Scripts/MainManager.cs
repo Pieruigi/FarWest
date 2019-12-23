@@ -39,7 +39,6 @@ public class MainManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("cmd-line:" + System.Environment.CommandLine);
         appFolderName = Application.dataPath.Substring(0, Application.dataPath.LastIndexOf("/")); // The folder where the game has been installed
         appFileName = System.Environment.CommandLine; // The name of the executable without extension
 
@@ -54,11 +53,7 @@ public class MainManager : MonoBehaviour
             isScreenSaver = false;
         }
 
-        //if (appFileName.ToLower().EndsWith(scrFilePattern))
-        //    isScreenSaver = true;
-        //else
-        //    isScreenSaver = false;
-
+      
         appFileName = appFileName.Substring(appFileName.LastIndexOf("\\")+1);
         appFileName = appFileName.Substring(0, appFileName.LastIndexOf("."));
 
@@ -66,7 +61,7 @@ public class MainManager : MonoBehaviour
             appFileName = appFileName.Replace(scrFilePattern,"");
 
 #if FORCE_SS
-        isScreenSaver = true; 
+        //isScreenSaver = true; 
 #endif
 
         // Load item from resources
@@ -158,7 +153,6 @@ public class MainManager : MonoBehaviour
 
     public bool EnableScreenSaver()
     {
-        //string filePath = "\"" + appFolderName.Replace("\\", "/") + "/" + appFileName + ".scr\"";
         string filePath = appFolderName + "\\" + appFileName + ".scr";
 
         System.Text.StringBuilder strBuild = new System.Text.StringBuilder(65000);
@@ -167,15 +161,8 @@ public class MainManager : MonoBehaviour
         if (ret <= 0)
             return false;
 
-        //string cmd = string.Format("/c reg add {3} /v {2} /t REG_SZ /d {0}/{1}.scr /f", appFolderName, appFileName, regKeyScreenSaver, regPathScreenSaver);
         string cmd = string.Format("/c reg add {2} /v {1} /t REG_SZ /d {0} /f", strBuild.Replace("\\", "/").ToString(), regKeyScreenSaver, regPathScreenSaver);
 
-        Debug.Log("CMD:" + cmd);
-        //return false;
-        //var procInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", cmd);
-        //procInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-
-        //var proc = System.Diagnostics.Process.Start(procInfo);
         var proc = ExecuteCommand(cmd);
 
         proc.WaitForExit();
@@ -209,11 +196,6 @@ public class MainManager : MonoBehaviour
         //reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v ScreenSaveTimeOut /t REG_SZ /d 600 /f
         string cmd = string.Format("/c reg add {2} /v {1} /t REG_SZ /d {0} /f", timeOut, regKeyScreenSaverTimeOut, regPathScreenSaver);
 
-        Debug.Log("CMD:" + cmd);
-        //var procInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", cmd);
-        //procInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-
-        //var proc = System.Diagnostics.Process.Start(procInfo);
         var proc = ExecuteCommand(cmd);
 
         proc.WaitForExit();
@@ -228,12 +210,6 @@ public class MainManager : MonoBehaviour
     {
         string cmd = string.Format("/c reg query {1} /v {0}", regKeyScreenSaverTimeOut, regPathScreenSaver);
 
-        //var procInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", cmd);
-        //procInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-        //procInfo.RedirectStandardOutput = true;
-        //procInfo.UseShellExecute = false;
-
-        //var proc = System.Diagnostics.Process.Start(procInfo);
         var proc = ExecuteCommand(cmd);
 
         string ret = proc.StandardOutput.ReadToEnd();
@@ -271,8 +247,7 @@ public class MainManager : MonoBehaviour
     private void SetResolutionForScreenSaver()
     {
         Resolution res = Screen.resolutions[Screen.resolutions.Length-1];
-        //Resolution curr = Screen.currentResolution;
-        Debug.Log("Res:" + Screen.currentResolution);
+        
         Screen.SetResolution(res.width, res.height, FullScreenMode.FullScreenWindow, res.refreshRate);
     }
 

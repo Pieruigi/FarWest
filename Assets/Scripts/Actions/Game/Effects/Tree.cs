@@ -58,7 +58,6 @@ namespace SS
 
         private void HandleOnRestored(LootAction arg0)
         {
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAA");
             source.clip = growingClip;
             source.Play();
 
@@ -73,9 +72,8 @@ namespace SS
             // Pop in
             LeanTween.scale(gameObject, Vector3.one, 1f).setEaseOutElastic();
 
-
-
-            fallingLeafs.Play();
+            if(fallingLeafs)
+                fallingLeafs.Play();
 
         }
 

@@ -112,7 +112,7 @@ public class DayNightCycle : MonoBehaviour
     private void Awake()
     {
 #if FORCE_SS
-        //speedMul = testSpeedMul;
+        speedMul = testSpeedMul;
 #endif
         if (skyColors.Length != equatorColors.Length || skyColors.Length != groundColors.Length)
             throw new System.Exception("DayNightCycle error - skyColors, equatorColors and groundColors can not have different length.");
@@ -125,7 +125,8 @@ public class DayNightCycle : MonoBehaviour
         //timeFix = dayTimeInSec;
 
 #if FORCE_SS
-        //dayTimeInSec = 45000; // 21.600: 06, 43.200: 12; 18: 64.800 
+        dayTimeInSec = 0; // 21.600: 06, 43.200: 12; 18: 64.800 
+        initialTime = dayTimeInSec;
 #endif
 
         // Sets and starts rotating the sun
@@ -176,7 +177,7 @@ public class DayNightCycle : MonoBehaviour
         {
             sunLightPowerTime = NumberOfSecondsInOneDay / sunLightIntensityArray.Length / speedMul;
             GetFloatIds(dayTimeInSec, sunLightIntensityArray.Length, out fromId, out toId);
-            Debug.Log(string.Format("SuLightInit:{0},{1}", fromId, toId));
+        
             ltDescSunLightPower = LeanTween.value(gameObject, OnSunLightPowerUpdate, sunLightIntensityArray[fromId], sunLightIntensityArray[toId], sunLightPowerTime);
             ltDescSunLightPower.passed = passed;
          
@@ -214,7 +215,7 @@ public class DayNightCycle : MonoBehaviour
     void Update()
     {
 #if FORCE_SS
-        //speedMul = testSpeedMul;
+        speedMul = testSpeedMul;
 #endif
 
         timeFix += Time.deltaTime * speedMul; // If I remove this the clock gets wrong

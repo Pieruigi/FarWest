@@ -106,7 +106,6 @@ public class SpawnManager : MonoBehaviour
         }
 
         count = max;
-        Debug.Log("ChacheManager.Count:" + count);
-        //Debug.Log("empty:" + CacheManager.IsEmpty());
+        
     }
 }

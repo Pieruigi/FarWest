@@ -47,7 +47,7 @@ public class Spawner : MonoBehaviour
 
     public void Activate(SpawnerType type)
     {
-        //Debug.Log("Activate spawner type:" + type);
+      
         this.type = type;
         isActive = true;
 

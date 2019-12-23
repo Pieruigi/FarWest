@@ -87,7 +87,6 @@ namespace SS
 
         public override void ActionMessage(string message)
         {
-            Debug.Log("ActionMessage:" + message);
             if (message == "Exit")
                 ShaveCompleted();
 
@@ -221,8 +220,6 @@ public static class WashbasinUtility
 {
     public static void TakeHat(Transform hat, Transform hand)
     {
-
-        Debug.Log("hat:" + hat);
         hat.parent = hand;
     }
 

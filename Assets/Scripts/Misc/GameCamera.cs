@@ -131,16 +131,6 @@ public class GameCamera : MonoBehaviour
         if (fovCurr != Camera.main.fieldOfView)
             Camera.main.fieldOfView = fovCurr;
 
-        // Clipping
-        //Vector3 origin = player.transform.position + playerVerticalOffset * Vector3.up;
-        //Vector3 dir = transform.position - origin;
-        //RaycastHit hit;
-        //if (Physics.Raycast(origin, dir.normalized, out hit, dir.magnitude, LayerMask.GetMask("Clipping")))
-        //{
-        //    Debug.Log("Hit:" + hit.transform.gameObject);
-        //    transform.position = hit.point;
-        //}
-
         // Clipping 
         Vector3 clippedPos = Vector3.zero;
         Vector3 targetPos = player.transform.position + playerVerticalOffset * Vector3.up;

@@ -173,7 +173,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void TakeDecision()
     {
-        Debug.Log("I'm thinking....");
+      
         isBusy = true;
         if (forceIdle)
         {
@@ -193,7 +193,6 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void StartDoingNothing()
     {
-        Debug.Log("I'm doing nothing.............");
         currentAction = null;
         Vector3 target = GetRandomTarget();
 
@@ -202,8 +201,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void StartDoingSomething()
     {
-        Debug.Log("I'm doing something.............");
-
+      
         // Get randam action
         if (freeTimeActions == null || freeTimeActions.Count == 0)
         {
@@ -279,8 +277,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void OnAnimationEnterCompleted()
     {
-        Debug.Log("Animation enter completed");
-
+        
         currentAction.FreeTimeActionController?.ActionEnterCompleted(currentAction);
 
         currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
@@ -299,7 +296,6 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void OnAnimationLoopCompleted()
     {
-        Debug.Log("Animation loop step " + loopCount + " completed");
         currentAction.FreeTimeActionController?.ActionLoopCompleted(currentAction, currentLoopId);
 
         if (loopCount < currentLoopCount)

@@ -32,15 +32,11 @@ public class InventoryTest : MonoBehaviour
         Item mud = Resources.Load<Item>("Items/Mud");
         Item dirt = Resources.Load<Item>("Items/Dirt");
 
-        Debug.Log("hammer.code:" + hammer.Code);
         Inventory inv = GameObject.FindObjectOfType<Inventory>();
 
 
         inv.AddItem(hammer, 1, 0);
-        //inv.AddItem(axe, 1, 1);
-        //inv.AddItem(knife, 1, 2);
-        //inv.AddItem(shovel, 1, 3);
-
+       
 
         inv.AddItem(wood, 40);
         inv.AddItem(rope, 30);
@@ -48,10 +44,5 @@ public class InventoryTest : MonoBehaviour
         inv.AddItem(dirt, 30);
         inv.AddItem(water, 30);
         
-        
-        //inv.AddItem(torch, 1);
-        //inv.AddItem(pickaxe, 1);
-        
-        //inv.AddItem(hammer, 1, 0);
     }
 }

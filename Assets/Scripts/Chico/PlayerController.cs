@@ -106,8 +106,6 @@ public class PlayerController : MonoBehaviour
                 //bool exists = false;
                 if (selectedObject)
                 {
-                    //Debug.Log("Clicked:" + clickedObject);
-                    //target = GetPointFromObject(); 
                     Action selAction = selectedObject.GetComponent<Action>();
                     Destroyer destroyer = selectedObject.GetComponent<Destroyer>();
                     if ((selAction != null && selAction.CanBeDone()) || (destroyer != null && equipped == ItemCollection.GetAssetByCode("ItemHammer")))
@@ -177,15 +175,7 @@ public class PlayerController : MonoBehaviour
                             clickedObject = selectedObject;
                             navAgent.destination = targetPos;
 
-                            //Debug.Log("PathEndPos:" + navAgent.remainingDistance);
-                            //Debug.Log("PathNextPos:" + navAgent.nextPosition);
-                            //Debug.Log("PathDest:" + navAgent.destination);
-                            //Debug.Log("PlayerPos:" + transform.position);
-                            //Debug.Log("TargetPos:" + targetPos);
-
-                            //Debug.Log("Mag:" + (new Vector2(targetPos.x, targetPos.z) - new Vector2(transform.position.x, transform.position.z)).magnitude);
-                            //Debug.Log("StopDist:" + navAgent.stoppingDistance);
-
+                          
                             float mag = (new Vector2(targetPos.x, targetPos.z) - new Vector2(transform.position.x, transform.position.z)).magnitude;
                             if (mag <= 0.001f)
                                 mag = 0;
@@ -193,7 +183,7 @@ public class PlayerController : MonoBehaviour
                             if (mag <= navAgent.stoppingDistance)
                             {
                                 alreadyThere = true;
-                                //Debug.Log("AlreadyThere:" + alreadyThere);
+                             
                             }
                                 
                         }
@@ -202,15 +192,11 @@ public class PlayerController : MonoBehaviour
                             clickedObject = null;
                             selectedObject = null;
                         }
-                        //Debug.Log("Clicked:" + clickedObject);
+                        
 
                     }
                 }
-                else
-                {
-                   // Cursor.SetCursor(cursorNotAllowed, cursorSize * Vector2.one, CursorMode.ForceSoftware);
 
-                }
 
 
             }
@@ -243,7 +229,6 @@ public class PlayerController : MonoBehaviour
             if(animator.GetBool("Walk"))
                 animator.SetBool("Walk", false);
 
-            Debug.Log("Destination reached");
             if (isMovingAlongPath)
             {
                 isMovingAlongPath = false;
@@ -310,17 +295,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    //public void ReachTarget(Vector3 position)
-    //{
-        
-    //    NavMeshHit nmHit;
-    //    if (NavMesh.SamplePosition(position, out nmHit, 10, NavMesh.AllAreas))
-    //    {
-    //        targetPos = nmHit.position;
-    //        //Debug.Log("Closest:" + target);
-    //    }
-    //}
-
     public void MoveToTarget(Vector3 target, UnityAction<bool> callback)
     {
         
@@ -348,8 +322,6 @@ public class PlayerController : MonoBehaviour
                 inputDisableCount = 0;
         }
 
-        Debug.Log("SetInputEnabled:" + value);
-        Debug.Log("InputDisabledCount:" + inputDisableCount);
         if (inputDisableCount>0)
             isInputEnabled = false;
         else

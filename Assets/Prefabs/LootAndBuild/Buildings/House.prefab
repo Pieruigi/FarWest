@@ -704,6 +704,7 @@ GameObject:
   - component: {fileID: 1031450142470012671}
   - component: {fileID: 3462559742389968677}
   - component: {fileID: 5007245609869071103}
+  - component: {fileID: 1206375317}
   m_Layer: 0
   m_Name: HousestoneL
   m_TagString: Untagged
@@ -771,6 +772,23 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1206375317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5824525767876830323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e937bf266946d744780c8ef212250e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights: []
+  particleSystems: []
+  materials:
+  - {fileID: 2100000, guid: b3f314941b2f24b498fbf911e8f104de, type: 2}
+  clip: {fileID: 0}
 --- !u!1 &6355721732100422340
 GameObject:
   m_ObjectHideFlags: 0

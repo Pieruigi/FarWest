@@ -157,11 +157,7 @@ namespace SS
 
             if (onEnterAnimId >= 0)
             {
-                //float angle = Vector3.SignedAngle(playerController.transform.forward, transform.position - playerController.transform.position, Vector3.up);
-                //LeanTween.rotate(playerController.gameObject, new Vector3(0, angle + playerController.transform.eulerAngles.y, 0), 0.1f);
-
-
-                //Debug.Log("Angle:" + angle);
+              
                 playerController.GetComponent<Animator>().SetFloat(lootAnimIdStr, onEnterAnimId);
                 playerController.GetComponent<Animator>().SetBool(lootAnimStr, true);
             }
@@ -196,9 +192,7 @@ namespace SS
         {
             isExecuting = false;
             playerController.ResetIsDoingAction();
-            Debug.Log("Execution stopped.");
-            //doSomethingDelay = doSomethingDelayDefault;
-
+            
             if(onEnterAnimId >= 0)
                 playerController.GetComponent<Animator>().SetBool(lootAnimStr, false);
 

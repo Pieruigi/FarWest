@@ -96,7 +96,6 @@ public class CacheManager
         if (OnSave != null)
             OnSave();
 
-        Debug.Log("Save cache on file:" + cachePath);
         File.WriteAllText(cachePath, CacheToString());
 
     }
@@ -106,7 +105,6 @@ public class CacheManager
      * */
     public void Load()
     {
-        Debug.Log("Load from file:" + cachePath);
         try
         {
             string s = File.ReadAllText(cachePath);
@@ -141,7 +139,6 @@ public class CacheManager
     private void StringToCache(string str)
     {
         string[] splits = str.Split(';');
-        Debug.Log("Number of keys found:" + splits.Length);
         cache.Clear();
         foreach(string s in splits)
         {
@@ -164,7 +161,7 @@ public class CacheManager
         if(!"".Equals(ret))
             ret = ret.Substring(0, ret.LastIndexOf(";"));
 
-        Debug.Log("cache:" + ret);
+      
         return ret;
     }
 

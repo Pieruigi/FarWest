@@ -169,16 +169,16 @@ public class InventoryUI : MonoBehaviour
                             RaycastResult slotHit = hits.Find(r => r.gameObject.GetComponent<SlotUI>());
                             
                             SlotUI slotUI = slotHit.gameObject.GetComponent<SlotUI>();
-                            Debug.Log("His slotUI:" + slotUI.gameObject.name);
+                          
                             if (!slotUI.IsDisabled)
                             {
                                 if (slotUI != null)
                                 {
                                     PlayClick();
 
-                                    Debug.Log("slotUI is not null");
+                          
                                     sourceId = GetSlotIndex(slotUI); // Get the source id ( can be from inventory, storage or crafting system )
-                                    Debug.Log("slotUI is not null - sourceId:" + sourceId);
+                          
                                     if (GetSlotAtIndex(sourceId) != null)
                                     {
                                         if (Input.GetMouseButtonDown(1))
@@ -298,7 +298,7 @@ public class InventoryUI : MonoBehaviour
                                         UpdateSlotsUI();
 
                                         // Deselect ui slot
-                                        Debug.Log("TargetId:" + targetId);
+                                        
                                         uiSlots[targetId].GetComponentInChildren<ItemSprite>()?.Darken(false);
 
 
@@ -402,7 +402,7 @@ public class InventoryUI : MonoBehaviour
                         else
                             drawingIco.GetComponent<ItemSprite>().SetIco(storage.GetSlotAtIndex(sourceId - inventoryCapacity).Item.Icon);
 
-                        Debug.Log("DrawingIco:" + drawingIco);
+                       
                     }
 
                     uiSlots[sourceId].GetComponentInChildren<ItemSprite>().Darken(true);
@@ -472,8 +472,7 @@ public class InventoryUI : MonoBehaviour
 
     public void Close()
     {
-        Debug.Log("InventoryUI Closing...");
-
+       
         source.clip = clipClose;
         source.Play();
 
@@ -618,21 +617,15 @@ public class InventoryUI : MonoBehaviour
 
     public void FillRecipeContent()
     {
-        Debug.Log("FillRecipeContent()");
         ClearCraftingSlots();
 
-        Debug.Log("FillRecipeContent() 1");
-
         ClearRecipeContent();
-
-        Debug.Log("FillRecipeContent() 2");
 
         List<Recipe> recipes = new List<Recipe>(RecipeCollection.GetAssetAll()).FindAll(r => searchString == null || r.name.ToLower().Contains(searchString.ToLower()));
         foreach (Recipe recipe in recipes)
         {
             if (workbenchEnabled || !recipe.WorkbenchOnly)
             {
-                Debug.Log("Filters.Count:" + filters.Count);
                 // Apply filters
                 if(filters.Count == 0 || !filters.Contains(recipe.Output.GetType()))
                 {
@@ -653,11 +646,6 @@ public class InventoryUI : MonoBehaviour
 
     
 
-    //private void OnRecipeResearch(string searchString)
-    //{
-    //    this.searchString = searchString;
-    //    FillRecipeContent();
-    //}
 
     public void FilterByName(string searchString)
     {
@@ -758,8 +746,6 @@ public class InventoryUI : MonoBehaviour
 
     private void Open(bool craftingEnabled, bool workbenchEnabled)
     {
-        Debug.Log("OPening inventory 1 ----------------------------");
-
         source.clip = clipOpen;
         source.Play();
 
@@ -771,16 +757,16 @@ public class InventoryUI : MonoBehaviour
         // Init slots
         if (craftingEnabled)
         {
-            Debug.Log("OPening inventory 2 ----------------------------");
+       
             uiSlots = new List<SlotUI>(inventoryForCrafting.GetComponentsInChildren<SlotUI>());
-            Debug.Log("OPening inventory 2 1----------------------------");
+       
             inventoryCapacity = uiSlots.Count;
-            Debug.Log("OPening inventory 2 2 UISlots.Count:" + uiSlots.Count);
+       
             uiSlots.AddRange(craftingPanel.GetComponentsInChildren<SlotUI>());
-            Debug.Log("OPening inventory 2 3 UISlots.Count:" + uiSlots.Count);
+       
             // Init recipe list
             FillRecipeContent();
-            Debug.Log("OPening inventory 2 4---------------------------");
+       
         }
         else
         {
@@ -794,16 +780,12 @@ public class InventoryUI : MonoBehaviour
             uiSlots.AddRange(storagePanel.GetComponentsInChildren<SlotUI>());
         }
 
-        Debug.Log("OPening inventory 3 ----------------------------");
-
         playerController.SetInputEnabled(false);
 
         if (craftingEnabled)
             panel.SetActive(true);
         else
             panelStorage.SetActive(true);
-
-        Debug.Log("OPening inventory");
 
         // Fill slots
         UpdateSlotsUI();
@@ -831,11 +813,6 @@ public class InventoryUI : MonoBehaviour
 
         int offset = inventory.NumberOfSlots;
 
-        Debug.Log("Offset:" + offset);
-        Debug.Log("craftingSystem.NumberOfSlots:" + craftingSystem.NumberOfSlots);
-
-        Debug.Log("uiSlots.Count:" + uiSlots.Count);
-
         if (craftingEnabled)
         {
            
@@ -849,7 +826,7 @@ public class InventoryUI : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("I:" + i);
+                   
                     uiSlots[offset + i].SetDisabled(true);
                 }
             }
@@ -888,9 +865,7 @@ public class InventoryUI : MonoBehaviour
 
     private void OpenQuantitySelector(int max, Sprite icon, UnityAction<int> callback)
     {
-        Debug.Log("max:" + max);
-        Debug.Log("icon:" + icon);
-
+      
         //QuantitySelectorUI quantitySelectorUI = GameObject.FindObjectOfType<QuantitySelectorUI>();
         quantitySelectorUI.Show(icon, max, callback);
 
@@ -946,7 +921,7 @@ public class InventoryUI : MonoBehaviour
             // Update UI
             UpdateSlotsUI();
 
-            Debug.LogWarning("Dropping...");
+           
         }
 
         Reset();

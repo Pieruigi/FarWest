@@ -124,7 +124,7 @@ public class UIAnimationController : MonoBehaviour
 
     void UpdateSprite()
     {
-        Debug.Log("NewId:" + currentId);
+       
         image.sprite = sprites[currentId];
     }
 
@@ -132,9 +132,6 @@ public class UIAnimationController : MonoBehaviour
     {
         sprites = new List<Sprite>(Resources.LoadAll<Sprite>(spritesFolder));
 
-        Debug.Log("sprites.count:" + sprites.Count);
-
-        Debug.Log("-1%12=" + (-3 % 12));
         
     }
 }

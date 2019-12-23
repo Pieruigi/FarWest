@@ -54,7 +54,6 @@ public class BuildingHelper : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask(Constants.LayerNameGround)))
         {
-            Debug.Log("hit:" + hit.point);
             transform.position = hit.point;
         }
    

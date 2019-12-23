@@ -54,7 +54,7 @@ namespace SS
 
         protected override void Loot(int count)
         {
-            Debug.Log("Loot:" + +count);
+            
             inventory.AddItem(lootItem, count);
 
             // Remove object to be picked
@@ -66,7 +66,7 @@ namespace SS
                     found = true;
                     takenFlags[i] = true;
 
-                    Debug.Log("OnResourceTaken():" + OnResourceTaken);
+                    
                     OnResourceTaken?.Invoke(this, objectList[i]);
                 }
             }

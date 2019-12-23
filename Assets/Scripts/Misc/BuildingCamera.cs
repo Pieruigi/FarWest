@@ -58,8 +58,6 @@ public class BuildingCamera : MonoBehaviour
 
             zoom = Mathf.Clamp01(zoom);
 
-            Debug.Log("Zoom:"+zoom);
-
             // Adjust fov
             cam.fieldOfView = (fovMin - fovDefault) * zoom + fovDefault;
             

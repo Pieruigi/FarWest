@@ -181,9 +181,7 @@ public class Inventory: MonoBehaviour
             int count = 0;
             for (int i = numberOfQuickSlots; i < slots.Count && amount > count; i++)
             {
-                //Debug.Log(string.Format("Slot[{0}]:{1}", i, slots[i]));
-                
-
+               
                 if ((slots[i] == null) || (slots[i].Item == item && slots[i].Amount < item.SlotMaxAmount))
                     count += AddItem(item, amount-count, i);
 
@@ -194,9 +192,7 @@ public class Inventory: MonoBehaviour
             {
                 for (int i = 0; i < numberOfQuickSlots && amount > count; i++)
                 {
-                    Debug.Log(string.Format("Slot[{0}]:{1}", i, slots[i]));
-
-
+                    
                     if ((slots[i] == null) || (slots[i].Item == item && slots[i].Amount < item.SlotMaxAmount))
                         count += AddItem(item, amount-count, i);
 

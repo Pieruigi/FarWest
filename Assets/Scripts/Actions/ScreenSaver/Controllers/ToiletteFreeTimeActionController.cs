@@ -153,7 +153,7 @@ public class ToiletteFreeTimeActionController : FreeTimeActionController
                 time = Random.Range(timeMin, timeMax);
                 LeanTween.rotateLocal(door, Vector3.zero, time).setEaseOutBack();
 
-                yield return new WaitForSeconds(4f);
+                yield return new WaitForSeconds(8f);
             }
         }
     }

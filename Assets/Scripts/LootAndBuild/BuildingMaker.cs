@@ -83,7 +83,7 @@ public class BuildingMaker : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Building interrupted");
+          
             foreach (Slot slot in recipe.Resources)
             {
                 inventory.AddItem(slot.Item, slot.Amount);
@@ -222,10 +222,6 @@ public class BuildingMaker : MonoBehaviour
 
         Destroy(helper);
         GameObject obj = SpawnManager.Spawn((instance.recipe.Output as Building).SceneObject);
-
-
-        Debug.Log("BuildPos:" + buildPos);
-        Debug.Log("BuildRot:" + buildRot);
 
         obj.transform.position = buildPos;
         obj.transform.rotation = buildRot;

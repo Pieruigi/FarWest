@@ -12,6 +12,9 @@ public class LightController : MonoBehaviour
     List<ParticleSystem> particleSystems;
 
     [SerializeField]
+    List<Material> materials;
+
+    [SerializeField]
     AudioClip clip;
 
     int timeOffInSec = 25200;
@@ -31,6 +34,7 @@ public class LightController : MonoBehaviour
         source = GetComponent<AudioSource>();
 
         dayNight = GameObject.FindObjectOfType<DayNightCycle>();
+        
         isOn = dayNight.DayTimeInSeconds > timeOnInSec || dayNight.DayTimeInSeconds < timeOffInSec;
         if (isOn)
             LightOn();
@@ -50,11 +54,7 @@ public class LightController : MonoBehaviour
             {
                 isOn = true;
                 LightOn();
-                //foreach(Light l in lights)
-                //    l.enabled = true;
-
-                //foreach(ParticleSystem ps in particleSystems)
-                //    ps.Play();
+               
             }
         }
         else
@@ -63,11 +63,7 @@ public class LightController : MonoBehaviour
             {
                 isOn = false;
                 LightOff();
-                //foreach (Light l in lights)
-                //    l.enabled = false;
-
-                //foreach (ParticleSystem ps in particleSystems)
-                //    ps.Stop();
+               
             }
         }
 
@@ -93,6 +89,7 @@ public class LightController : MonoBehaviour
 
     void LightOn()
     {
+       
         foreach (Light l in lights)
             l.enabled = true;
 
@@ -106,6 +103,9 @@ public class LightController : MonoBehaviour
             source.loop = true;
             source.Play();
         }
+
+        // Emission
+        MaterialsLightOn(true);
     }
 
     void LightOff()
@@ -121,6 +121,28 @@ public class LightController : MonoBehaviour
         {
             source.loop = false;
             source.Stop();
+        }
+
+        MaterialsLightOn(false);
+    }
+
+    void MaterialsLightOn(bool value)
+    {
+        if (materials == null || materials.Count == 0)
+            return;
+
+        
+
+        if (value)
+        {
+            foreach (Material m in materials)
+                m.EnableKeyword("_EMISSION");
+
+        }
+        else
+        {
+            foreach (Material m in materials)
+                m.DisableKeyword("_EMISSION");
         }
     }
 }

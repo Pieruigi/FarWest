@@ -48,7 +48,6 @@ public class CraftingSystem : MonoBehaviour
         for (int i = 0; i < numberOfSlots; i++)
             slots.Add(null);
 
-        Debug.Log("CraftingSystem Init - Slots.Count:" + slots.Count);
     }
 
     // Update is called once per frame
@@ -90,9 +89,7 @@ public class CraftingSystem : MonoBehaviour
 
     public int AddItem(Item item, int quantity, int slotId)
     {
-        Debug.Log("AddingItem in the crafting system: [" + item + "," + slotId + "]");
         
-
         if (slots == null)
             throw new CustomException(ErrorCode.GenericError, "The crafting slot array is not initializated.");
 

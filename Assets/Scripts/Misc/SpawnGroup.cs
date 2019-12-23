@@ -53,7 +53,6 @@ public class SpawnGroup : MonoBehaviour
             for (int i = 0; i < count; i++)
             {
                 // Choose the spawn point
-                //Debug.Log("SPonts.Count:" + transform.childCount);
                 Transform point = spawnPoints[Random.Range(0, spawnPoints.Count)];
                 spawnPoints.Remove(point);
 

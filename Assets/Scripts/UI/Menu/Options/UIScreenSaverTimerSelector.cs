@@ -31,7 +31,6 @@ public class UIScreenSaverTimerSelector : UISelector<int>
             return;
 
         int timeOut = mainManager.GetScreenSaverTimeOut();
-        Debug.Log("TimeOut from regedit:" + timeOut);
         
         SetOption(timeOut/60 - 1);
 

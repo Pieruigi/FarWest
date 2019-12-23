@@ -78,7 +78,7 @@ public class SlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public virtual void Set(Slot slot)
     {
-        //Debug.Log("Setting Slot:" + slot);
+        
         if (slot != null)
         {
             item = slot.Item;

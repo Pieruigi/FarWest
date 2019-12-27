@@ -22,6 +22,10 @@ public class BuildingMaker : MonoBehaviour
     GameObject helper;
 
     bool isEnabled = false;
+    public bool IsEnabled
+    {
+        get { return isEnabled; }
+    }
 
     float rotSpeed = 50;
 
@@ -168,6 +172,7 @@ public class BuildingMaker : MonoBehaviour
     {
         instance.isBuilding = true;
         BuildingHelper bh = helper.GetComponent<BuildingHelper>();
+        bh.HideArrow();
 
         bh.NoRaytracing = true;
 

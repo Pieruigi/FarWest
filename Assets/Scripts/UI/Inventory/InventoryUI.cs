@@ -97,6 +97,8 @@ public class InventoryUI : MonoBehaviour
 
     QuantitySelectorUI quantitySelectorUI;
 
+    BuildingMaker buildingMaker;
+
     #region FILTERS
     string searchString;
     List<System.Type> filters;
@@ -106,6 +108,8 @@ public class InventoryUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        buildingMaker = GameObject.FindObjectOfType<BuildingMaker>();
+        
         quantitySelectorUI =  GameObject.FindObjectOfType<QuantitySelectorUI>();
         menuManager = GameObject.FindObjectOfType<MenuManager>();
         inventory = GameObject.FindObjectOfType<Inventory>();
@@ -132,7 +136,7 @@ public class InventoryUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (!isOpened && !menuManager.IsOpened)
+            if (!isOpened && !menuManager.IsOpened && !buildingMaker.IsEnabled)
             {
                 Open(true, false); // Open and enable crafting system without workbench recipes
             }

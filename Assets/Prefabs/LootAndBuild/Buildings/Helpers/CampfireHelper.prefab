@@ -222,6 +222,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: ddbb1983e8f13854982cdd610b5ed719, type: 2}
   target: {fileID: 4491216747093945924}
+  arrow: {fileID: 419138076682667486}
 --- !u!54 &3684380490913623540
 Rigidbody:
   m_ObjectHideFlags: 0

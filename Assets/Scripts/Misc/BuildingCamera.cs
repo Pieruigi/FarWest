@@ -16,7 +16,7 @@ public class BuildingCamera : MonoBehaviour
 
     Camera cam;
 
-    float zoomSpeed = 5;
+    float zoomSpeed = 10;
     float moveSpeedMax = 10;
 
     private void Awake()

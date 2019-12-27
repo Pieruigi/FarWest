@@ -9,6 +9,10 @@ public class BuildingHelper : MonoBehaviour
 
     [SerializeField]
     Transform target;
+
+    //[SerializeField]
+    GameObject arrow;
+
     public Transform Target
     {
         get { return target; }
@@ -41,6 +45,9 @@ public class BuildingHelper : MonoBehaviour
 
         // Hide cursor
         Cursor.visible = false;
+
+        // Get arrow
+        arrow = GetComponentInChildren<SpriteRenderer>().gameObject;
     }
 
     // Update is called once per frame
@@ -60,11 +67,16 @@ public class BuildingHelper : MonoBehaviour
         
     }
 
+    public void HideArrow()
+    {
+        arrow.SetActive(false);
+    }
+
     private void OnDestroy()
     {
         Cursor.visible = true;
     }
-
+    
 
 
     private void OnTriggerEnter(Collider other)

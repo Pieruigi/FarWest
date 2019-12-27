@@ -5,67 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class FreeTimeAction
 {
- 
-    //[System.Serializable]
-    //public class StepData
-    //{
-    //    //[System.Serializable]
-    //    //public class PrefabData
-    //    //{
-    //    //    [SerializeField]
-    //    //    GameObject prefab;
-    //    //    public GameObject Prefab
-    //    //    {
-    //    //        get { return prefab; }
-    //    //    }
 
-    //    //    [SerializeField]
-    //    //    bool playerIsParent;
-    //    //    public bool PlayerIsParent
-    //    //    {
-    //    //        get { return playerIsParent; }
-    //    //    }
-
-    //    //    [SerializeField]
-    //    //    string playerNodeName;
-    //    //    public string PlayerNodeName
-    //    //    {
-    //    //        get { return playerNodeName; }
-    //    //    }
-
-    //    //    [SerializeField]
-    //    //    float startTime;
-    //    //    public float StartTime
-    //    //    {
-    //    //        get { return startTime; }
-    //    //    }
-
-    //    //    [SerializeField]
-    //    //    float stopTime;
-    //    //    public float StopTime
-    //    //    {
-    //    //        get { return stopTime; }
-    //    //    }
-    //    //}
-
-    //    [SerializeField]
-    //    int animationId;
-    //    public int AnimationId
-    //    {
-    //        get { return animationId; }
-    //    }
-            
-
-    //    //[SerializeField]
-    //    //List<PrefabData> prefabDataList;
-    //    //public List<PrefabData> PrefabDataList
-    //    //{
-    //    //    get { return prefabDataList; }
-    //    //}
-
-        
-
-    //}
 
     [SerializeField]
     GameObject owner;
@@ -118,12 +58,6 @@ public class FreeTimeAction
         get { return loopAnimationIds.AsReadOnly(); }
     }
 
-    //[SerializeField]
-    //List<StepData> loopSteps = null;
-    //public IList<StepData> LoopSteps
-    //{
-    //    get { return loopSteps.AsReadOnly(); }
-    //}
 
     [SerializeField]
     int minLoopCount;

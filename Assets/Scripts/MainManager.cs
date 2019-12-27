@@ -39,6 +39,8 @@ public class MainManager : MonoBehaviour
 
     private void Awake()
     {
+        
+
         appFolderName = Application.dataPath.Substring(0, Application.dataPath.LastIndexOf("/")); // The folder where the game has been installed
         appFileName = System.Environment.CommandLine; // The name of the executable without extension
 
@@ -53,7 +55,8 @@ public class MainManager : MonoBehaviour
             isScreenSaver = false;
         }
 
-      
+        Debug.Log("Launching screensaver:" + isScreenSaver);
+
         appFileName = appFileName.Substring(appFileName.LastIndexOf("\\")+1);
         appFileName = appFileName.Substring(0, appFileName.LastIndexOf("."));
 
@@ -61,7 +64,7 @@ public class MainManager : MonoBehaviour
             appFileName = appFileName.Replace(scrFilePattern,"");
 
 #if FORCE_SS
-        //isScreenSaver = true; 
+        isScreenSaver = true; 
 #endif
 
         // Load item from resources

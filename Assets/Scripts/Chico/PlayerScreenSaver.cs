@@ -144,6 +144,7 @@ public class PlayerScreenSaver : MonoBehaviour
                             animator.SetTrigger(animLoopParameter);
 
                             currentAction.FreeTimeActionController?.ActionLoopStart(currentAction, currentLoopId);
+                            loopCount++; // I'm already inside the first and last loop
                         }
                        
                     }
@@ -193,6 +194,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void StartDoingNothing()
     {
+        Debug.Log("Doing nothing...");
         currentAction = null;
         Vector3 target = GetRandomTarget();
 
@@ -326,7 +328,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void Reloop()
     {
-
+        Debug.LogError("Doing reloop");
         currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
         animator.SetFloat(animIdParameter, currentLoopId);
 

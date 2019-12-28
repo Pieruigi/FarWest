@@ -10,7 +10,7 @@ public class BeltUI : MonoBehaviour
     Inventory inventory;
 
     int disableCount = 0;
-
+       
     private void Awake()
     {
         if (GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
@@ -34,8 +34,10 @@ public class BeltUI : MonoBehaviour
         iUI.OnOpen += SetDisable;
         iUI.OnClose += SetEnable;
 
-        BuildingMaker.OnEnabled += SetDisable;
-        BuildingMaker.OnDisabled += SetEnable;
+        BuildingMaker buildingMaker = GameObject.FindObjectOfType<BuildingMaker>();
+
+        buildingMaker.OnEnabled += SetDisable;
+        buildingMaker.OnDisabled += SetEnable;
 
     }
 

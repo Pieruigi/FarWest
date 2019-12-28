@@ -136,9 +136,10 @@ public class InventoryUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (!isOpened && !menuManager.IsOpened && !buildingMaker.IsEnabled)
+            if (!isOpened)
             {
-                Open(true, false); // Open and enable crafting system without workbench recipes
+                if(!menuManager.IsOpened && !buildingMaker.IsEnabled)
+                    Open(true, false); // Open and enable crafting system without workbench recipes
             }
             else
             {

@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class BuildingMaker : MonoBehaviour
 {
-    public static UnityAction OnEnabled;
-    public static UnityAction OnDisabled;
+    public UnityAction OnEnabled;
+    public UnityAction OnDisabled;
 
     [SerializeField]
     ParticleSystem psBuildingDust;
@@ -15,7 +15,11 @@ public class BuildingMaker : MonoBehaviour
 
     PlayerController player;
 
-    private static BuildingMaker instance;
+    //private static BuildingMaker instance;
+    //public static BuildingMaker Instance
+    //{
+    //    get { return instance; }
+    //}
 
     Inventory inventory;
 
@@ -30,9 +34,9 @@ public class BuildingMaker : MonoBehaviour
     float rotSpeed = 50;
 
     bool workbenchEnabled = false;
-    public static bool WorkbenchEnabled
+    public bool WorkbenchEnabled
     {
-        set { instance.workbenchEnabled = value; }
+        set { workbenchEnabled = value; }
     }
 
     Vector3 buildPos;
@@ -45,21 +49,21 @@ public class BuildingMaker : MonoBehaviour
     Camera buildingCamera;
     Camera gameCamera;
     FadeInOut fadeInOut;
-    public static Camera BuildingCamera
+    public Camera BuildingCamera
     {
-        get { return instance.buildingCamera; }
+        get { return buildingCamera; }
     }
 
     private void Awake()
     {
-        if (!instance)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //if (!instance)
+        //{
+        //    instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     // Start is called before the first frame update
@@ -115,48 +119,47 @@ public class BuildingMaker : MonoBehaviour
         }
     }
 
-    public static void Init(Recipe recipe)
+    public void Init(Recipe recipe)
     {
-        instance.recipe = recipe;
+        this.recipe = recipe;
         
     }
 
-    public static void SetEnable(bool value)
+    public void SetEnable(bool value)
     {
 
         if (value)
         {
-            instance.isBuilding = false;
-            instance.player.SetInputEnabled(false);
+            isBuilding = false;
+            player.SetInputEnabled(false);
 
-            instance.helper = GameObject.Instantiate((instance.recipe.Output as Building).CraftingHelper);
+            helper = GameObject.Instantiate((recipe.Output as Building).CraftingHelper);
 
-            instance.buildingCamera.GetComponent<BuildingCamera>().Init(instance.helper);
-            instance.gameCamera.gameObject.SetActive(false);
-            instance.buildingCamera.gameObject.SetActive(true);
+            buildingCamera.GetComponent<BuildingCamera>().Init(helper);
+            gameCamera.gameObject.SetActive(false);
+            buildingCamera.gameObject.SetActive(true);
 
             
-            instance.isEnabled = true;
-
+            isEnabled = true;
 
             OnEnabled?.Invoke();
         }
             
         else
         {
-            if (!instance.gameCamera.gameObject.activeSelf)
-                instance.gameCamera.gameObject.SetActive(true);
-            if (instance.buildingCamera.gameObject.activeSelf)
-                instance.buildingCamera.gameObject.SetActive(false);
+            if (!gameCamera.gameObject.activeSelf)
+                gameCamera.gameObject.SetActive(true);
+            if (buildingCamera.gameObject.activeSelf)
+                buildingCamera.gameObject.SetActive(false);
 
-            if (instance.helper)
-                Destroy(instance.helper);
+            if (helper)
+                Destroy(helper);
             
 
-            instance.player.SetInputEnabled(true);
+            player.SetInputEnabled(true);
 
-            instance.recipe = null;
-            instance.isEnabled = false;
+            recipe = null;
+            isEnabled = false;
 
             OnDisabled?.Invoke();
         }
@@ -170,7 +173,7 @@ public class BuildingMaker : MonoBehaviour
 
     private void Build()
     {
-        instance.isBuilding = true;
+        isBuilding = true;
         BuildingHelper bh = helper.GetComponent<BuildingHelper>();
         bh.HideArrow();
 
@@ -226,7 +229,7 @@ public class BuildingMaker : MonoBehaviour
         //
 
         Destroy(helper);
-        GameObject obj = SpawnManager.Spawn((instance.recipe.Output as Building).SceneObject);
+        GameObject obj = SpawnManager.Spawn((recipe.Output as Building).SceneObject);
 
         obj.transform.position = buildPos;
         obj.transform.rotation = buildRot;

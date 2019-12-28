@@ -40,6 +40,8 @@ public class CraftingSystem : MonoBehaviour
         get { return currentRecipe ? currentRecipe.Resources.Count : 0; }
     }
 
+    BuildingMaker buildingMaker;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -48,6 +50,11 @@ public class CraftingSystem : MonoBehaviour
         for (int i = 0; i < numberOfSlots; i++)
             slots.Add(null);
 
+    }
+
+    private void Start()
+    {
+        buildingMaker = GameObject.FindObjectOfType<BuildingMaker>();
     }
 
     // Update is called once per frame
@@ -157,12 +164,12 @@ public class CraftingSystem : MonoBehaviour
     public void CraftBuilding(bool workbenchEnabled)
     {
        
-        BuildingMaker.Init(currentRecipe);
+        buildingMaker.Init(currentRecipe);
 
         ClearSlots();
 
-        BuildingMaker.WorkbenchEnabled = workbenchEnabled;
-        BuildingMaker.SetEnable(true);
+        buildingMaker.WorkbenchEnabled = workbenchEnabled;
+        buildingMaker.SetEnable(true);
 
     }
 

@@ -30,10 +30,17 @@ public class BuildingHelper : MonoBehaviour
     Color colorAllowed = new Color(1, 1, 1, 0.2f);
     Color colorNotAllowed = new Color(1, 0, 0, 0.2f);
 
+    BuildingMaker buildingMaker;
+
     bool noRaytracing = false;
     public bool NoRaytracing
     {
         set { noRaytracing = value; }
+    }
+
+    private void Awake()
+    {
+        buildingMaker = GameObject.FindObjectOfType<BuildingMaker>();
     }
 
     // Start is called before the first frame update
@@ -57,7 +64,7 @@ public class BuildingHelper : MonoBehaviour
             return;
 
         // Adjust position depending on the mouse
-        Ray ray = BuildingMaker.BuildingCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = buildingMaker.BuildingCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask(Constants.LayerNameGround)))
         {

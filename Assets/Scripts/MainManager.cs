@@ -171,7 +171,10 @@ public class MainManager : MonoBehaviour
         proc.WaitForExit();
 
         if (proc.ExitCode == 0)
+        {
+            //UpdateUserParmeters();
             return true;
+        }
         else
             return false;
     }
@@ -189,22 +192,32 @@ public class MainManager : MonoBehaviour
         proc.WaitForExit();
 
         if (proc.ExitCode == 0)
+        {
+            //UpdateUserParmeters();
             return true;
+        }
         else
             return false;
     }
 
+   
     public bool SetScreenSaverTimeOut(int timeOut)
     {
+        //DisableScreenSaver();
         //reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v ScreenSaveTimeOut /t REG_SZ /d 600 /f
         string cmd = string.Format("/c reg add {2} /v {1} /t REG_SZ /d {0} /f", timeOut, regKeyScreenSaverTimeOut, regPathScreenSaver);
 
         var proc = ExecuteCommand(cmd);
 
         proc.WaitForExit();
-
+       
         if (proc.ExitCode == 0)
+        {
+            //EnableScreenSaver();
+            UpdateUserParmeters();
+        
             return true;
+        }
         else
             return false;
 
@@ -234,6 +247,13 @@ public class MainManager : MonoBehaviour
 
     }
 
+    private void UpdateUserParmeters()
+    {
+        string cmd = string.Format("/c %SystemRoot%\\System32\\RUNDLL32.EXE user32.dll, UpdatePerUserSystemParameters");
+        var proc = ExecuteCommand(cmd);
+        proc.WaitForExit();
+    }
+
     public void ApplicationQuit()
     {
         CacheManager.Instance.Save();
@@ -256,10 +276,14 @@ public class MainManager : MonoBehaviour
 
     private System.Diagnostics.Process ExecuteCommand(string cmd)
     {
+        //%SystemRoot%\System32\RUNDLL32.EXE user32.dll, UpdatePerUserSystemParameters
+        
+
         var procInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", cmd);
         procInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
         procInfo.RedirectStandardOutput = true;
         procInfo.UseShellExecute = false;
+        procInfo.Verb = "runas"; // Run as admin
 
         var proc = System.Diagnostics.Process.Start(procInfo);
 

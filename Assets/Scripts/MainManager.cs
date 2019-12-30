@@ -67,8 +67,6 @@ public class MainManager : MonoBehaviour
             isScreenSaver = false;
         }
 
-        Debug.Log("Launching screensaver:" + isScreenSaver);
-
         appFileName = appFileName.Substring(appFileName.LastIndexOf("\\")+1);
         appFileName = appFileName.Substring(0, appFileName.LastIndexOf("."));
 
@@ -227,7 +225,7 @@ public class MainManager : MonoBehaviour
             IntPtr val = (IntPtr)timeOut;
 
             bool spiRet = SystemParametersInfo(SPI_SETSCREENSAVETIMEOUT, timeOut, val, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
-            Debug.Log("SystemParametersInfo(SPI_SETSCREENSAVETIMEOUT) returns " + spiRet);
+            //Debug.Log("SystemParametersInfo(SPI_SETSCREENSAVETIMEOUT) returns " + spiRet);
        
             return true;
         }
@@ -260,13 +258,12 @@ public class MainManager : MonoBehaviour
 
     }
 
-    private void UpdateUserParmeters()
-    {
-        string cmd = string.Format("/c %SystemRoot%\\System32\\RUNDLL32.EXE user32.dll, UpdatePerUserSystemParameters");
-        Debug.Log("cmd:"+cmd);
-        var proc = ExecuteCommand(cmd);
-        proc.WaitForExit();
-    }
+    //private void UpdateUserParmeters()
+    //{
+    //    string cmd = string.Format("/c %SystemRoot%\\System32\\RUNDLL32.EXE user32.dll, UpdatePerUserSystemParameters");
+    //    var proc = ExecuteCommand(cmd);
+    //    proc.WaitForExit();
+    //}
 
     public void ApplicationQuit()
     {
@@ -290,9 +287,6 @@ public class MainManager : MonoBehaviour
 
     private System.Diagnostics.Process ExecuteCommand(string cmd)
     {
-        //%SystemRoot%\System32\RUNDLL32.EXE user32.dll, UpdatePerUserSystemParameters
-        
-
         var procInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", cmd);
         procInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
         procInfo.RedirectStandardOutput = true;

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 // Name convention:
 // The game executable is fileName.exe
@@ -10,6 +12,16 @@ using UnityEngine.Events;
 
 public class MainManager : MonoBehaviour
 {
+    /**
+     * We need external SystemParametersInfo in order to update the winlogonUI after the 'screensavetimeout' has changed.
+     * */
+    const int SPI_SETSCREENSAVETIMEOUT = 15; // The windows param we want to update
+    const int SPIF_UPDATEINIFILE = 0x01; 
+    const int SPIF_SENDCHANGE = 0x02;
+    [DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
+    public static extern bool SystemParametersInfo(int uiAction, int uiParam, IntPtr pvParam, int fWinIni);
+
+
     public const string regKeyScreenSaver = "SCRNSAVE.EXE";
     public const string regPathScreenSaver = "\"HKEY_CURRENT_USER\\Control Panel\\Desktop\"";
     public const string regKeyScreenSaverTimeOut = "ScreenSaveTimeOut";
@@ -115,6 +127,7 @@ public class MainManager : MonoBehaviour
         }
         else
         {
+            // Autosave
             if (autoSaveElapsed < autoSaveTime)
             {
                 autoSaveElapsed += Time.deltaTime;
@@ -124,7 +137,6 @@ public class MainManager : MonoBehaviour
                 autoSaveElapsed = 0;
                 CacheManager.Instance.Save();
             }
-
         }
     }
 
@@ -203,7 +215,6 @@ public class MainManager : MonoBehaviour
    
     public bool SetScreenSaverTimeOut(int timeOut)
     {
-        //DisableScreenSaver();
         //reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v ScreenSaveTimeOut /t REG_SZ /d 600 /f
         string cmd = string.Format("/c reg add {2} /v {1} /t REG_SZ /d {0} /f", timeOut, regKeyScreenSaverTimeOut, regPathScreenSaver);
 
@@ -213,9 +224,11 @@ public class MainManager : MonoBehaviour
        
         if (proc.ExitCode == 0)
         {
-            //EnableScreenSaver();
-            UpdateUserParmeters();
-        
+            IntPtr val = (IntPtr)timeOut;
+
+            bool spiRet = SystemParametersInfo(SPI_SETSCREENSAVETIMEOUT, timeOut, val, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
+            Debug.Log("SystemParametersInfo(SPI_SETSCREENSAVETIMEOUT) returns " + spiRet);
+       
             return true;
         }
         else
@@ -250,6 +263,7 @@ public class MainManager : MonoBehaviour
     private void UpdateUserParmeters()
     {
         string cmd = string.Format("/c %SystemRoot%\\System32\\RUNDLL32.EXE user32.dll, UpdatePerUserSystemParameters");
+        Debug.Log("cmd:"+cmd);
         var proc = ExecuteCommand(cmd);
         proc.WaitForExit();
     }

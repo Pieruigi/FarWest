@@ -1,5 +1,88 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &487099038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 487099039}
+  - component: {fileID: 487099040}
+  m_Layer: 0
+  m_Name: FreeTimeCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &487099039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487099038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6025779384570951115}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &487099040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487099038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff6c4aab63dafa4faff5485e178a90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freeTimeActions:
+  - owner: {fileID: 487099038}
+    target: {fileID: 1391778180}
+    cameraCloseDisabled: 0
+    freeTimeActionController: {fileID: 22461854}
+    enterAnimationId: -1
+    exitAnimationId: -1
+    loopAnimationIds: 090000000a000000
+    minLoopCount: 1
+    maxLoopCount: 1
+--- !u!1 &1391778179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1391778180}
+  m_Layer: 0
+  m_Name: FreeTimeTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1391778180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391778179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.134}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6025779384570951115}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5007547182240378191
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +280,8 @@ GameObject:
   - component: {fileID: 252182951711926202}
   - component: {fileID: 6772636636538398261}
   - component: {fileID: 2882336620618562946}
+  - component: {fileID: 22461854}
+  - component: {fileID: 2882092987948163498}
   m_Layer: 0
   m_Name: Workbench
   m_TagString: Untagged
@@ -220,6 +305,8 @@ Transform:
   - {fileID: 5476117271122921578}
   - {fileID: 8461902663809618648}
   - {fileID: 2978424116457512849}
+  - {fileID: 487099039}
+  - {fileID: 1391778180}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -294,7 +381,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.515, y: 1.0780001, z: 0.53}
+  m_Extents: {x: 0.45, y: 1.0780001, z: 0.45}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -397,6 +484,45 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &22461854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333135301766793176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771d99b154102f844baef43d87fc0185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hammerPrefab: {fileID: 8090060183095539533, guid: 5e7be6a36a86ad04d97a54ce58f1bd62,
+    type: 3}
+  source: {fileID: 2882336620618562946}
+  hammerClips:
+  - {fileID: 8300000, guid: fc0183d2a7f72744b89d954b884d3979, type: 3}
+  - {fileID: 8300000, guid: c7e141d2e2407e74e96c1ab20e3df2d2, type: 3}
+  - {fileID: 8300000, guid: e9e5e27f6d6f0b0429aa6cd2ed13d457, type: 3}
+  painClips:
+  - {fileID: 8300000, guid: ee5985fb4c9405e4f92ceebd4d96bf28, type: 3}
+  - {fileID: 8300000, guid: e5a7544aa203d744ebdab37b95046c2d, type: 3}
+  ideaClip: {fileID: 8300000, guid: 8dd21596fa284394397231583d24f8c6, type: 3}
+  mumbleClips:
+  - {fileID: 8300000, guid: e8dfb38f45cae6d4690259b66637b2de, type: 3}
+  - {fileID: 8300000, guid: 87cb1314079c6fb4681084cb861cfb49, type: 3}
+  sufferingClip: {fileID: 8300000, guid: c052a7f5a3def694b9c72f8c04bcd425, type: 3}
+--- !u!114 &2882092987948163498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333135301766793176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b87b65635b7080489e9da5e20108aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1706971140
 PrefabInstance:
   m_ObjectHideFlags: 0

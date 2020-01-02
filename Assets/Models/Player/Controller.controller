@@ -918,10 +918,19 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: LootId
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -252385233607375397, guid: 5947c40ed129a594e9b90b6ed14d619d,
+      type: 3}
+    m_Threshold: 11
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
   m_BlendParameter: SSId
   m_BlendParameterY: LootId
   m_MinThreshold: 0
-  m_MaxThreshold: 10
+  m_MaxThreshold: 11
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0

@@ -7,7 +7,14 @@ public class TimeUITest : MonoBehaviour
 {
     DayNightCycle dnc;
     Text txt;
-    
+
+    private void Awake()
+    {
+#if !UNITY_EDITOR
+        Destroy(gameObject);
+#endif
+    }
+
     // Start is called before the first frame update
     void Start()
     {

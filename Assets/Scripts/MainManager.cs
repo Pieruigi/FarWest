@@ -267,6 +267,18 @@ public class MainManager : MonoBehaviour
 
     public void ApplicationQuit()
     {
+        if (IsScreenSaverEnabled())
+        {
+            ConfirmApplicationQuit();
+        }
+        else
+        {
+            MessageBox.Show(MessageBox.Types.YesNo, "Chico screensaver is disabled. Enabled it in the option menu.\nQuit anyway?", ConfirmApplicationQuit, null);
+        }
+    }
+
+    private void ConfirmApplicationQuit()
+    {
         CacheManager.Instance.Save();
         Application.Quit();
     }

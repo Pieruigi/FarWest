@@ -106,7 +106,7 @@ public class DayNightCycle : MonoBehaviour
     float initialTime;
 
 #if FORCE_SS
-        float testSpeedMul = 1000;
+        float testSpeedMul = 1;
 #endif
 
     private void Awake()

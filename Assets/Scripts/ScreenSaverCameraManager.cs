@@ -90,7 +90,7 @@ public class ScreenSaverCameraManager : MonoBehaviour
             currentCamera = cameras[Random.Range(0, cameras.Count)];
 
 #if FORCE_SS
-            //currentCamera = cameras[testCam];
+            currentCamera = cameras[testCam];
 #endif
             currentCamera.gameObject.SetActive(true);
         }

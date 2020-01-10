@@ -10,6 +10,8 @@ public class BeltUI : MonoBehaviour
     Inventory inventory;
 
     int disableCount = 0;
+
+    MenuManager menuManager;
        
     private void Awake()
     {
@@ -38,6 +40,10 @@ public class BeltUI : MonoBehaviour
 
         buildingMaker.OnEnabled += SetDisable;
         buildingMaker.OnDisabled += SetEnable;
+
+        menuManager = GameObject.FindObjectOfType<MenuManager>();
+        menuManager.OnActionOpen += SetDisable;
+        menuManager.OnActionClose += SetEnable;
 
     }
 

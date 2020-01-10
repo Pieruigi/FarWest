@@ -30,6 +30,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         if (!CacheManager.Instance.IsEmpty())
             SpawnFromCache();
     }
@@ -87,6 +88,7 @@ public class SpawnManager : MonoBehaviour
 
         foreach(string key in keys)
         {
+         
             if (key.StartsWith(Constants.CacheKeySpawnable))
             {
 

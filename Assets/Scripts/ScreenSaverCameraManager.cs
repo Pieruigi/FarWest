@@ -26,7 +26,7 @@ public class ScreenSaverCameraManager : MonoBehaviour
 
 
 #if FORCE_SS
-    int testCam = 12;
+    int testCam = 5;
 #endif
 
     public Camera CurrentCamera
@@ -117,12 +117,15 @@ public class ScreenSaverCameraManager : MonoBehaviour
 
     IEnumerator SwitchCamera()
     {
+        if (fadeInOut == null)
+            yield break;
+
         List<Camera> tmp = cameras.FindAll(c => !cameraCloseDisabled || !Constants.TagCameraClose.Equals(c.tag));
 
         Camera newCam = tmp[Random.Range(0, tmp.Count)];
 
 #if FORCE_SS
-        //newCam = tmp[testCam];
+        newCam = tmp[testCam];
 #endif
 
         if (newCam == currentCamera)

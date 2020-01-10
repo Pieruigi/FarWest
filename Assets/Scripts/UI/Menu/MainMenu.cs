@@ -23,5 +23,14 @@ public class MainMenu : MonoBehaviour
         menuManager.Close();
     }
 
-    
+    public void StartScreensaver()
+    {
+        MainManager.Instance.InGamePlaySS();
+    }
+
+    public void ApplicationQuit()
+    {
+        MainManager.Instance.ApplicationQuit();
+    }
+
 }

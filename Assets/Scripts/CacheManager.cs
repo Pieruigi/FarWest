@@ -122,6 +122,7 @@ public class CacheManager
 
     public void Clear()
     {
+        Debug.LogError("Clearing cache");
         cache.Clear();
         File.Delete(cachePath);
     }
@@ -194,5 +195,20 @@ public class CacheUtility
     public static float CacheStringToFloat(string str)
     {
         return float.Parse(str.Replace(".", ","));
+    }
+
+    public static void DebugCache(CacheManager cache)
+    {
+        Dictionary<string, string>.KeyCollection keys = cache.GetKeysAll();
+
+        
+        foreach (string key in keys)
+        {
+            Debug.Log("KEY:" + key);
+
+            
+        }
+
+        
     }
 }

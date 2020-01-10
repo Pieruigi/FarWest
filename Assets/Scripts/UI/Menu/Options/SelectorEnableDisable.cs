@@ -19,7 +19,7 @@ public class SelectorEnableDisable : MonoBehaviour
         {
             isEnable = value;
 
-            gameObject.SendMessage("ForceInteractablesOff", !isEnable);
+            gameObject.SendMessage("ForceInteractablesOff", !isEnable, SendMessageOptions.DontRequireReceiver);
 
             //gameObject.SendMessage("ResetButtons");
         }

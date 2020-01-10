@@ -10,6 +10,7 @@ public class TransformCacher : Cacher
     protected bool Position
     {
         get { return position; }
+        
     }
     [SerializeField]
     bool rotation;

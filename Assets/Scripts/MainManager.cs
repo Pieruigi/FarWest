@@ -34,6 +34,8 @@ public class MainManager : MonoBehaviour
         get { return isScreenSaver; }
     }
 
+    private bool isPlayingScreenSaverInGame = false;
+
     private string appPath;
 
     string appFileName;
@@ -49,54 +51,102 @@ public class MainManager : MonoBehaviour
     float autoSaveElapsed = 0;
     float autoSaveTime = 180;
 
+    static MainManager instance = null;
+    public static MainManager Instance
+    {
+        get { return instance; }
+    }
+
+    bool exitDisabled = false;
+    bool isLoading = false;
+    public bool IsLoading
+    {
+        get { return isLoading; }
+    }
+
     private void Awake()
     {
-        
-
-        appFolderName = Application.dataPath.Substring(0, Application.dataPath.LastIndexOf("/")); // The folder where the game has been installed
-        appFileName = System.Environment.CommandLine; // The name of the executable without extension
-
-        if (appFileName.Contains(".exe ") && !Application.isEditor)
+        if(instance == null)
         {
-            isScreenSaver = true;
-            appFileName = appFileName.Substring(0, appFileName.IndexOf(".exe "));
-            appFileName += ".exe";
-        }
-        else
-        {
-            isScreenSaver = false;
-        }
+            instance = this;
 
-        appFileName = appFileName.Substring(appFileName.LastIndexOf("\\")+1);
-        appFileName = appFileName.Substring(0, appFileName.LastIndexOf("."));
+            appFolderName = Application.dataPath.Substring(0, Application.dataPath.LastIndexOf("/")); // The folder where the game has been installed
+            appFileName = System.Environment.CommandLine; // The name of the executable without extension
 
-        if (isScreenSaver)
-            appFileName = appFileName.Replace(scrFilePattern,"");
+            if (appFileName.Contains(".exe ") && !Application.isEditor)
+            {
+                isScreenSaver = true;
+                appFileName = appFileName.Substring(0, appFileName.IndexOf(".exe "));
+                appFileName += ".exe";
+            }
+            else
+            {
+                isScreenSaver = false;
+            }
+
+            appFileName = appFileName.Substring(appFileName.LastIndexOf("\\") + 1);
+            appFileName = appFileName.Substring(0, appFileName.LastIndexOf("."));
+
+            if (isScreenSaver)
+                appFileName = appFileName.Replace(scrFilePattern, "");
 
 #if FORCE_SS
         isScreenSaver = true; 
 #endif
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += HandleSceneLoaded;
 
-        // Load item from resources
-        ItemCollection.Create(Constants.PathAssetItem);
-        RecipeCollection.Create(Constants.PathAssetRecipes);
+            // Load item from resources
+            ItemCollection.Create(Constants.PathAssetItem);
+            RecipeCollection.Create(Constants.PathAssetRecipes);
 
 
-        // Load data from save file or cloud
+            // Load data from save file or cloud
 #if UNITY_EDITOR
-        CacheManager.Create(Application.persistentDataPath + "/sav_editor.txt");
+            CacheManager.Create(Application.persistentDataPath + "/sav_editor.txt");
 #else
         CacheManager.Create(Application.persistentDataPath + "/sav.txt");
 #endif
 
-        ProfileCacheManager.Create(Application.persistentDataPath + "/prf.txt");
-        CacheManager.Instance.Load();
-        ProfileCacheManager.Instance.Load();
+            ProfileCacheManager.Create(Application.persistentDataPath + "/prf.txt");
+            CacheManager.Instance.Load();
+            ProfileCacheManager.Instance.Load();
+
+            
+
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            if (instance != this)
+            {
+                GameObject.Destroy(gameObject);
+            }
+
+            // Load item from resources
+            ItemCollection.Create(Constants.PathAssetItem);
+            RecipeCollection.Create(Constants.PathAssetRecipes);
+
+#if UNITY_EDITOR
+            CacheManager.Create(Application.persistentDataPath + "/sav_editor.txt");
+#else
+        CacheManager.Create(Application.persistentDataPath + "/sav.txt");
+#endif
+
+            ProfileCacheManager.Create(Application.persistentDataPath + "/prf.txt");
+           
+            CacheManager.Instance.Load();
+            ProfileCacheManager.Instance.Load();
+
+        }
+
+        //CacheUtility.DebugCache(CacheManager.Instance);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        
+
         if (isScreenSaver)
         {
             // Disable game menu
@@ -114,17 +164,38 @@ public class MainManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         if (isScreenSaver)
         {
-            if (Input.anyKeyDown)
-                Application.Quit();
+            if (exitDisabled)
+                return;
 
-                if (Input.GetAxis("Mouse X")!=0 || Input.GetAxis("Mouse Y") != 0)
-                Application.Quit();
+            if (Input.anyKeyDown)
+            {
+                if (isPlayingScreenSaverInGame)
+                    InGameStopSS();
+                else
+                    Application.Quit();
+            }
+                
+
+            if (Input.GetAxis("Mouse X")!=0 || Input.GetAxis("Mouse Y") != 0)
+            {
+                if (isPlayingScreenSaverInGame)
+                    InGameStopSS();
+                else
+                    Application.Quit();
+            }
+                
 
         }
         else
         {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                InGamePlaySS();
+            }
+
             // Autosave
             if (autoSaveElapsed < autoSaveTime)
             {
@@ -225,7 +296,7 @@ public class MainManager : MonoBehaviour
             IntPtr val = (IntPtr)timeOut;
 
             bool spiRet = SystemParametersInfo(SPI_SETSCREENSAVETIMEOUT, timeOut, val, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
-            //Debug.Log("SystemParametersInfo(SPI_SETSCREENSAVETIMEOUT) returns " + spiRet);
+           
        
             return true;
         }
@@ -317,5 +388,57 @@ public class MainManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
        
+    }
+
+    public void InGamePlaySS()
+    {
+        if (IsScreenSaver)
+            return;
+
+        if (isPlayingScreenSaverInGame)
+            return;
+
+        CacheManager.Instance.Save();
+        isPlayingScreenSaverInGame = true;
+        isScreenSaver = true;
+        isLoading = true;
+        //exitDisabled = true;
+        //StartCoroutine(StartExitDisableTimer());
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    void InGameStopSS()
+    {
+        if (!IsScreenSaver)
+            return;
+
+        if (!isPlayingScreenSaverInGame)
+            return;
+
+
+        //stopInGameSS = true;
+        isPlayingScreenSaverInGame = false;
+        isScreenSaver = false;
+        isLoading = true;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        
+    }
+
+    IEnumerator StartExitDisableTimer()
+    {
+        exitDisabled = true;
+        yield return new WaitForSeconds(1f);
+
+        exitDisabled = false;
+    }
+
+    void HandleSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        isLoading = false;
+
+        if(isPlayingScreenSaverInGame && isScreenSaver)
+        {
+            StartCoroutine(StartExitDisableTimer());
+        }
     }
 }

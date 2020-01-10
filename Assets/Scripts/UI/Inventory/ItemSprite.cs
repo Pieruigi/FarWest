@@ -63,7 +63,7 @@ public class ItemSprite : MonoBehaviour
 
     public void SetSize(Vector2 size)
     {
-        Debug.Log("Setting size:" + size);
+       
         GetComponent<RectTransform>().sizeDelta = size;
         icoImage.rectTransform.sizeDelta = size;
     }

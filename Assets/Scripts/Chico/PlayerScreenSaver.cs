@@ -194,23 +194,54 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void StartDoingNothing()
     {
-        Debug.Log("Doing nothing...");
+        
         currentAction = null;
         Vector3 target = GetRandomTarget();
 
         MoveTo(target);
     }
 
+    //    void StartDoingSomething()
+    //    {
+
+    //        // Get randam action
+    //        if (freeTimeActions == null || freeTimeActions.Count == 0)
+    //        {
+    //            isBusy = false;
+    //            return;
+    //        }
+
+
+    //        currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
+
+    //#if FORCE_SS
+    //        currentAction = freeTimeActions[testActionId]; 
+    //#endif
+
+    //        // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )
+    //        if (currentAction.CameraCloseDisabled) 
+    //            cameraManager.CameraCloseDisabled = true;
+
+    //        currentLoopCount = Random.Range(currentAction.MinLoopCount, currentAction.MaxLoopCount + 1);
+    //        loopCount = 0;
+
+
+    //        if (currentAction.Target)
+    //            MoveTo(currentAction.Target.position);
+    //        else
+    //            alreadyThere = true;
+    //    }
+
     void StartDoingSomething()
     {
-      
+
         // Get randam action
         if (freeTimeActions == null || freeTimeActions.Count == 0)
         {
             isBusy = false;
             return;
         }
-            
+
 
         currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
 
@@ -219,17 +250,24 @@ public class PlayerScreenSaver : MonoBehaviour
 #endif
 
         // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )
-        if (currentAction.CameraCloseDisabled) 
+        if (currentAction.CameraCloseDisabled)
             cameraManager.CameraCloseDisabled = true;
 
         currentLoopCount = Random.Range(currentAction.MinLoopCount, currentAction.MaxLoopCount + 1);
         loopCount = 0;
 
-
+        Vector3 targetPos;
         if (currentAction.Target)
-            MoveTo(currentAction.Target.position);
+            targetPos = currentAction.Target.position; // For building free time action
         else
-            alreadyThere = true;
+            targetPos = GetRandomTarget(); // For no building free time action
+
+        MoveTo(targetPos);
+
+        //if (currentAction.Target)
+        //    MoveTo(currentAction.Target.position);
+        //else
+        //    alreadyThere = true;
     }
 
     void MoveTo(Vector3 target)
@@ -328,7 +366,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void Reloop()
     {
-        Debug.LogError("Doing reloop");
+        
         currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
         animator.SetFloat(animIdParameter, currentLoopId);
 

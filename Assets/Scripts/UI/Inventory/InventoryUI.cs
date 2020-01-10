@@ -134,6 +134,9 @@ public class InventoryUI : MonoBehaviour
         if (quantitySelectorUI.IsActive)
             return;
 
+        if (MainManager.Instance.IsLoading)
+            return;
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (!isOpened)

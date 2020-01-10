@@ -16,12 +16,18 @@ public class TimeUI : MonoBehaviour
 
     DayNightCycle dnc;
     Text txt;
+
+    MenuManager menuManager;
     
     // Start is called before the first frame update
     void Start()
     {
         dnc = GameObject.FindObjectOfType<DayNightCycle>();
         //txt = GetComponent<Text>();
+
+        menuManager = GameObject.FindObjectOfType<MenuManager>();
+        menuManager.OnActionOpen += SetDisabled;
+        menuManager.OnActionClose += SetEnabled;
     }
 
     // Update is called once per frame
@@ -37,5 +43,15 @@ public class TimeUI : MonoBehaviour
         hours.transform.localEulerAngles = -Vector3.forward * h * 30;
 
         //txt.text = string.Format("{0}:{1}:{2}", dnc.DayTimeInSeconds / 3600, (dnc.DayTimeInSeconds / 60) % 60, dnc.DayTimeInSeconds % 60);
+    }
+
+    void SetDisabled()
+    {
+        gameObject.SetActive(false);
+    }
+
+    void SetEnabled()
+    {
+        gameObject.SetActive(true);
     }
 }

@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MenuManager : MonoBehaviour
 {
+    public UnityAction OnActionOpen;
+    public UnityAction OnActionClose;
+    
     [SerializeField]
     List<GameObject> menuList;
 
-    
     GameObject menuDefault;
 
     GameObject current;
@@ -74,18 +77,30 @@ public class MenuManager : MonoBehaviour
         isOpened = false;
         HideAll();
         playerController.SetInputEnabled(true);
+
+        if (OnActionClose != null)
+            OnActionClose.Invoke();
     }
 
     public void Open()
     {
         playerController.SetInputEnabled(false);
         HideAll();
-        Open(menuDefault);
         isOpened = true;
+        Open(menuDefault);
+        
+        if (OnActionOpen != null)
+            OnActionOpen.Invoke();
     }
 
     public void Open(GameObject menu)
     {
+        if(!isOpened)
+        {
+            Debug.LogWarning("The menu is closed; call open() first.");
+            return;
+        }
+
         if (current != null)
             current.SetActive(false);
 

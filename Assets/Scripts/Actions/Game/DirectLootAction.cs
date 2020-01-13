@@ -20,7 +20,9 @@ namespace SS
 
         Inventory inventory;
 
-        List<bool> takenFlags; 
+        List<bool> takenFlags;
+
+        bool initialized = false;
 
         protected override void Start()
         {
@@ -31,25 +33,47 @@ namespace SS
 
             inventory = GameObject.FindObjectOfType<Inventory>();
 
+            //// Init the taken flags
+            //takenFlags = new List<bool>();
+            //for(int i=0;i<objectList.Count; i++)
+            //    takenFlags.Add(false);
+
+
+            //OnRestored += HandleOnRestored;
+
+            //// Init graphycs
+            //int count = ( LootMax / LootUnit ) - ( LootCurrent / LootUnit );
+
+            //for (int i = 0; i < count; i++)
+            //{
+            //    takenFlags[i] = true;
+            //    objectList[i].SetActive(false);
+            //}
+
+            StartCoroutine(Init());
+
+
+        }
+
+        IEnumerator Init()
+        {
+            yield return null;
             // Init the taken flags
             takenFlags = new List<bool>();
-            for(int i=0;i<objectList.Count; i++)
+            for (int i = 0; i < objectList.Count; i++)
                 takenFlags.Add(false);
-                
+
 
             OnRestored += HandleOnRestored;
 
             // Init graphycs
-            int count = ( LootMax / LootUnit ) - ( LootCurrent / LootUnit );
+            int count = (LootMax / LootUnit) - (LootCurrent / LootUnit);
 
             for (int i = 0; i < count; i++)
             {
                 takenFlags[i] = true;
                 objectList[i].SetActive(false);
             }
-                
-
-
         }
 
         protected override void Loot(int count)

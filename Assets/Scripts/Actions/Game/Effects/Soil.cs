@@ -13,6 +13,8 @@ namespace SS
 
         float offset = -0.04f;
 
+        bool initialized = false;
+
         private void Awake()
         {
             lootAction.OnExhausted += HandleOnExhausted;
@@ -22,14 +24,22 @@ namespace SS
         // Start is called before the first frame update
         void Start()
         {
-            if (lootAction.LootCurrent == 0)
-                transform.localPosition = new Vector3(transform.localPosition.x, offset, transform.localPosition.z);
+            //if (lootAction.LootCurrent == 0)
+            //    transform.localPosition = new Vector3(transform.localPosition.x, offset, transform.localPosition.z);
+            StartCoroutine(Init());
         }
 
         // Update is called once per frame
         void Update()
         {
 
+        }
+
+        IEnumerator Init()
+        {
+            yield return null;
+            if (lootAction.LootCurrent == 0)
+                transform.localPosition = new Vector3(transform.localPosition.x, offset, transform.localPosition.z);
         }
 
         void HandleOnExhausted(LootAction lootAction)

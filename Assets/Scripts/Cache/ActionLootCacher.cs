@@ -19,11 +19,14 @@ public class ActionLootCacher : TransformCacher
 
         string[] splits = data.Split(',');
         SS.LootAction action = GetComponentInChildren<SS.LootAction>();
-        action.LootCurrent = (int)CacheUtility.CacheStringToFloat(splits[id]);
+        //action.LootCurrent = (int)CacheUtility.CacheStringToFloat(splits[id]);
+        action.LootCurrent = (int)int.Parse(splits[id]);
+        Debug.Log("ActionLootCacher - lootCurrent:" + action.LootCurrent);
         if(action.LootCurrent == 0)
         {
             id++;
-            action.GrowingElapsed = CacheUtility.CacheStringToFloat(splits[id]);
+            //action.GrowingElapsed = CacheUtility.CacheStringToFloat(splits[id]);
+            action.GrowingElapsed = float.Parse(splits[id]);
         }
 
         // Resize nav mesh object if exists
@@ -53,9 +56,12 @@ public class ActionLootCacher : TransformCacher
 
         // Store loot data
         SS.LootAction action = GetComponentInChildren<SS.LootAction>();
-        string extData = CacheUtility.FloatToCacheString(action.LootCurrent);
-        if(action.LootCurrent == 0)
-            extData += "," + CacheUtility.FloatToCacheString(action.GrowingElapsed);
+        //string extData = CacheUtility.FloatToCacheString(action.LootCurrent);
+        string extData = action.LootCurrent.ToString();
+        //if(action.LootCurrent == 0)
+        //    extData += "," + CacheUtility.FloatToCacheString(Mathf.RoundToInt(action.GrowingElapsed));
+        if (action.LootCurrent == 0)
+            extData += "," + Mathf.RoundToInt(action.GrowingElapsed);
 
         string data = CacheManager.Instance.GetValue(name);
         data += "," + extData;

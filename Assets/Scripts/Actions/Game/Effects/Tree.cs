@@ -25,6 +25,7 @@ namespace SS
 
         Transform parent;
 
+        bool initialized = false;
 
         private void Awake()
         {
@@ -34,11 +35,46 @@ namespace SS
         // Start is called before the first frame update
         void Start()
         {
+            //Debug.Log("Initialized:" + initialized);
+            //lootAction.OnExhausted += HandleOnExhausted;
+            //lootAction.OnRestored += HandleOnRestored;
+            ////parent = transform.parent;
+
+            //Debug.Log("Tree - actionLootCacher:" + lootAction.LootCurrent);
+
+            //if (lootAction.LootCurrent == 0)
+            //{
+            //    GetComponent<Rigidbody>().isKinematic = true;
+            //    //transform.parent = parent;
+            //    transform.localPosition = Vector3.zero;
+            //    transform.localRotation = Quaternion.identity;
+            //    transform.localScale = Vector3.zero;
+            //    gameObject.SetActive(false);
+            //}
+
+            StartCoroutine(DoInit());
+        }
+
+
+        // Update is called once per frame
+        void Update()
+        {
+    
+        }
+
+        IEnumerator DoInit()
+        {
+            //yield return new WaitForSeconds(5);
+            yield return null;
+
+            Debug.Log("Initialized:" + initialized);
             lootAction.OnExhausted += HandleOnExhausted;
             lootAction.OnRestored += HandleOnRestored;
             //parent = transform.parent;
-            
-            if(lootAction.LootCurrent == 0)
+
+            Debug.Log("Tree - actionLootCacher:" + lootAction.LootCurrent);
+
+            if (lootAction.LootCurrent == 0)
             {
                 GetComponent<Rigidbody>().isKinematic = true;
                 //transform.parent = parent;
@@ -47,13 +83,6 @@ namespace SS
                 transform.localScale = Vector3.zero;
                 gameObject.SetActive(false);
             }
-        }
-
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         private void HandleOnRestored(LootAction arg0)

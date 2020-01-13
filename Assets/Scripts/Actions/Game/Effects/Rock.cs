@@ -18,6 +18,8 @@ namespace SS
         [SerializeField]
         AudioClip growingClip;
 
+        bool initialized = false;
+
         private void Awake()
         {
             GetComponent<Rigidbody>().isKinematic = true;
@@ -27,10 +29,34 @@ namespace SS
         // Start is called before the first frame update
         void Start()
         {
+            StartCoroutine(Init());
+            //lootAction.OnExhausted += HandleOnExhausted;
+            //lootAction.OnRestored += HandleOnRestored;
+
+            //if(lootAction.LootCurrent == 0)
+            //{
+            //    GetComponent<Rigidbody>().isKinematic = true;
+            //    GetComponent<Collider>().enabled = false;
+            //    transform.localPosition = Vector3.zero;
+            //    transform.localRotation = Quaternion.identity;
+            //    transform.localScale = Vector3.zero;
+            //    gameObject.SetActive(true);
+            //}
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        IEnumerator Init()
+        {
+            yield return null;
             lootAction.OnExhausted += HandleOnExhausted;
             lootAction.OnRestored += HandleOnRestored;
 
-            if(lootAction.LootCurrent == 0)
+            if (lootAction.LootCurrent == 0)
             {
                 GetComponent<Rigidbody>().isKinematic = true;
                 GetComponent<Collider>().enabled = false;
@@ -39,12 +65,6 @@ namespace SS
                 transform.localScale = Vector3.zero;
                 gameObject.SetActive(true);
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         void HandleOnExhausted(LootAction lootAction)

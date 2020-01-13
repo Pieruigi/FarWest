@@ -91,6 +91,6 @@ public class Fluff : MonoBehaviour
 
     void HandleOnSave()
     {
-        CacheManager.Instance.AddOrUpdate(Constants.CacheKeyFluffElapsed, fluffElapsed.ToString());
+        CacheManager.Instance.AddOrUpdate(Constants.CacheKeyFluffElapsed, Mathf.RoundToInt(fluffElapsed).ToString());
     }
 }

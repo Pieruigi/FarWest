@@ -45,6 +45,7 @@ public class TransformCacher : Cacher
         {
             Vector3 pos;
             CacheUtility.CacheStringToVector(splits[id], out pos);
+            //pos = pos / 1000f;
             transform.position = pos;
             id++;
         }
@@ -53,6 +54,7 @@ public class TransformCacher : Cacher
         {
             Vector3 angle;
             CacheUtility.CacheStringToVector(splits[id], out angle);
+            //angle = angle / 1000f;
             transform.eulerAngles = angle;
             id++;
         }
@@ -60,7 +62,9 @@ public class TransformCacher : Cacher
         if (size)
         {
             Vector3 scale;
+            
             CacheUtility.CacheStringToVector(splits[3], out scale);
+            //scale = scale / 1000f;
             transform.localScale = scale;
         }
         
@@ -70,17 +74,33 @@ public class TransformCacher : Cacher
     {
       
         string data = SpawnableIndex.ToString();
+        //Vector3 v;
         if (position)
         {
+            //v = transform.position;
+            //v.x = Mathf.RoundToInt(v.x * 1000);
+            //v.y = Mathf.RoundToInt(v.y * 1000);
+            //v.z = Mathf.RoundToInt(v.z * 1000);
             data += "," + CacheUtility.VectorToCacheString(transform.position);
+            //data += "," + CacheUtility.VectorToCacheString(v);
         }
         if (rotation)
         {
+            //v = transform.eulerAngles;
+            //v.x = Mathf.RoundToInt(v.x * 1000);
+            //v.y = Mathf.RoundToInt(v.y * 1000);
+            //v.z = Mathf.RoundToInt(v.z * 1000);
             data += "," + CacheUtility.VectorToCacheString(transform.eulerAngles);
+            //data += "," + CacheUtility.VectorToCacheString(v);
         }
         if (size)
         {
+            //v = transform.localScale;
+            //v.x = Mathf.RoundToInt(v.x * 1000);
+            //v.y = Mathf.RoundToInt(v.y * 1000);
+            //v.z = Mathf.RoundToInt(v.z * 1000);
             data += "," + CacheUtility.VectorToCacheString(transform.localScale);
+            //data += "," + CacheUtility.VectorToCacheString(v);
         }
 
         CacheManager.Instance.AddOrUpdate(gameObject.name, data);

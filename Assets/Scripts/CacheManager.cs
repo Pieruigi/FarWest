@@ -174,13 +174,14 @@ public class CacheUtility
 {
     public static string VectorToCacheString(Vector3 v)
     {
-        return string.Format("{0}_{1}_{2}", v.x.ToString().Replace(",", "."), v.y.ToString().Replace(",", "."), v.z.ToString().Replace(",", "."));
-
+        //return string.Format("{0}_{1}_{2}", v.x.ToString().Replace(",", "."), v.y.ToString().Replace(",", "."), v.z.ToString().Replace(",", "."));
+        return string.Format("{0}_{1}_{2}", Mathf.RoundToInt(v.x * 1000) , Mathf.RoundToInt(v.y * 1000), Mathf.RoundToInt(v.z * 1000));
     }
 
     public static string FloatToCacheString(float f)
     {
-        return f.ToString().Replace(",", ".");
+        //return f.ToString().Replace(",", ".");
+        return Mathf.RoundToInt(f*1000).ToString();
     }
 
     public static void CacheStringToVector(string str, out Vector3 ret)
@@ -189,12 +190,14 @@ public class CacheUtility
         if (splits.Length < 3)
             throw new Exception("Param error - str.Length < 3.");
 
-        ret = new Vector3(float.Parse(splits[0].Replace(".", ",")), float.Parse(splits[1].Replace(".", ",")), float.Parse(splits[2].Replace(".", ",")));
+        //ret = new Vector3(float.Parse(splits[0].Replace(".", ",")), float.Parse(splits[1].Replace(".", ",")), float.Parse(splits[2].Replace(".", ",")));
+        ret = new Vector3(float.Parse(splits[0])/1000f, float.Parse(splits[1]) / 1000f, float.Parse(splits[2]) / 1000f);
     }
 
     public static float CacheStringToFloat(string str)
     {
-        return float.Parse(str.Replace(".", ","));
+        //return float.Parse(str.Replace(".", ","));
+        return float.Parse(str) / 1000f;
     }
 
     public static void DebugCache(CacheManager cache)

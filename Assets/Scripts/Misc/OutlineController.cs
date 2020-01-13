@@ -31,7 +31,10 @@ public class OutlineController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((transform.position - player.transform.position).sqrMagnitude < rangeSqr)
+        if(player == null)
+            player = GameObject.FindObjectOfType<PlayerController>();
+
+        if ((transform.position - player.transform.position).sqrMagnitude < rangeSqr)
         {
          
             if (!outline.enabled)

@@ -94,7 +94,7 @@ public class MainManager : MonoBehaviour
         isScreenSaver = true; 
 #endif
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += HandleSceneLoaded;
-
+            
             // Load item from resources
             ItemCollection.Create(Constants.PathAssetItem);
             RecipeCollection.Create(Constants.PathAssetRecipes);
@@ -420,8 +420,12 @@ public class MainManager : MonoBehaviour
         isPlayingScreenSaverInGame = false;
         isScreenSaver = false;
         isLoading = true;
+
+
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-        
+
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/FakeLoadingScene");
+
     }
 
     IEnumerator StartExitDisableTimer()
@@ -441,4 +445,5 @@ public class MainManager : MonoBehaviour
             StartCoroutine(StartExitDisableTimer());
         }
     }
+
 }

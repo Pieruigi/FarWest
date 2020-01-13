@@ -68,6 +68,7 @@ namespace SS
         //int equipmentMultiplier = 4;
         Collider actionCollider;
 
+        bool initialized = false;
 
         protected override void Awake()
         {
@@ -81,17 +82,22 @@ namespace SS
         {
             base.Start();
 
-            actionCollider = GetComponent<Collider>();
+            StartCoroutine(Init());
 
-            if(lootCurrent == 0)
-            {
-                actionCollider.enabled = false;
-            }
+            //actionCollider = GetComponent<Collider>();
+
+            //if(lootCurrent == 0)
+            //{
+            //    actionCollider.enabled = false;
+            //}
         }
 
 
         protected override void Update()
         {
+            if (!initialized)
+                return;
+
             // Grow up
             if (lootCurrent == 0)
             {
@@ -108,6 +114,20 @@ namespace SS
             }
 
             base.Update();
+        }
+
+        IEnumerator Init()
+        {
+            yield return null;
+
+            initialized = true;
+
+            actionCollider = GetComponent<Collider>();
+
+            if (lootCurrent == 0)
+            {
+                actionCollider.enabled = false;
+            }
         }
 
         public float GetHealthNormalized()

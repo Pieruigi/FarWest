@@ -36,12 +36,14 @@ public class BuildingCamera : MonoBehaviour
 
     private void OnEnable()
     {
-        GameObject.FindObjectOfType<CursorController>().ForceNotVisible = true;
+        if (GameObject.FindObjectOfType<CursorController>())
+            GameObject.FindObjectOfType<CursorController>().ForceNotVisible = true;
     }
 
     private void OnDisable()
     {
-        GameObject.FindObjectOfType<CursorController>().ForceNotVisible = false;
+        if(GameObject.FindObjectOfType<CursorController>())
+            GameObject.FindObjectOfType<CursorController>().ForceNotVisible = false;
     }
 
     // Update is called once per frame

@@ -4865,9 +4865,9 @@ Light:
     m_Resolution: 3
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0
+    m_Bias: 0.07
     m_NormalBias: 0
-    m_NearPlane: 0.97
+    m_NearPlane: 1.8
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -4888,7 +4888,7 @@ Light:
     m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 0}
+  m_Flare: {fileID: 12100000, guid: 9c3bf72f02bec9d4d968cb67204c429b, type: 2}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2

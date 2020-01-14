@@ -67,4 +67,6 @@ public class ActionLootCacher : TransformCacher
         data += "," + extData;
         CacheManager.Instance.AddOrUpdate(name, data);
     }
+
+
 }

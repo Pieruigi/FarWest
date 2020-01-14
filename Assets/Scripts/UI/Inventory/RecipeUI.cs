@@ -51,10 +51,15 @@ public class RecipeUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (!"".Equals(recipe.Description))
             inventoryUI.ShowItemDescription(recipe.Description);
+
+        if (!"".Equals(recipe.Thanks))
+            inventoryUI.ShowThanks(recipe.Thanks);
+
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
         inventoryUI.HideItemDescription();
+        inventoryUI.HideThanks();
     }
 }

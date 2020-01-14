@@ -29,6 +29,13 @@ public class FreeTimeAction
     }
 
     [SerializeField]
+    FreeTimeActionCameraController cameraController;
+    public FreeTimeActionCameraController CameraController
+    {
+        get { return cameraController; }
+    }
+
+    [SerializeField]
     FreeTimeActionController freeTimeActionController;
     public FreeTimeActionController FreeTimeActionController
     {

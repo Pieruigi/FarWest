@@ -16,6 +16,7 @@ MonoBehaviour:
   description: You are a cowboy... you know how it works
   freeTimeOnly: 0
   icon: {fileID: 21300000, guid: 61e8247db9af56e4e9cc0097c9a747cb, type: 3}
+  thanks: 
   workbenchOnly: 0
   output: {fileID: 11400000, guid: d0061e81a8b8ed84f91f5728244f8478, type: 2}
   resources:

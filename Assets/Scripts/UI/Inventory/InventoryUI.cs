@@ -15,6 +15,9 @@ public class InventoryUI : MonoBehaviour
     Text descriptionText;
 
     [SerializeField]
+    Text thanksText;
+
+    [SerializeField]
     GameObject drawingIcoPrefab;
 
     
@@ -124,6 +127,7 @@ public class InventoryUI : MonoBehaviour
         filters = new List<System.Type>();
 
         HideItemDescription();
+        HideThanks();
 
         panel.SetActive(false);
         panelStorage.SetActive(false);
@@ -609,10 +613,23 @@ public class InventoryUI : MonoBehaviour
         descriptionText.transform.parent.gameObject.SetActive(true);
     }
 
+    public void ShowThanks(string thanks)
+    {
+        thanksText.text = thanks;
+        thanksText.color = Color.white;
+        thanksText.transform.parent.gameObject.SetActive(true);
+    }
+
     public void HideItemDescription()
     {
         descriptionText.transform.parent.gameObject.SetActive(false);
         descriptionText.text = "";
+    }
+
+    public void HideThanks()
+    {
+        thanksText.transform.parent.gameObject.SetActive(false);
+        thanksText.text = "";
     }
     #endregion
 

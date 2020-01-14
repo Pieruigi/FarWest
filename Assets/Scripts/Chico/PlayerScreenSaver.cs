@@ -124,6 +124,10 @@ public class PlayerScreenSaver : MonoBehaviour
                         if (currentAction.CameraCloseDisabled && Constants.TagCameraClose.Equals(cameraManager.CurrentCamera.tag))
                             cameraManager.ForceSwitchCamera();
 
+                        // Check for any dedicated camera
+                        currentAction.CameraController?.UpdateCameraList();
+                            
+
                         if (currentAction.EnterAnimationId >= 0) // There is an enter animation
                         {
                             animator.SetFloat(animIdParameter, currentAction.EnterAnimationId);
@@ -252,6 +256,10 @@ public class PlayerScreenSaver : MonoBehaviour
         // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )
         if (currentAction.CameraCloseDisabled)
             cameraManager.CameraCloseDisabled = true;
+
+        // Avoid to switch camera while setting sketches dedicaded camera
+        if (currentAction.CameraController)
+            cameraManager.SwitchingDisabled = true; 
 
         currentLoopCount = Random.Range(currentAction.MinLoopCount, currentAction.MaxLoopCount + 1);
         loopCount = 0;
@@ -386,6 +394,9 @@ public class PlayerScreenSaver : MonoBehaviour
 
         // Reset camera configuration
         cameraManager.CameraCloseDisabled = false;
+
+        // Reset default camera list if needed
+        currentAction.CameraController?.ResetCameraList();
 
         currentAction.FreeTimeActionController?.ActionExitCompleted(currentAction);
 

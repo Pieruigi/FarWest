@@ -134,6 +134,7 @@ public class ChicoFXController : MonoBehaviour
 
     void PlayTreeHit()
     {
+        Debug.Log("PlayHit");
         Play(treeHit, false);
     }
 

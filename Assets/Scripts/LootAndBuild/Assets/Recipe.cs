@@ -9,6 +9,13 @@ public class Recipe: Asset
     //string code;
 
     [SerializeField]
+    private string thanks;
+    public string Thanks
+    {
+        get { return thanks; }
+    }
+
+    [SerializeField]
     bool workbenchOnly;
     public bool WorkbenchOnly
     {

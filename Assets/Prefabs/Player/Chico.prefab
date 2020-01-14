@@ -1198,12 +1198,12 @@ GameObject:
   - component: {fileID: 1189835086394311393}
   - component: {fileID: 6949814698706625699}
   - component: {fileID: 7895518223474520647}
-  - component: {fileID: 753658952}
   - component: {fileID: 753658958}
   - component: {fileID: 913856891}
   - component: {fileID: 1559305664}
   - component: {fileID: 1559305663}
   - component: {fileID: 1252845676}
+  - component: {fileID: 1832271023}
   m_Layer: 0
   m_Name: Chico
   m_TagString: Player
@@ -1282,21 +1282,6 @@ NavMeshAgent:
   m_BaseOffset: -0.09
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &753658952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5211366997099945352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e151cfd8e35a24dbaa1d0a9fee39e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  position: 1
-  rotation: 1
-  size: 0
 --- !u!114 &753658958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1487,6 +1472,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b87b65635b7080489e9da5e20108aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1832271023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211366997099945352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e151cfd8e35a24dbaa1d0a9fee39e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: 1
+  rotation: 1
+  size: 0
 --- !u!1 &5532649035676654713
 GameObject:
   m_ObjectHideFlags: 0

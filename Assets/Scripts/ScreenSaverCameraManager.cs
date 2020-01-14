@@ -18,8 +18,15 @@ public class ScreenSaverCameraManager : MonoBehaviour
 
     FadeInOut fadeInOut;
 
+#if FORCE_SS
+    float minTime = 3;//30;
+    float maxTime = 3;//120;
+#else
     float minTime = 30;
     float maxTime = 120;
+#endif
+
+
     float time = 0;
 
     Camera currentCamera;
@@ -37,8 +44,17 @@ public class ScreenSaverCameraManager : MonoBehaviour
     bool switchingCamera = false;
 
     bool switchingDisabled = false;
-
+    public bool SwitchingDisabled
+    {
+        get { return switchingDisabled; }
+        set { switchingDisabled = value; }
+    }
+   
     bool cameraCloseDisabled = false;
+
+    int cameraType = -1;
+
+    Camera[] cameraListDefault;
 
     MainManager mainManager;
     public bool CameraCloseDisabled
@@ -56,15 +72,23 @@ public class ScreenSaverCameraManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cameraListDefault = new Camera[cameras.Count];
+        cameras.CopyTo(cameraListDefault);
+
         mainManager = GameObject.FindObjectOfType<MainManager>();
         //cameras = new List<Camera>(GetComponentsInChildren<Camera>());
 
-        int v = 0;
-        int.TryParse(ProfileCacheManager.Instance.GetValue("CameraType"), out v);
-        if (v == 0)
+        int v;
+        int.TryParse(ProfileCacheManager.Instance.GetValue("CameraType"), out cameraType);
+        if (cameraType < 0)
+        {
             switchingDisabled = false;
+        }
         else
+        {
             switchingDisabled = true;
+        }
+            
 
         if (!mainManager.IsScreenSaver)
         {
@@ -87,7 +111,10 @@ public class ScreenSaverCameraManager : MonoBehaviour
 
             // Setting random camera
             time = Random.Range(minTime, maxTime);
-            currentCamera = cameras[Random.Range(0, cameras.Count)];
+            if(cameraType < 0)
+                currentCamera = cameras[Random.Range(0, cameras.Count)];
+            else
+                currentCamera = cameras[cameraType];
 
 #if FORCE_SS
             currentCamera = cameras[testCam];
@@ -115,6 +142,25 @@ public class ScreenSaverCameraManager : MonoBehaviour
         StartCoroutine(SwitchCamera());
     }
 
+    /**
+     * Used by some sketches to set specific cameras.
+     * */
+    public void ReplaceCameraList(List<Camera> newList)
+    {
+        cameras = newList;
+        //switchingDisabled = false;
+        ForceSwitchCamera();
+    }
+
+    /**
+     * Call it if you want to reset the default camera list: for example when a sketch has completed.
+     * */
+    public void ResetCameraList()
+    {
+        cameras = new List<Camera>(cameraListDefault);
+        ForceSwitchCamera();
+    }
+
     IEnumerator SwitchCamera()
     {
         if (fadeInOut == null)
@@ -125,7 +171,7 @@ public class ScreenSaverCameraManager : MonoBehaviour
         Camera newCam = tmp[Random.Range(0, tmp.Count)];
 
 #if FORCE_SS
-        newCam = tmp[testCam];
+        //newCam = tmp[testCam];
 #endif
 
         if (newCam == currentCamera)

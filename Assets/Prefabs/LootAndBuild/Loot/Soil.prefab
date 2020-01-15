@@ -150,20 +150,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reachingMode: 1
-  target: {fileID: 0}
+  targets: []
   keepPressed: 1
-  doSomethingDelay: 10
+  doSomethingDelay: 5
   repeating: 1
   onEnterAnimId: 5
   lootObject: {fileID: 404441091679732124, guid: 15d4fad004c31ea4993116f62f8a5019,
     type: 3}
   lootVerticalOffset: 1
   equipment: {fileID: 11400000, guid: d76710ccd63046f4c971b67739be36a1, type: 2}
-  equipmentMultiplier: 2.86
+  equipmentMultiplier: 2
   equipmentAnimationId: 3
   lootMax: 12
   lootUnit: 3
-  growingTime: 240
+  growingTime: 120
   forceMul: {x: 1, y: 1, z: 1}
   torqueMul: {x: 0, y: 1, z: 0}
 --- !u!1 &3362131611604557015

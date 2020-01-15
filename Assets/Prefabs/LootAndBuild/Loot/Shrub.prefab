@@ -51,17 +51,17 @@ MonoBehaviour:
   - {fileID: 949685356372420448}
   - {fileID: 4504134972683639475}
   keepPressed: 1
-  doSomethingDelay: 15
+  doSomethingDelay: 5
   repeating: 1
   onEnterAnimId: 7
   lootObject: {fileID: 0}
   lootVerticalOffset: 0.5
   equipment: {fileID: 11400000, guid: c5b5a36c4eddc8e4ab0b68baaadd2823, type: 2}
-  equipmentMultiplier: 3
+  equipmentMultiplier: 2
   equipmentAnimationId: 4
   lootMax: 8
   lootUnit: 2
-  growingTime: 360
+  growingTime: 120
   forceMul: {x: 1, y: 1, z: 1}
   torqueMul: {x: 1, y: 1, z: 1}
   objectList:

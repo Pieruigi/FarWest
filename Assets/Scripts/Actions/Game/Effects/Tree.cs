@@ -66,13 +66,10 @@ namespace SS
         {
             //yield return new WaitForSeconds(5);
             yield return null;
-
-            Debug.Log("Initialized:" + initialized);
+                      
             lootAction.OnExhausted += HandleOnExhausted;
             lootAction.OnRestored += HandleOnRestored;
             //parent = transform.parent;
-
-            Debug.Log("Tree - actionLootCacher:" + lootAction.LootCurrent);
 
             if (lootAction.LootCurrent == 0)
             {
@@ -129,7 +126,7 @@ namespace SS
             rb.AddForceAtPosition(Quaternion.AngleAxis(UnityEngine.Random.Range(0, 360), Vector3.up) * transform.forward * .8f, transform.position + new Vector3(0, 4, 0), ForceMode.VelocityChange);
 
             // Fadeout
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(6);
             LeanTween.scale(gameObject, Vector3.zero, 1f).setEaseOutElastic();
 
             // Disable

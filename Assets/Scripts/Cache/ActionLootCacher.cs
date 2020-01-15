@@ -21,7 +21,7 @@ public class ActionLootCacher : TransformCacher
         SS.LootAction action = GetComponentInChildren<SS.LootAction>();
         //action.LootCurrent = (int)CacheUtility.CacheStringToFloat(splits[id]);
         action.LootCurrent = (int)int.Parse(splits[id]);
-        Debug.Log("ActionLootCacher - lootCurrent:" + action.LootCurrent);
+        
         if(action.LootCurrent == 0)
         {
             id++;

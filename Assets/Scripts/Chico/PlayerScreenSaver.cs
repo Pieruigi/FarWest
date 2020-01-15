@@ -174,6 +174,7 @@ public class PlayerScreenSaver : MonoBehaviour
             foreach (FreeTimeAction fta in ftal)
                 freeTimeActions.Add(fta);
         }
+        
     }
 
     void TakeDecision()

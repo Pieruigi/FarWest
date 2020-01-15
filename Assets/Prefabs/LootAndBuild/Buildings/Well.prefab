@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &191712656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 191712657}
+  m_Layer: 0
+  m_Name: TargetAction2
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &191712657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191712656}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.028, y: 0, z: 1.633}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8303915739476403799}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &292564724
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +490,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150160788}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.055, y: 0, z: 1.489}
+  m_LocalPosition: {x: 0.004, y: 0, z: 1.633}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8303915739476403799}
@@ -705,14 +735,24 @@ MonoBehaviour:
   freeTimeActions:
   - owner: {fileID: 793938997791533481}
     target: {fileID: 1150160789}
-    cameraCloseDisabled: 1
+    cameraCloseDisabled: 0
     cameraController: {fileID: 292564726}
-    freeTimeActionController: {fileID: 0}
-    enterAnimationId: 2
-    exitAnimationId: 2
-    loopAnimationIds: 06000000
+    freeTimeActionController: {fileID: 1459939226}
+    enterAnimationId: -1
+    exitAnimationId: -1
+    loopAnimationIds: 0d000000
     minLoopCount: 1
-    maxLoopCount: 10
+    maxLoopCount: 1
+  - owner: {fileID: 793938997791533481}
+    target: {fileID: 191712657}
+    cameraCloseDisabled: 0
+    cameraController: {fileID: 292564726}
+    freeTimeActionController: {fileID: 1459939226}
+    enterAnimationId: -1
+    exitAnimationId: -1
+    loopAnimationIds: 0e000000
+    minLoopCount: 1
+    maxLoopCount: 1
 --- !u!1 &5000744387942208580
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +766,7 @@ GameObject:
   - component: {fileID: 6703640308842656242}
   - component: {fileID: 6116800554701749555}
   - component: {fileID: 1525089372}
+  - component: {fileID: 1459939226}
   m_Layer: 0
   m_Name: Well
   m_TagString: Untagged
@@ -752,6 +793,7 @@ Transform:
   - {fileID: 1923343336080765772}
   - {fileID: 1150160789}
   - {fileID: 292564725}
+  - {fileID: 191712657}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -843,7 +885,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -895,6 +937,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b87b65635b7080489e9da5e20108aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1459939226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000744387942208580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942c4c99fc4321c4884d688690b42799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bucket: {fileID: 666902155370203907}
+  fatigueClips:
+  - {fileID: 8300000, guid: f69f02659472df2409b4e1df1ea9c27b, type: 3}
+  - {fileID: 8300000, guid: b5b075e3a43cbd447868814f3d38a6d5, type: 3}
+  - {fileID: 8300000, guid: 4eb4433fecb181c4db3d1ebeed6eb357, type: 3}
+  drinkingClips:
+  - {fileID: 8300000, guid: 15524bc56e7c04e4c97c0c0f801f4f8f, type: 3}
+  - {fileID: 8300000, guid: 9222f0e8ab6cd8e43a7aa181cb2b1722, type: 3}
+  - {fileID: 8300000, guid: 59559adacb02a244697f0090c657f5d8, type: 3}
+  exhaustedClip: {fileID: 8300000, guid: 6483073541ed94743800ac63ec261461, type: 3}
+  fallingClip: {fileID: 8300000, guid: 69f064f8d809da64c94c5f9248faf89d, type: 3}
+  waterClip: {fileID: 8300000, guid: 5f414154e91eda040af3c1188917f1f2, type: 3}
 --- !u!1 &5737813626779381147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1423,12 @@ PrefabInstance:
 --- !u!4 &2530734140413562293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ebb82abe2ac15484f9821c76473f5b03,
+    type: 3}
+  m_PrefabInstance: {fileID: 7378107320310720175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &666902155370203907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8008810253663399340, guid: ebb82abe2ac15484f9821c76473f5b03,
     type: 3}
   m_PrefabInstance: {fileID: 7378107320310720175}
   m_PrefabAsset: {fileID: 0}

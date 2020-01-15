@@ -34,6 +34,7 @@ public class CursorController : MonoBehaviour
     {
         if (GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
         {
+            Cursor.visible = false;
             Destroy(gameObject);
         }
     }

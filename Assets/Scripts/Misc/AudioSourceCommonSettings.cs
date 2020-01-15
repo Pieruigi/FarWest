@@ -13,6 +13,8 @@ public class AudioSourceCommonSettings : MonoBehaviour
     float minDistance = 1f;
     float maxDistance = 80f;
 
+    float spread = 180f;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -23,6 +25,8 @@ public class AudioSourceCommonSettings : MonoBehaviour
 
         audioSource.minDistance = minDistance;
         audioSource.maxDistance = maxDistance;
+
+        audioSource.spread = spread;
     }
 
     // Start is called before the first frame update

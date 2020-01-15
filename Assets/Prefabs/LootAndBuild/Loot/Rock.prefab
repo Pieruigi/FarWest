@@ -716,18 +716,18 @@ MonoBehaviour:
   - {fileID: 6238188345054620235}
   - {fileID: 7492126671591635717}
   keepPressed: 1
-  doSomethingDelay: 20
+  doSomethingDelay: 4
   repeating: 1
   onEnterAnimId: 6
   lootObject: {fileID: 3010641532945528617, guid: 95d1a3e43302ab447b5eda568157b38d,
     type: 3}
   lootVerticalOffset: 1
   equipment: {fileID: 11400000, guid: 4a8a7a0cd2a011846abf4b30b763ce56, type: 2}
-  equipmentMultiplier: 2.5
+  equipmentMultiplier: 2
   equipmentAnimationId: 2
   lootMax: 15
   lootUnit: 3
-  growingTime: 500
+  growingTime: 120
   forceMul: {x: 1, y: 1, z: 1}
   torqueMul: {x: 1, y: 1, z: 1}
 --- !u!1 &7471729905082837148

@@ -3415,6 +3415,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &210120754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 210120755}
+  - component: {fileID: 210120757}
+  - component: {fileID: 210120756}
+  m_Layer: 0
+  m_Name: StretchingFreeTimeAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &210120755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210120754}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1992556525}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &210120756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210120754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062149c3431b25c43b050d8fe8ddbdbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 4e503a21223ee244b843f720cee7be67, type: 3}
+  - {fileID: 8300000, guid: cbe10992d6de7a1439e2265ed8003a60, type: 3}
+  - {fileID: 8300000, guid: d4acb84a2a2a44147be855b0f82716d1, type: 3}
+  - {fileID: 8300000, guid: 17e015baf7eb7c9428242f73d06a9663, type: 3}
+  - {fileID: 8300000, guid: bf235ed23c115514390c4eede1095096, type: 3}
+  - {fileID: 8300000, guid: 2663a88b66c6b8d4bbaf333ff56e3451, type: 3}
+  - {fileID: 8300000, guid: ab888fd4eb6040e43a4232af52ba24ff, type: 3}
+  - {fileID: 8300000, guid: f28eccb7ac32b6b42b7cb27e5aab96c8, type: 3}
+  - {fileID: 8300000, guid: 0712f89672f2a65408ff87a30b61cd4f, type: 3}
+  - {fileID: 8300000, guid: 2a8b2a5fd0046fc488b2b9b611716efe, type: 3}
+--- !u!114 &210120757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210120754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff6c4aab63dafa4faff5485e178a90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freeTimeActions:
+  - owner: {fileID: 210120754}
+    target: {fileID: 0}
+    cameraCloseDisabled: 0
+    cameraController: {fileID: 0}
+    freeTimeActionController: {fileID: 210120756}
+    enterAnimationId: -1
+    exitAnimationId: -1
+    loopAnimationIds: 10000000
+    minLoopCount: 1
+    maxLoopCount: 1
 --- !u!1 &212890620
 GameObject:
   m_ObjectHideFlags: 0
@@ -11742,8 +11820,9 @@ GameObject:
   m_Component:
   - component: {fileID: 677097355}
   - component: {fileID: 677097356}
+  - component: {fileID: 677097357}
   m_Layer: 0
-  m_Name: ScopeFreeTimeActionController
+  m_Name: ScopeFreeTimeAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11761,7 +11840,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1992556525}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &677097356
 MonoBehaviour:
@@ -11784,6 +11863,29 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 248f0f7c9af14ae40907b780add9d95e, type: 3}
   - {fileID: 8300000, guid: 0e95afc9263aa1f4497d7e4eb0044eda, type: 3}
   - {fileID: 8300000, guid: 8da27bb2044232b4caea46b01d4d5a97, type: 3}
+--- !u!114 &677097357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677097354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff6c4aab63dafa4faff5485e178a90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freeTimeActions:
+  - owner: {fileID: 677097354}
+    target: {fileID: 0}
+    cameraCloseDisabled: 0
+    cameraController: {fileID: 0}
+    freeTimeActionController: {fileID: 677097356}
+    enterAnimationId: -1
+    exitAnimationId: -1
+    loopAnimationIds: 0c000000
+    minLoopCount: 1
+    maxLoopCount: 1
 --- !u!1 &684390906
 GameObject:
   m_ObjectHideFlags: 0
@@ -23561,6 +23663,85 @@ MonoBehaviour:
   optionNext: {fileID: 463521424}
   ppv: {fileID: 1536388757}
   postProcessingEffect: 3
+--- !u!1 &1467730003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1467730004}
+  - component: {fileID: 1467730005}
+  - component: {fileID: 1467730006}
+  m_Layer: 0
+  m_Name: CoolingFreeTimeAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1467730004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467730003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1992556525}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1467730005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467730003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff6c4aab63dafa4faff5485e178a90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freeTimeActions:
+  - owner: {fileID: 1467730003}
+    target: {fileID: 0}
+    cameraCloseDisabled: 0
+    cameraController: {fileID: 0}
+    freeTimeActionController: {fileID: 1467730006}
+    enterAnimationId: -1
+    exitAnimationId: -1
+    loopAnimationIds: 0f000000
+    minLoopCount: 1
+    maxLoopCount: 1
+--- !u!114 &1467730006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467730003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062149c3431b25c43b050d8fe8ddbdbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 7a2ccb7462a516346b8e5b44a6c09c56, type: 3}
+  - {fileID: 8300000, guid: d698d4bf341094145ae01b46c3a6d3ef, type: 3}
+  - {fileID: 8300000, guid: 76593fae4851f054782daccc056dc2e5, type: 3}
+  - {fileID: 8300000, guid: 69e34a9add40f6e4d90629e1308dc02c, type: 3}
+  - {fileID: 8300000, guid: b368b8be7c93c864c88ad484d1c62e77, type: 3}
+  - {fileID: 8300000, guid: 42ef419246a4f3c428df99b87e811dfb, type: 3}
+  - {fileID: 8300000, guid: 1e4c894a69817e64c90055e7e656df70, type: 3}
+  - {fileID: 8300000, guid: 110f3fe5392b7194ab8f8933022783f5, type: 3}
+  - {fileID: 8300000, guid: a237383770d8b5942812af7cbed24d81, type: 3}
+  - {fileID: 8300000, guid: 3be8b42f511307348910231701e9b896, type: 3}
+  - {fileID: 8300000, guid: 2a8d9a871dab98249ab2b465abebda00, type: 3}
 --- !u!1 &1469858978
 GameObject:
   m_ObjectHideFlags: 0
@@ -31631,7 +31812,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1992556525}
-  - component: {fileID: 1992556524}
   m_Layer: 0
   m_Name: NoBuildingsFreeTime
   m_TagString: Untagged
@@ -31639,29 +31819,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1992556524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992556523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ff6c4aab63dafa4faff5485e178a90d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  freeTimeActions:
-  - owner: {fileID: 1992556523}
-    target: {fileID: 0}
-    cameraCloseDisabled: 0
-    cameraController: {fileID: 0}
-    freeTimeActionController: {fileID: 677097356}
-    enterAnimationId: -1
-    exitAnimationId: -1
-    loopAnimationIds: 0c000000
-    minLoopCount: 1
-    maxLoopCount: 1
 --- !u!4 &1992556525
 Transform:
   m_ObjectHideFlags: 0
@@ -31673,7 +31830,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1467730004}
   - {fileID: 677097355}
+  - {fileID: 210120755}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -34033,6 +34192,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1468634257, guid: f5dade8d295fea943816d37fdea89d02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5dade8d295fea943816d37fdea89d02, type: 3}
 --- !u!1001 &1735267061436299416
@@ -34513,6 +34676,10 @@ PrefabInstance:
     - target: {fileID: 9081833505687662491, guid: cb20ab8932e9c0b47956cf3cdc255d3f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559305664, guid: cb20ab8932e9c0b47956cf3cdc255d3f, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

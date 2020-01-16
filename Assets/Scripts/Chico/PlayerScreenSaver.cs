@@ -35,7 +35,7 @@ public class PlayerScreenSaver : MonoBehaviour
 #if FORCE_SS
     float idleRate = 0f; // From 0 to 1
     int testLoopId = 0;
-    int testActionId = 0;
+    int testActionId = 1;
 #else
     float idleRate = 0.5f; // From 0 to 1
 #endif

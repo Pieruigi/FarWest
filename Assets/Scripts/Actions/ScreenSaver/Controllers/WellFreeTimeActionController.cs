@@ -38,9 +38,9 @@ public class WellFreeTimeActionController : FreeTimeActionController
         player = GameObject.FindGameObjectWithTag(Constants.TagPlayer);
         fx = player.GetComponent<ChicoFXController>();
         handL = new List<Transform>(player.GetComponentsInChildren<Transform>()).Find(g => g.name.ToLower().Equals("hand.l"));
-        bucketPosDefault = bucket.transform.position;
-        bucketAngDefault = bucket.transform.eulerAngles;
-        bucketParentDefault = bucket.transform.parent;
+        //bucketPosDefault = bucket.transform.position;
+        //bucketAngDefault = bucket.transform.eulerAngles;
+        //bucketParentDefault = bucket.transform.parent;
         source = GetComponent<AudioSource>();
     }
 
@@ -90,6 +90,9 @@ public class WellFreeTimeActionController : FreeTimeActionController
 
     void TakeBucket()
     {
+        bucketPosDefault = bucket.transform.position;
+        bucketAngDefault = bucket.transform.eulerAngles;
+        bucketParentDefault = bucket.transform.parent;
         bucket.transform.parent = handL;
     }
 
@@ -98,6 +101,15 @@ public class WellFreeTimeActionController : FreeTimeActionController
         bucket.transform.parent = bucketParentDefault;
         LeanTween.move(bucket, bucketPosDefault, 0.2f);
         LeanTween.rotate(bucket, bucketAngDefault, 0.2f);
+        StartCoroutine(ForceRelease());
+    }
+
+    IEnumerator ForceRelease()
+    {
+        yield return new WaitForSeconds(0.5f);
+        bucket.transform.parent = bucketParentDefault;
+        bucket.transform.position = bucketPosDefault;
+        bucket.transform.eulerAngles = bucketAngDefault;
     }
 
     void PlayFatigue()

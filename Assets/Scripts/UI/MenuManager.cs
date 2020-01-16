@@ -23,6 +23,11 @@ public class MenuManager : MonoBehaviour
         get { return isOpened; }
     }
 
+    public GameObject Current
+    {
+        get { return current; }
+    }
+
     MainManager mainManager;
 
     InventoryUI inventoryUI;

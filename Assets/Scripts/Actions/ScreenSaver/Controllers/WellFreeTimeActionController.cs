@@ -22,6 +22,9 @@ public class WellFreeTimeActionController : FreeTimeActionController
     [SerializeField]
     AudioClip waterClip;
 
+    [SerializeField]
+    ParticleSystem splashPS;
+
     GameObject player;
     ChicoFXController fx;
     Transform handL;
@@ -70,6 +73,7 @@ public class WellFreeTimeActionController : FreeTimeActionController
         if ("PlayFalling".Equals(message))
         {
             Play(fallingClip);
+            splashPS.Play();
         }
 
         if ("PlayWater".Equals(message))

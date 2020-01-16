@@ -45,12 +45,18 @@ public class BeltUI : MonoBehaviour
         menuManager.OnActionOpen += SetDisable;
         menuManager.OnActionClose += SetEnable;
 
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (menuManager.IsOpened)
+        {
+            if (gameObject.activeSelf)
+                SetDisable();
+        }
+
     }
 
 

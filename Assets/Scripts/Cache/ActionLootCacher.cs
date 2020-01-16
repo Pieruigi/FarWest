@@ -4,7 +4,29 @@ using UnityEngine;
 
 public class ActionLootCacher : TransformCacher
 {
-    
+
+    Vector3 sizeMul;
+    float radiusMul;
+
+    protected override void Awake()
+    {
+
+        UnityEngine.AI.NavMeshObstacle nmo = GetComponent<UnityEngine.AI.NavMeshObstacle>();
+        if (nmo != null)
+        {
+            if (nmo.shape == UnityEngine.AI.NavMeshObstacleShape.Capsule)
+            {
+                radiusMul = nmo.radius;
+            }
+            else
+            {
+                sizeMul = nmo.size;
+            }
+        }
+
+        base.Awake();
+    }
+
     protected override void Init(string data)
     {
         base.Init(data);
@@ -35,13 +57,14 @@ public class ActionLootCacher : TransformCacher
         {
             if (nmo.shape == UnityEngine.AI.NavMeshObstacleShape.Capsule)
             {
-                nmo.radius = nmo.radius * transform.localScale.x;
+                nmo.radius = nmo.radius * transform.localScale.x * radiusMul;
             }
             else
             {
                 Vector3 size = nmo.size;
-                size.x = transform.localScale.x;
-                size.z = transform.localScale.z;
+                size.x = transform.localScale.x * sizeMul.x;
+                size.z = transform.localScale.z * sizeMul.z;
+
                 nmo.size = size;
             }
         }

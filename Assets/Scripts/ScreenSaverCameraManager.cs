@@ -19,8 +19,8 @@ public class ScreenSaverCameraManager : MonoBehaviour
     FadeInOut fadeInOut;
 
 #if FORCE_SS
-    float minTime = 3;//30;
-    float maxTime = 3;//120;
+    float minTime = 30;//30;
+    float maxTime = 120;//120;
 #else
     float minTime = 30;
     float maxTime = 120;
@@ -33,7 +33,7 @@ public class ScreenSaverCameraManager : MonoBehaviour
 
 
 #if FORCE_SS
-    int testCam = 5;
+    int testCam = 9;
 #endif
 
     public Camera CurrentCamera

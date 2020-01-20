@@ -36,6 +36,12 @@ public class MainManager : MonoBehaviour
 
     private bool isPlayingScreenSaverInGame = false;
 
+    private bool sandboxMode = false;
+    public bool SandboxMode
+    {
+        get { return sandboxMode; }
+    }
+
     private string appPath;
 
     string appFileName;
@@ -63,6 +69,8 @@ public class MainManager : MonoBehaviour
     {
         get { return isLoading; }
     }
+
+    
 
     private void Awake()
     {
@@ -194,10 +202,13 @@ public class MainManager : MonoBehaviour
 #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.A))
             {
-                InGamePlaySS();
+                //InGamePlaySS();
+                if (!sandboxMode)
+                    EnterSandboxMode();
+                else
+                    ExitSandboxMode();
             }
 #endif
-
             // Autosave
             if (autoSaveElapsed < autoSaveTime)
             {
@@ -206,9 +217,26 @@ public class MainManager : MonoBehaviour
             else
             {
                 autoSaveElapsed = 0;
+
                 CacheManager.Instance.Save();
             }
+            
         }
+    }
+
+    public void EnterSandboxMode()
+    {
+        sandboxMode = true;
+        isLoading = true;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    public void ExitSandboxMode()
+    {
+        CacheManager.Instance.Save();
+        sandboxMode = false;
+        isLoading = true;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
     public bool IsScreenSaverEnabled()
@@ -358,8 +386,6 @@ public class MainManager : MonoBehaviour
 
     public void ResetGame()
     {
-        
-
         MessageBox.Show(MessageBox.Types.YesNo, "All your progress will be lost! Are you sure you want to procede?", () => DoResetGame());
     }
 
@@ -418,7 +444,7 @@ public class MainManager : MonoBehaviour
             return;
 
 
-        //stopInGameSS = true;
+        
         isPlayingScreenSaverInGame = false;
         isScreenSaver = false;
         isLoading = true;
@@ -448,4 +474,5 @@ public class MainManager : MonoBehaviour
         }
     }
 
+  
 }

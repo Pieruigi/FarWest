@@ -27,6 +27,13 @@ public class QuantitySelectorUI : MonoBehaviour
         get { return transform.GetChild(0).gameObject.activeSelf; }
     }
 
+    private void Awake()
+    {
+        MainManager mainManager = GameObject.FindObjectOfType<MainManager>();
+        if (mainManager.IsScreenSaver || mainManager.SandboxMode)
+            GameObject.Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -54,6 +54,8 @@ public class BuildingMaker : MonoBehaviour
         get { return buildingCamera; }
     }
 
+    MainManager mainManager;
+
     private void Awake()
     {
         //if (!instance)
@@ -77,6 +79,8 @@ public class BuildingMaker : MonoBehaviour
         gameCamera = Camera.main;
         buildingCamera.gameObject.SetActive(false);
         fadeInOut = GameObject.FindObjectOfType<FadeInOut>();
+
+        mainManager = GameObject.FindObjectOfType<MainManager>();
      
     }
 
@@ -122,39 +126,42 @@ public class BuildingMaker : MonoBehaviour
     public void Init(Recipe recipe)
     {
         this.recipe = recipe;
-        
     }
 
     public void SetEnable(bool value)
     {
-
+ 
         if (value)
         {
             isBuilding = false;
             player.SetInputEnabled(false);
 
-            helper = GameObject.Instantiate((recipe.Output as Building).CraftingHelper);
+            if (!mainManager.SandboxMode) // In sandbox mode recipe has not been selected yet
+            {
+                helper = GameObject.Instantiate((recipe.Output as Building).CraftingHelper);
+                buildingCamera.GetComponent<BuildingCamera>().Init(helper);
+            }
+           
+            //gameCamera.gameObject.SetActive(false);
+            //buildingCamera.gameObject.SetActive(true);
+            ShowBuildingCamera(true);
 
-            buildingCamera.GetComponent<BuildingCamera>().Init(helper);
-            gameCamera.gameObject.SetActive(false);
-            buildingCamera.gameObject.SetActive(true);
-
-            
             isEnabled = true;
 
             OnEnabled?.Invoke();
+
         }
-            
         else
         {
-            if (!gameCamera.gameObject.activeSelf)
-                gameCamera.gameObject.SetActive(true);
-            if (buildingCamera.gameObject.activeSelf)
-                buildingCamera.gameObject.SetActive(false);
+            //if (!gameCamera.gameObject.activeSelf)
+            //    gameCamera.gameObject.SetActive(true);
+            //if (buildingCamera.gameObject.activeSelf)
+            //    buildingCamera.gameObject.SetActive(false);
+            ShowBuildingCamera(false);
 
             if (helper)
                 Destroy(helper);
-            
+
 
             player.SetInputEnabled(true);
 
@@ -162,6 +169,26 @@ public class BuildingMaker : MonoBehaviour
             isEnabled = false;
 
             OnDisabled?.Invoke();
+
+
+        }
+      
+
+    }
+
+    public void ShowBuildingCamera(bool value)
+    {
+        if (!value)
+        {
+            if (!gameCamera.gameObject.activeSelf)
+                gameCamera.gameObject.SetActive(true);
+            if (buildingCamera.gameObject.activeSelf)
+                buildingCamera.gameObject.SetActive(false);
+        }
+        else
+        {
+            gameCamera.gameObject.SetActive(false);
+            buildingCamera.gameObject.SetActive(true);
         }
     }
 

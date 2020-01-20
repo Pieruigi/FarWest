@@ -16,6 +16,12 @@ public class SlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         get { return textQuantity; }
     }
 
+    [SerializeField]
+    GameObject background;
+
+    [SerializeField]
+    GameObject frame;
+
     GameObject itemIco;
     protected GameObject ItemIco
     {
@@ -73,7 +79,32 @@ public class SlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 index = i;
             }
         }
-        
+
+        if (background)
+        {
+            if (GetComponentInParent<GridLayoutGroup>())
+            {
+                Vector2 cellSize = GetComponentInParent<GridLayoutGroup>().cellSize;
+
+                (background.transform as RectTransform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, cellSize.x * 0.95f);
+                (background.transform as RectTransform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, cellSize.y * 0.95f);
+
+                //itemIco.GetComponent<ItemSprite>().SetIco(slot.Item.Icon, new Vector2(cellSize.x * 0.9f, cellSize.y * 0.9f));
+            }
+        }
+
+        if (frame)
+        {
+            if (GetComponentInParent<GridLayoutGroup>())
+            {
+                Vector2 cellSize = GetComponentInParent<GridLayoutGroup>().cellSize;
+
+                (frame.transform as RectTransform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, cellSize.x);
+                (frame.transform as RectTransform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, cellSize.y);
+
+                //itemIco.GetComponent<ItemSprite>().SetIco(slot.Item.Icon, new Vector2(cellSize.x * 0.9f, cellSize.y * 0.9f));
+            }
+        }
     }
 
     public virtual void Set(Slot slot)
@@ -120,7 +151,7 @@ public class SlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     }
 
-    public void SetDisabled(bool value)
+    public virtual void SetDisabled(bool value)
     {
         isDisabled = value;
 

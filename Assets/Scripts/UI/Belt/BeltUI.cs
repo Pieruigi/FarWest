@@ -15,7 +15,8 @@ public class BeltUI : MonoBehaviour
        
     private void Awake()
     {
-        if (GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
+        MainManager mainManager = GameObject.FindObjectOfType<MainManager>();
+        if (mainManager.IsScreenSaver || mainManager.SandboxMode)
         {
             Destroy(gameObject);
         }
@@ -45,7 +46,7 @@ public class BeltUI : MonoBehaviour
         menuManager.OnActionOpen += SetDisable;
         menuManager.OnActionClose += SetEnable;
 
-
+        
     }
 
     // Update is called once per frame

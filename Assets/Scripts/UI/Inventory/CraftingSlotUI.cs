@@ -60,6 +60,14 @@ public class CraftingSlotUI : SlotUI
         }
     }
 
+    public override void SetDisabled(bool value)
+    {
+        base.SetDisabled(value);
+
+        Image img = GetComponent<Image>();
+
+        img.color = new Color32(0,0,0,0);
+    }
 
     void HandleOnRecipeChanged(Recipe recipe)
     {

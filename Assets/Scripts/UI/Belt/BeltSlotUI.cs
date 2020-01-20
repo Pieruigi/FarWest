@@ -57,11 +57,13 @@ public class BeltSlotUI : MonoBehaviour
         if(slot == null)
         {
             icon.sprite = null;
+            icon.color = new Color32(255, 255, 255, 20); 
             toggle.interactable = false;
         }
         else
         {
             icon.sprite = slot.Item.Icon;
+            icon.color = new Color32(255,255,255,255);
             if (slot.Item.CanBeEquipped)
             {
                 toggle.interactable = true;

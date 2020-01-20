@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum EffectQualityLevel { None, Low, Medium, High }
 
+
 public class Constants
 {
     //

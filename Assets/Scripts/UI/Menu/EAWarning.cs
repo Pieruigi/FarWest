@@ -12,6 +12,12 @@ public class EAWarning : MonoBehaviour
 
     MenuManager menuMan;
 
+    private void Awake()
+    {
+        if (GameObject.FindObjectOfType<MainManager>().SandboxMode)
+            Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -113,6 +113,9 @@ namespace SS
         protected virtual void Awake() 
         {
             //doSomethingDelayDefault = doSomethingDelay;
+            MainManager mainManager = GameObject.FindObjectOfType<MainManager>();
+            if (mainManager.SandboxMode)
+                Destroy(gameObject);
         }
 
         // Start is called before the first frame update

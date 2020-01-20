@@ -10,21 +10,24 @@ public class ActionLootCacher : TransformCacher
 
     protected override void Awake()
     {
-
-        UnityEngine.AI.NavMeshObstacle nmo = GetComponent<UnityEngine.AI.NavMeshObstacle>();
-        if (nmo != null)
-        {
-            if (nmo.shape == UnityEngine.AI.NavMeshObstacleShape.Capsule)
+   
+            UnityEngine.AI.NavMeshObstacle nmo = GetComponent<UnityEngine.AI.NavMeshObstacle>();
+            if (nmo != null)
             {
-                radiusMul = nmo.radius;
+                if (nmo.shape == UnityEngine.AI.NavMeshObstacleShape.Capsule)
+                {
+                    radiusMul = nmo.radius;
+                }
+                else
+                {
+                    sizeMul = nmo.size;
+                }
             }
-            else
-            {
-                sizeMul = nmo.size;
-            }
-        }
 
-        base.Awake();
+            base.Awake();
+       
+
+        
     }
 
     protected override void Init(string data)
@@ -75,14 +78,18 @@ public class ActionLootCacher : TransformCacher
 
     protected override void HandleOnSave()
     {
+        MainManager mainMan = GameObject.FindObjectOfType<MainManager>();
+        if (mainMan.SandboxMode)
+            return;
+
         base.HandleOnSave();
 
         // Store loot data
         SS.LootAction action = GetComponentInChildren<SS.LootAction>();
-        //string extData = CacheUtility.FloatToCacheString(action.LootCurrent);
+               
+
         string extData = action.LootCurrent.ToString();
-        //if(action.LootCurrent == 0)
-        //    extData += "," + CacheUtility.FloatToCacheString(Mathf.RoundToInt(action.GrowingElapsed));
+        
         if (action.LootCurrent == 0)
             extData += "," + Mathf.RoundToInt(action.GrowingElapsed);
 

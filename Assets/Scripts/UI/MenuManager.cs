@@ -34,7 +34,6 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-      
         
     }
 
@@ -46,7 +45,7 @@ public class MenuManager : MonoBehaviour
 
         playerController = GameObject.FindObjectOfType<PlayerController>();
 
-        if (GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
+        if (mainManager.IsScreenSaver || mainManager.SandboxMode)
         {
             menuDefault = menuList[0]; // Set some screensaver menu
             Close();
@@ -66,13 +65,18 @@ public class MenuManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            
-            if (isOpened)
-                Close();
-            else
-                if(!inventoryUI.IsOpended)
+            if (!mainManager.SandboxMode)
+            {
+                if (isOpened)
+                    Close();
+                else
+                if (!inventoryUI.IsOpended)
                     Open();
-            
+            }
+            else
+            {
+                MessageBox.Show(MessageBox.Types.YesNo, "Quit sandbox mode?", HandleExitSandboxModeOk, null);
+            }
             
         }
     }
@@ -119,4 +123,9 @@ public class MenuManager : MonoBehaviour
         foreach (GameObject menu in menuList)
             menu.SetActive(false);
     } 
+
+    void HandleExitSandboxModeOk()
+    {
+        mainManager.ExitSandboxMode();
+    }
 }

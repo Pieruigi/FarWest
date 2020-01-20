@@ -25,6 +25,8 @@ public class CursorController : MonoBehaviour
     bool isVisible = false;
 
     bool forceNotVisible = false;
+
+    MainManager mainManager;
     public bool ForceNotVisible
     {
         set { forceNotVisible = value; }
@@ -42,6 +44,7 @@ public class CursorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainManager = GameObject.FindObjectOfType<MainManager>();
         playerController = GameObject.FindGameObjectWithTag(Constants.TagPlayer).GetComponent<PlayerController>();
         playerController.OnLootStarted += HandleOnLootStarted;
         playerController.OnLootStopped += HandleOnLootStopped;
@@ -61,77 +64,83 @@ public class CursorController : MonoBehaviour
             return;
         }
 
-        if(playerController.IsInputEnabled && Input.GetMouseButton(0))
+        if (!mainManager.SandboxMode)
         {
-            if (Cursor.visible)
+            if (playerController.IsInputEnabled && Input.GetMouseButton(0))
             {
-                Cursor.visible = false;
-                ResetPopUp();
-            }
-            return;
-        }
-        else
-        {
-            if (!Cursor.visible)
-            {
-                Cursor.visible = true;
-            }
-
-            if (!playerController.IsInputEnabled)
-            {
-                ResetPopUp();
-                return;
-            }
-        }
-        
-        GameObject selObj = playerController.SelectedObject;
-
-        if (!selObj)
-        {
-            ResetPopUp();
-        }
-        else
-        {
-            if (selObj)
-            {
-                SS.Action action = selObj.GetComponent<SS.Action>();
-                Destroyer destroyer = selObj.GetComponent<Destroyer>();
-                if (!action && !destroyer)
+                if (Cursor.visible)
                 {
+                    Cursor.visible = false;
                     ResetPopUp();
                 }
-                else
+                return;
+            }
+            else
+            {
+                if (!Cursor.visible)
                 {
-                    bool actionOk = false;
-                    bool destroyOk = false;
-                    if (action)
+                    Cursor.visible = true;
+                }
+
+                if (!playerController.IsInputEnabled)
+                {
+                    ResetPopUp();
+                    return;
+                }
+            }
+
+            GameObject selObj = playerController.SelectedObject;
+
+            if (!selObj)
+            {
+                ResetPopUp();
+            }
+            else
+            {
+                if (selObj)
+                {
+                    SS.Action action = selObj.GetComponent<SS.Action>();
+                    Destroyer destroyer = selObj.GetComponent<Destroyer>();
+                    if (!action && !destroyer)
                     {
-                        if (action.CanBeDone())
+                        ResetPopUp();
+                    }
+                    else
+                    {
+                        bool actionOk = false;
+                        bool destroyOk = false;
+                        if (action)
                         {
-                            actionOk = true;
+                            if (action.CanBeDone())
+                            {
+                                actionOk = true;
+                            }
                         }
-                    }
-                    if (destroyer)
-                    {
-                        if(destroyer.CanBeDestroyed())
-                            destroyOk = true;
-                        
+                        if (destroyer)
+                        {
+                            if (destroyer.CanBeDestroyed())
+                                destroyOk = true;
+
+
+                        }
+
+                        SetPopUp(actionOk, destroyOk);
+
 
                     }
-
-                    SetPopUp(actionOk, destroyOk);
 
 
                 }
-
-                
             }
+
+            transform.position = Input.mousePosition - 38f * Vector3.up + 20f * Vector3.right;
+
         }
-
-        transform.position = Input.mousePosition - 38f*Vector3.up + 20f*Vector3.right;
-
+        
 
     }
+
+    
 
     private void ResetPopUp()
     {

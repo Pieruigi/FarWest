@@ -108,9 +108,17 @@ public class InventoryUI : MonoBehaviour
     int filterGameFreeTime = 0;
     #endregion
 
+    private void Awake()
+    {
+        MainManager mainManager = GameObject.FindObjectOfType<MainManager>();
+        if (mainManager.IsScreenSaver || mainManager.SandboxMode)
+            Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        
         buildingMaker = GameObject.FindObjectOfType<BuildingMaker>();
         
         quantitySelectorUI =  GameObject.FindObjectOfType<QuantitySelectorUI>();

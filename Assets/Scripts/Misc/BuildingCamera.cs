@@ -19,13 +19,16 @@ public class BuildingCamera : MonoBehaviour
     float zoomSpeed = 10;
     float moveSpeedMax = 10;
 
+    MainManager mainManager;
+
     private void Awake()
     {
         cam = GetComponent<Camera>();
         posDefault = transform.position;
         rotDefault = transform.rotation;
         fovDefault = cam.fieldOfView;
-        
+
+        mainManager = GameObject.FindObjectOfType<MainManager>();
     }
 
     // Start is called before the first frame update
@@ -36,8 +39,12 @@ public class BuildingCamera : MonoBehaviour
 
     private void OnEnable()
     {
-        if (GameObject.FindObjectOfType<CursorController>())
-            GameObject.FindObjectOfType<CursorController>().ForceNotVisible = true;
+        if (!mainManager.SandboxMode)
+        {
+            if (GameObject.FindObjectOfType<CursorController>())
+                GameObject.FindObjectOfType<CursorController>().ForceNotVisible = true;
+        }
+        
     }
 
     private void OnDisable()

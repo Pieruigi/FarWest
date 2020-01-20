@@ -22,7 +22,8 @@ public class Health : MonoBehaviour
 
     void Awake()
     {
-        if (GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
+        MainManager mainManager = GameObject.FindObjectOfType<MainManager>();
+        if (mainManager.IsScreenSaver || mainManager.SandboxMode)
         {
             GameObject.Destroy(gameObject);
         }

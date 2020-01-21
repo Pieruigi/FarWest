@@ -44,7 +44,11 @@ public class BuildingCamera : MonoBehaviour
             if (GameObject.FindObjectOfType<CursorController>())
                 GameObject.FindObjectOfType<CursorController>().ForceNotVisible = true;
         }
-        
+        else
+        {
+            zoom = 0;
+            cam.fieldOfView = fovDefault;
+        }
     }
 
     private void OnDisable()

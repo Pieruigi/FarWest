@@ -14,10 +14,17 @@ public class TimeUI : MonoBehaviour
     [SerializeField]
     GameObject hours;
 
+    [SerializeField]
+    GameObject clock;
+
     DayNightCycle dnc;
     Text txt;
 
     MenuManager menuManager;
+
+    InventoryUI inventoryUI;
+
+    MainManager mainManager;
     
     // Start is called before the first frame update
     void Start()
@@ -26,13 +33,21 @@ public class TimeUI : MonoBehaviour
         //txt = GetComponent<Text>();
 
         menuManager = GameObject.FindObjectOfType<MenuManager>();
-        menuManager.OnActionOpen += SetDisabled;
-        menuManager.OnActionClose += SetEnabled;
+        //menuManager.OnActionOpen += SetDisabled;
+        //menuManager.OnActionClose += SetEnabled;
+
+        inventoryUI = GameObject.FindObjectOfType<InventoryUI>();
+        mainManager = GameObject.FindObjectOfType<MainManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (inventoryUI.IsOpended || menuManager.IsOpened || mainManager.SandboxMode)
+            SetDisabled();
+        else
+            SetEnabled();
+
         float s = dnc.DayTimeInSeconds % 60;
         seconds.transform.localEulerAngles = -Vector3.forward * s * 6;
 
@@ -47,11 +62,13 @@ public class TimeUI : MonoBehaviour
 
     void SetDisabled()
     {
-        gameObject.SetActive(false);
+        if(clock.activeSelf)
+            clock.SetActive(false);
     }
 
     void SetEnabled()
     {
-        gameObject.SetActive(true);
+        if(!clock.activeSelf)
+            clock.SetActive(true);
     }
 }

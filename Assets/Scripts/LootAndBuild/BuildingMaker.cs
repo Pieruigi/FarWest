@@ -7,9 +7,13 @@ public class BuildingMaker : MonoBehaviour
 {
     public UnityAction OnEnabled;
     public UnityAction OnDisabled;
+    public UnityAction<Recipe> OnBuildingCreated;
 
     [SerializeField]
     ParticleSystem psBuildingDust;
+
+    [SerializeField]
+    Canvas keys;
 
     Recipe recipe; // Asset to build
 
@@ -56,6 +60,8 @@ public class BuildingMaker : MonoBehaviour
 
     MainManager mainManager;
 
+    
+
     private void Awake()
     {
         //if (!instance)
@@ -81,7 +87,7 @@ public class BuildingMaker : MonoBehaviour
         fadeInOut = GameObject.FindObjectOfType<FadeInOut>();
 
         mainManager = GameObject.FindObjectOfType<MainManager>();
-     
+
     }
 
     // Update is called once per frame
@@ -95,27 +101,38 @@ public class BuildingMaker : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-          
-            foreach (Slot slot in recipe.Resources)
+            if (!mainManager.SandboxMode)
             {
-                inventory.AddItem(slot.Item, slot.Amount);
-                SetEnable(false);
+                foreach (Slot slot in recipe.Resources)
+                {
+                    inventory.AddItem(slot.Item, slot.Amount);
+                    SetEnable(false);
+                }
+            }
+            else
+            {
+                Init(null);
+                ResetHelper();
             }
         }
         else
         {
             if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E))
             {
-                int sign = 1;
-                if(Input.GetKey(KeyCode.Q))
-                    sign = -1;
+                if (helper)
+                {
+                    int sign = 1;
+                    if (Input.GetKey(KeyCode.Q))
+                        sign = -1;
 
-                helper.transform.Rotate(Vector3.up, sign * rotSpeed * Time.deltaTime);
+                    helper.transform.Rotate(Vector3.up, sign * rotSpeed * Time.deltaTime);
+                }
+                
             }
             
             if (Input.GetMouseButtonDown(0))
             {
-                if (helper.GetComponent<BuildingHelper>().Allowed)
+                if (helper && helper.GetComponent<BuildingHelper>().Allowed)
                 {
                     Build();
                 }
@@ -128,6 +145,19 @@ public class BuildingMaker : MonoBehaviour
         this.recipe = recipe;
     }
 
+    public void SetHelper()
+    {
+        helper = GameObject.Instantiate((recipe.Output as Building).CraftingHelper);
+        buildingCamera.GetComponent<BuildingCamera>().Init(helper);
+    }
+
+    private void ResetHelper()
+    {
+        Destroy(helper);
+        helper = null;
+        buildingCamera.GetComponent<BuildingCamera>().Init(null);
+    }
+
     public void SetEnable(bool value)
     {
  
@@ -136,12 +166,21 @@ public class BuildingMaker : MonoBehaviour
             isBuilding = false;
             player.SetInputEnabled(false);
 
-            if (!mainManager.SandboxMode) // In sandbox mode recipe has not been selected yet
+            if (!mainManager.SandboxMode) 
             {
+                // In building mode recipe has already been selected, but not yet in sandbox mode 
                 helper = GameObject.Instantiate((recipe.Output as Building).CraftingHelper);
                 buildingCamera.GetComponent<BuildingCamera>().Init(helper);
+
+                // Show keys
+                keys.gameObject.SetActive(true);
             }
-           
+            else
+            {
+                // Hide keys
+                keys.gameObject.SetActive(false);
+            }
+
             //gameCamera.gameObject.SetActive(false);
             //buildingCamera.gameObject.SetActive(true);
             ShowBuildingCamera(true);
@@ -200,22 +239,40 @@ public class BuildingMaker : MonoBehaviour
 
     private void Build()
     {
-        isBuilding = true;
-        BuildingHelper bh = helper.GetComponent<BuildingHelper>();
-        bh.HideArrow();
+        if (!mainManager.SandboxMode)
+        {
+            isBuilding = true;
+            BuildingHelper bh = helper.GetComponent<BuildingHelper>();
+            bh.HideArrow();
 
-        bh.NoRaytracing = true;
+            bh.NoRaytracing = true;
 
-        //StartCoroutine(DoBuild());
-        buildPos = helper.transform.position;
-        buildRot = helper.transform.rotation;
+            //StartCoroutine(DoBuild());
+            buildPos = helper.transform.position;
+            buildRot = helper.transform.rotation;
 
-        fadeInOut.FadeOut();
-        gameCamera.gameObject.SetActive(true);
-        buildingCamera.gameObject.SetActive(false);
-        fadeInOut.FadeIn();
+            fadeInOut.FadeOut();
+            gameCamera.gameObject.SetActive(true);
+            buildingCamera.gameObject.SetActive(false);
+            fadeInOut.FadeIn();
 
-        player.MoveToTarget(bh.Target.position, OnDestinationReached);
+            player.MoveToTarget(bh.Target.position, OnDestinationReached);
+        }
+        else
+        {
+            buildPos = helper.transform.position;
+            buildRot = helper.transform.rotation;
+            StartCoroutine(SpawnBuilding());
+
+            if (OnBuildingCreated != null)
+                OnBuildingCreated.Invoke(recipe);
+
+            // Reset
+            Init(null);
+            ResetHelper();
+
+        }
+ 
 
     }
 
@@ -255,6 +312,40 @@ public class BuildingMaker : MonoBehaviour
         // Built
         //
 
+        //Destroy(helper);
+        //GameObject obj = SpawnManager.Spawn((recipe.Output as Building).SceneObject);
+
+        //obj.transform.position = buildPos;
+        //obj.transform.rotation = buildRot;
+
+        //obj.transform.localScale = Vector3.zero;
+
+        //LeanTween.scale(obj, Vector3.one, 1f).setEaseOutElastic();
+
+        //yield return new WaitForSeconds(1);
+
+        //UnityEngine.AI.NavMeshObstacle obs = obj.GetComponent<UnityEngine.AI.NavMeshObstacle>();
+        //if (obs)
+        //{
+        //    obs.enabled = false;
+        //    yield return new WaitForSeconds(0.5f);
+        //    obs.enabled = true;
+        //}
+
+        yield return SpawnBuilding();
+        SetEnable(false);
+      
+    }
+
+    void OnDestinationReached(bool succeed)
+    {
+        if (!succeed)
+            return;
+        StartCoroutine(DoBuild());
+    }
+
+    IEnumerator SpawnBuilding()
+    {
         Destroy(helper);
         GameObject obj = SpawnManager.Spawn((recipe.Output as Building).SceneObject);
 
@@ -274,17 +365,6 @@ public class BuildingMaker : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             obs.enabled = true;
         }
-
-        SetEnable(false);
-      
     }
-
-    void OnDestinationReached(bool succeed)
-    {
-        if (!succeed)
-            return;
-        StartCoroutine(DoBuild());
-    }
-
   
 }

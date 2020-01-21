@@ -18,15 +18,30 @@ public class RecipeUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     Toggle toggle;
 
     InventoryUI inventoryUI;
+    MainManager mainManager;
+    SandboxUI sandboxUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        inventoryUI = GetComponentInParent<InventoryUI>();
+        mainManager = GameObject.FindObjectOfType<MainManager>();
+
+        if (!mainManager.SandboxMode)
+        {
+            inventoryUI = GetComponentInParent<InventoryUI>();
+            //toggle = GetComponent<Toggle>();
+            //toggle.group = transform.parent.GetComponent<ToggleGroup>();
+            //toggle.onValueChanged.AddListener(OnValueChanged);
+        }
+        else
+        {
+            sandboxUI = GetComponentInParent<SandboxUI>();
+
+        }
+
         toggle = GetComponent<Toggle>();
         toggle.group = transform.parent.GetComponent<ToggleGroup>();
         toggle.onValueChanged.AddListener(OnValueChanged);
-
     }
 
     // Update is called once per frame
@@ -43,23 +58,39 @@ public class RecipeUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     void OnValueChanged(bool value)
     {
-        inventoryUI.PlayClick();
-        inventoryUI.RecipeChanged();
+
+        if (!mainManager.SandboxMode)
+        {
+            inventoryUI.PlayClick();
+            inventoryUI.RecipeChanged();
+        }
+        else
+        {
+            if (value)
+                sandboxUI.RecipeChanged();
+        }
     }
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        if (!"".Equals(recipe.Description))
-            inventoryUI.ShowItemDescription(recipe.Description);
+        if (!mainManager.SandboxMode)
+        {
+            if (!"".Equals(recipe.Description))
+                inventoryUI.ShowItemDescription(recipe.Description);
 
-        if (!"".Equals(recipe.Thanks))
-            inventoryUI.ShowThanks(recipe.Thanks);
-
+            if (!"".Equals(recipe.Thanks))
+                inventoryUI.ShowThanks(recipe.Thanks);
+        }
+       
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        inventoryUI.HideItemDescription();
-        inventoryUI.HideThanks();
+        if (!mainManager.SandboxMode)
+        {
+            inventoryUI.HideItemDescription();
+            inventoryUI.HideThanks();
+        }
+        
     }
 }

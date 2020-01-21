@@ -226,6 +226,7 @@ public class MainManager : MonoBehaviour
 
     public void EnterSandboxMode()
     {
+        CacheManager.Instance.Save();
         sandboxMode = true;
         isLoading = true;
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);

@@ -10,8 +10,17 @@ public class MenuManager : MonoBehaviour
     
     [SerializeField]
     List<GameObject> menuList;
+    protected IList<GameObject> MenuList
+    {
+        get { return menuList.AsReadOnly(); }
+    }
 
     GameObject menuDefault;
+    protected GameObject MenuDefault
+    {
+        get { return menuDefault; }
+        set { menuDefault = value; }
+    }
 
     GameObject current;
 
@@ -21,6 +30,7 @@ public class MenuManager : MonoBehaviour
     public bool IsOpened
     {
         get { return isOpened; }
+        protected set { isOpened = value; }
     }
 
     public GameObject Current
@@ -29,19 +39,22 @@ public class MenuManager : MonoBehaviour
     }
 
     MainManager mainManager;
-
+    protected MainManager MainManager
+    {
+        get { return mainManager; }
+        set { mainManager = value; }
+    }
+    
     InventoryUI inventoryUI;
 
-    private void Awake()
-    {
-        
-    }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         inventoryUI = GameObject.FindObjectOfType<InventoryUI>();
         mainManager = GameObject.FindObjectOfType<MainManager>();
+
+
 
         playerController = GameObject.FindObjectOfType<PlayerController>();
 
@@ -70,30 +83,29 @@ public class MenuManager : MonoBehaviour
                 if (isOpened)
                     Close();
                 else
-                if (!inventoryUI.IsOpended)
-                    Open();
+                    if (!inventoryUI.IsOpended)
+                        Open();
             }
-            else
-            {
-                MessageBox.Show(MessageBox.Types.YesNo, "Quit sandbox mode?", HandleExitSandboxModeOk, null);
-            }
+            
             
         }
     }
 
-    public void Close()
+    public virtual void Close()
     {
         isOpened = false;
         HideAll();
+
         playerController.SetInputEnabled(true);
 
         if (OnActionClose != null)
             OnActionClose.Invoke();
     }
 
-    public void Open()
+    public virtual void Open()
     {
         playerController.SetInputEnabled(false);
+
         HideAll();
         isOpened = true;
         Open(menuDefault);
@@ -118,14 +130,11 @@ public class MenuManager : MonoBehaviour
     }
 
     
-    void HideAll()
+    protected void HideAll()
     {
         foreach (GameObject menu in menuList)
             menu.SetActive(false);
     } 
 
-    void HandleExitSandboxModeOk()
-    {
-        mainManager.ExitSandboxMode();
-    }
+
 }

@@ -73,24 +73,39 @@ public class RecipeUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        if (!mainManager.SandboxMode)
-        {
-            if (!"".Equals(recipe.Description))
-                inventoryUI.ShowItemDescription(recipe.Description);
+        //if (!mainManager.SandboxMode)
+        //{
+        //    if (!"".Equals(recipe.Description))
+        //        inventoryUI.ShowItemDescription(recipe.Description);
 
-            if (!"".Equals(recipe.Thanks))
-                inventoryUI.ShowThanks(recipe.Thanks);
-        }
-       
+        //    if (!"".Equals(recipe.Thanks))
+        //        inventoryUI.ShowThanks(recipe.Thanks);
+        //}
+        //else
+        //{
+        //    if (!"".Equals(recipe.Description))
+        //        sandboxUI.ShowItemDescription(recipe.Description);
+
+        //    if (!"".Equals(recipe.Thanks))
+        //        sandboxUI.ShowThanks(recipe.Thanks);
+        //}
+
+        if (recipe.Description != null && !"".Equals(recipe.Description))
+            SendMessageUpwards("ShowItemDescription", recipe.Description, SendMessageOptions.DontRequireReceiver);
+
+        if (recipe.Thanks != null && !"".Equals(recipe.Thanks))
+            SendMessageUpwards("ShowThanks", recipe.Thanks, SendMessageOptions.DontRequireReceiver);
+        
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        if (!mainManager.SandboxMode)
-        {
-            inventoryUI.HideItemDescription();
-            inventoryUI.HideThanks();
-        }
-        
+        //if (!mainManager.SandboxMode)
+        //{
+        //    inventoryUI.HideItemDescription();
+        //    inventoryUI.HideThanks();
+        //}
+        SendMessageUpwards("HideItemDescription", SendMessageOptions.DontRequireReceiver);
+        SendMessageUpwards("HideThanks", SendMessageOptions.DontRequireReceiver);
     }
 }

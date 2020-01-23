@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 1921516518}
   - component: {fileID: 1921516517}
   - component: {fileID: 1921516516}
+  - component: {fileID: 7721537668437562360}
   m_Layer: 0
   m_Name: LookAtCamera (1)
   m_TagString: CameraFar
@@ -235,6 +236,20 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921516514}
   m_Enabled: 1
+--- !u!114 &7721537668437562360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921516514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4e39f69e5a194b8c80c6da7d3b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 5
+  time: 20
 --- !u!1 &238227759028214230
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +531,7 @@ GameObject:
   - component: {fileID: 5825481334873172961}
   - component: {fileID: 8398632426537155169}
   - component: {fileID: 4340081182363562770}
+  - component: {fileID: 7104127944197500929}
   m_Layer: 0
   m_Name: LookAtCamera
   m_TagString: CameraFar
@@ -693,6 +709,20 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6427665585988883961}
   m_Enabled: 1
+--- !u!114 &7104127944197500929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6427665585988883961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4e39f69e5a194b8c80c6da7d3b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 5
+  time: 20
 --- !u!1 &7167626012874816094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,18 +1107,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63fbd3e4b5658164591e1f3493bdb634, type: 3}
---- !u!198 &505477964 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19880300, guid: 63fbd3e4b5658164591e1f3493bdb634,
-    type: 3}
-  m_PrefabInstance: {fileID: 521118240}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &521002536 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 162824, guid: 63fbd3e4b5658164591e1f3493bdb634,
-    type: 3}
-  m_PrefabInstance: {fileID: 521118240}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &505482848 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19835968, guid: 63fbd3e4b5658164591e1f3493bdb634,
@@ -1128,6 +1146,18 @@ ParticleSystem:
 --- !u!1 &520971474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 182002, guid: 63fbd3e4b5658164591e1f3493bdb634,
+    type: 3}
+  m_PrefabInstance: {fileID: 521118240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &505477964 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19880300, guid: 63fbd3e4b5658164591e1f3493bdb634,
+    type: 3}
+  m_PrefabInstance: {fileID: 521118240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &521002536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 162824, guid: 63fbd3e4b5658164591e1f3493bdb634,
     type: 3}
   m_PrefabInstance: {fileID: 521118240}
   m_PrefabAsset: {fileID: 0}

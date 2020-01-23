@@ -28,13 +28,15 @@ public class MainManager : MonoBehaviour
 
     public const string scrFilePattern = "_scr.exe";
 
-    bool isScreenSaver = false;
+    bool isScreenSaver = false; // True if is running as screensaver, otherwise is false;
     public bool IsScreenSaver
     {
         get { return isScreenSaver; }
     }
 
-    private bool isPlayingScreenSaverInGame = false;
+    private bool isPlayingScreenSaverInGame = false; // True wheter the screensaver is running from the game or is not running at all
+
+    bool isMiniGame = false;
 
     private bool sandboxMode = false;
     public bool SandboxMode
@@ -172,7 +174,9 @@ public class MainManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (isMiniGame)
+            return;
+
         if (isScreenSaver)
         {
             if (exitDisabled)
@@ -238,6 +242,20 @@ public class MainManager : MonoBehaviour
         sandboxMode = false;
         isLoading = true;
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    public void EnterMiniGame(int sceneIndex)
+    {
+        isMiniGame = true;
+        isLoading = true;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void ExitMiniGame()
+    {
+        isMiniGame = false;
+        isLoading = true;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public bool IsScreenSaverEnabled()

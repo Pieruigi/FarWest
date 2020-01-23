@@ -28,7 +28,7 @@ public class ButtonInventory : MonoBehaviour
         if (menuManager.IsOpened)
             return;
 
-        playerController.SetInputEnabled(true);
+        //playerController.SetInputEnabled(true);
         inventoryUI.OpenWithCraftingSystemEnabled(false);
     }
 }

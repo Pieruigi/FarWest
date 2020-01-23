@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 59086974}
   - component: {fileID: 59086973}
   - component: {fileID: 59086972}
+  - component: {fileID: 5738042273794208487}
   m_Layer: 0
   m_Name: LookAtCamera
   m_TagString: CameraFar
@@ -193,6 +194,20 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59086970}
   m_Enabled: 1
+--- !u!114 &5738042273794208487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59086970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4e39f69e5a194b8c80c6da7d3b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 5
+  time: 20
 --- !u!1 &65885291
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,6 +473,7 @@ GameObject:
   - component: {fileID: 297279366}
   - component: {fileID: 297279365}
   - component: {fileID: 297279364}
+  - component: {fileID: 4096421978582440930}
   m_Layer: 0
   m_Name: LookAtCamera (1)
   m_TagString: CameraFar
@@ -635,6 +651,20 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297279362}
   m_Enabled: 1
+--- !u!114 &4096421978582440930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297279362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4e39f69e5a194b8c80c6da7d3b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 5
+  time: 20
 --- !u!1 &355723116
 GameObject:
   m_ObjectHideFlags: 0

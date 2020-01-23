@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 53066773}
   - component: {fileID: 53066772}
   - component: {fileID: 53066771}
+  - component: {fileID: 1024231396516915892}
   m_Layer: 0
   m_Name: LookAtCamera
   m_TagString: CameraFar
@@ -193,6 +194,20 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53066769}
   m_Enabled: 1
+--- !u!114 &1024231396516915892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53066769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4e39f69e5a194b8c80c6da7d3b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 5
+  time: 20
 --- !u!1 &266528151
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +288,7 @@ GameObject:
   - component: {fileID: 377124014}
   - component: {fileID: 377124013}
   - component: {fileID: 377124012}
+  - component: {fileID: 5095022362107548016}
   m_Layer: 0
   m_Name: LookAtCamera (2)
   m_TagString: CameraFar
@@ -450,6 +466,20 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377124010}
   m_Enabled: 1
+--- !u!114 &5095022362107548016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377124010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4e39f69e5a194b8c80c6da7d3b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 5
+  time: 20
 --- !u!1 &477050057
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +496,7 @@ GameObject:
   - component: {fileID: 477050061}
   - component: {fileID: 477050060}
   - component: {fileID: 477050059}
+  - component: {fileID: 9037216654443119584}
   m_Layer: 0
   m_Name: LookAtCamera (1)
   m_TagString: CameraFar
@@ -643,6 +674,20 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477050057}
   m_Enabled: 1
+--- !u!114 &9037216654443119584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477050057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4e39f69e5a194b8c80c6da7d3b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 5
+  time: 20
 --- !u!1 &589006538
 GameObject:
   m_ObjectHideFlags: 0

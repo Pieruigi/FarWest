@@ -48,7 +48,7 @@ public class MessageBox : MonoBehaviour
             panelColorDefault = panelImage.color;
             box = transform.GetChild(0) as RectTransform;
             gameObject.SetActive(false);
-                
+            DontDestroyOnLoad(gameObject);
         }
         else
         {

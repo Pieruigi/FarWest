@@ -194,6 +194,35 @@ for(int ii = 0 ; ii < indices.Length; ii+=3)
         LeanTween.scale(obj, Vector3.zero, 1f).setEaseInElastic();
         GameObject.Destroy(obj, 1);
     }
+
+
+
+    
+    public static void ShowItemDescription(UnityEngine.UI.Text ui, string description)
+    {
+        ui.text = description;
+        ui.color = Color.white;
+        ui.transform.parent.gameObject.SetActive(true);
+    }
+
+    public static void ShowThanks(UnityEngine.UI.Text ui, string thanks)
+    {
+        ui.text = thanks;
+        ui.color = Color.white;
+        ui.transform.parent.gameObject.SetActive(true);
+    }
+
+    public static void HideItemDescription(UnityEngine.UI.Text ui)
+    {
+        ui.transform.parent.gameObject.SetActive(false);
+        ui.text = "";
+    }
+
+    public static void HideThanks(UnityEngine.UI.Text ui)
+    {
+        ui.transform.parent.gameObject.SetActive(false);
+        ui.text = "";
+    }
 }
 
 

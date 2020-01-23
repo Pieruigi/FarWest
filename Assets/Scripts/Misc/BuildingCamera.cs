@@ -21,6 +21,12 @@ public class BuildingCamera : MonoBehaviour
 
     MainManager mainManager;
 
+    bool zoomDisabled = false;
+    public bool ZoomDisabled
+    {
+        set { zoomDisabled = value; }
+    }
+
     private void Awake()
     {
         cam = GetComponent<Camera>();
@@ -61,7 +67,7 @@ public class BuildingCamera : MonoBehaviour
     void Update()
     {
         float sY = Input.mouseScrollDelta.y;
-        if (sY != 0)
+        if (sY != 0 && !zoomDisabled)
         {
             // Compute zoom
             if(sY > 0)

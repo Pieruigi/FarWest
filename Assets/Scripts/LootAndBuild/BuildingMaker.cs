@@ -8,6 +8,8 @@ public class BuildingMaker : MonoBehaviour
     public UnityAction OnEnabled;
     public UnityAction OnDisabled;
     public UnityAction<Recipe> OnBuildingCreated;
+    public UnityAction<Recipe> OnBuildingCancelled;
+    public UnityAction<Recipe> OnBuildingDestroyed;
 
     [SerializeField]
     ParticleSystem psBuildingDust;
@@ -111,8 +113,13 @@ public class BuildingMaker : MonoBehaviour
             }
             else
             {
+                Recipe tmp = recipe;
                 Init(null);
                 ResetHelper();
+                buildingCamera.GetComponent<BuildingCamera>().ZoomDisabled = true;
+
+                if (OnBuildingCancelled != null)
+                    OnBuildingCancelled(tmp);
             }
         }
         else
@@ -179,6 +186,7 @@ public class BuildingMaker : MonoBehaviour
             {
                 // Hide keys
                 keys.gameObject.SetActive(false);
+                buildingCamera.GetComponent<BuildingCamera>().ZoomDisabled = true;
             }
 
             //gameCamera.gameObject.SetActive(false);
@@ -206,6 +214,8 @@ public class BuildingMaker : MonoBehaviour
 
             recipe = null;
             isEnabled = false;
+
+            buildingCamera.GetComponent<BuildingCamera>().ZoomDisabled = true;
 
             OnDisabled?.Invoke();
 

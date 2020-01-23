@@ -41,6 +41,11 @@ public class SpawnManager : MonoBehaviour
         
     }
 
+    public static GameObject GetSpawnable(int index)
+    {
+        return instance.spawnables[index];
+    }
+
     public static bool PrefabHasAlreadySpawned(GameObject objectPrefab)
     {
         return instance.spawnedList.Contains(objectPrefab);

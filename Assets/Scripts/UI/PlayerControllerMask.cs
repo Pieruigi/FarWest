@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerControllerMask : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class PlayerControllerMask : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     PlayerController playerController;
 
@@ -26,6 +26,13 @@ public class PlayerControllerMask : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        Debug.Log("Pointer exit...");
+        playerController.SetInputEnabled(true);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Pointer click...");
         playerController.SetInputEnabled(true);
     }
 }

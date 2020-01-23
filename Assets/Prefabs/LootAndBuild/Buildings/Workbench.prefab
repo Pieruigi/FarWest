@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 488505452}
   - component: {fileID: 488505451}
   - component: {fileID: 488505450}
+  - component: {fileID: 6700208008139208917}
   m_Layer: 0
   m_Name: LookAtCamera (2)
   m_TagString: CameraFar
@@ -247,6 +248,20 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488505448}
   m_Enabled: 1
+--- !u!114 &6700208008139208917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488505448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4e39f69e5a194b8c80c6da7d3b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 5
+  time: 20
 --- !u!1 &1013309601
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +328,7 @@ GameObject:
   - component: {fileID: 1172692647}
   - component: {fileID: 1172692646}
   - component: {fileID: 1172692645}
+  - component: {fileID: 805805652373660798}
   m_Layer: 0
   m_Name: LookAtCamera (1)
   m_TagString: CameraFar
@@ -490,6 +506,20 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172692643}
   m_Enabled: 1
+--- !u!114 &805805652373660798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172692643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4e39f69e5a194b8c80c6da7d3b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 5
+  time: 20
 --- !u!1 &1379916284
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +536,7 @@ GameObject:
   - component: {fileID: 1379916288}
   - component: {fileID: 1379916287}
   - component: {fileID: 1379916286}
+  - component: {fileID: 1594052238424755361}
   m_Layer: 0
   m_Name: LookAtCamera
   m_TagString: CameraFar
@@ -683,6 +714,20 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379916284}
   m_Enabled: 1
+--- !u!114 &1594052238424755361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379916284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4e39f69e5a194b8c80c6da7d3b179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 5
+  time: 20
 --- !u!1 &1391778179
 GameObject:
   m_ObjectHideFlags: 0

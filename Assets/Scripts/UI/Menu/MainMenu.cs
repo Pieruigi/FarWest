@@ -35,4 +35,8 @@ public class MainMenu : MonoBehaviour
         MainManager.Instance.ApplicationQuit();
     }
 
+    public void EnterSandboxMode()
+    {
+        MainManager.Instance.EnterSandboxMode();
+    }
 }

@@ -91,7 +91,7 @@ public class RecipeUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         //}
 
         if (recipe.Description != null && !"".Equals(recipe.Description))
-            SendMessageUpwards("ShowItemDescription", recipe.Description, SendMessageOptions.DontRequireReceiver);
+            SendMessageUpwards("ShowItemDescription", recipe.AssetName + " - " + recipe.Description, SendMessageOptions.DontRequireReceiver);
 
         if (recipe.Thanks != null && !"".Equals(recipe.Thanks))
             SendMessageUpwards("ShowThanks", recipe.Thanks, SendMessageOptions.DontRequireReceiver);

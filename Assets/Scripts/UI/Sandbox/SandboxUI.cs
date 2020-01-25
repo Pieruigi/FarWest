@@ -90,7 +90,7 @@ public class SandboxUI : MonoBehaviour
                     {
                    
                         onSceneObject = cacher.gameObject;
-                        ShowItemDescription(onSceneRecipe.Description);
+                        ShowItemDescription(onSceneRecipe.AssetName +" - " + onSceneRecipe.Description);
                         forceDescription = false;
                         //noBuilding = false;
                     }
@@ -136,7 +136,7 @@ public class SandboxUI : MonoBehaviour
         destroyEnabled = value;
         ShowRecipes(!value);
         buildingMaker.BuildingCamera.GetComponent<BuildingCamera>().ZoomDisabled = !value;
-
+        buildingMaker.ShowKeys(value);
     }
 
     public void SwitchBuildMode()
@@ -191,11 +191,14 @@ public class SandboxUI : MonoBehaviour
         buildingMaker.Init(sel);
         buildingMaker.SetHelper();
         buildingMaker.BuildingCamera.GetComponent<BuildingCamera>().ZoomDisabled = false;
+        buildingMaker.ShowKeys(true);
 
         Utility.HideItemDescription(descriptionText);
         Utility.HideThanks(thanksText);
         ShowRecipes(false);
-
+        
+        
+        
 
     }
 

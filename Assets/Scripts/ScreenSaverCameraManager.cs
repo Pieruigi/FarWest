@@ -78,8 +78,8 @@ public class ScreenSaverCameraManager : MonoBehaviour
         mainManager = GameObject.FindObjectOfType<MainManager>();
         //cameras = new List<Camera>(GetComponentsInChildren<Camera>());
 
-        int v;
         int.TryParse(ProfileCacheManager.Instance.GetValue("CameraType"), out cameraType);
+        cameraType--; // We saved the option id, but we need the option value, that il optionId-1 in this case
         if (cameraType < 0)
         {
             switchingDisabled = false;
@@ -115,6 +115,8 @@ public class ScreenSaverCameraManager : MonoBehaviour
                 currentCamera = cameras[Random.Range(0, cameras.Count)];
             else
                 currentCamera = cameras[cameraType];
+
+            Debug.Log("CurrentCamera:" + currentCamera);
 
 #if FORCE_SS
             currentCamera = cameras[testCam];

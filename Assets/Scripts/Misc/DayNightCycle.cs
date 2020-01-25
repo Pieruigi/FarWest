@@ -123,7 +123,7 @@ public class DayNightCycle : MonoBehaviour
         dayTimeInSec = dayTimeInSec % NumberOfSecondsInOneDay;
         initialTime = dayTimeInSec;
         //timeFix = dayTimeInSec;
-
+        
 #if FORCE_SS
         dayTimeInSec = 43000; // 21.600: 06, 43.200: 12; 18: 64.800 
         initialTime = dayTimeInSec;

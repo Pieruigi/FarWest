@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49c9f6de59c2334f8e4add017800360, type: 3}
   m_Name: Campfire
   m_EditorClassIdentifier: 
-  assetName: Workbench
+  assetName: Campfire
   description: You are a cowboy... you know how it works
   freeTimeOnly: 0
   icon: {fileID: 21300000, guid: 61e8247db9af56e4e9cc0097c9a747cb, type: 3}

@@ -136,7 +136,7 @@ public class SlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             
             textQuantity.transform.parent.gameObject.SetActive(true);
             textQuantity.text = slot.Amount.ToString();
-            itemDescription = slot.Item.Description;
+            itemDescription = slot.Item.AssetName + " - " + slot.Item.Description;
         }
         else
         {

@@ -17,6 +17,10 @@ public abstract class Asset : ScriptableObject, IEquatable<Asset>
     [Header("Common")]
     [SerializeField]
     private string assetName;
+    public String AssetName
+    {
+        get { return assetName; }
+    }
 
     [SerializeField]
     private string description;

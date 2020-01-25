@@ -13,7 +13,7 @@ public class UICameraTypeSelector : UISelector<int>
     protected override void Awake()
     {
         cameras = new List<Camera>(screenSaverCameraManager.Cameras);
-        DefaultOptionId = -1;
+        DefaultOptionId = 0;
         base.Awake();
     }
 

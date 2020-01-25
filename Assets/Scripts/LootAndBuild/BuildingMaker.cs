@@ -16,6 +16,7 @@ public class BuildingMaker : MonoBehaviour
 
     [SerializeField]
     Canvas keys;
+    
 
     Recipe recipe; // Asset to build
 
@@ -118,6 +119,8 @@ public class BuildingMaker : MonoBehaviour
                 ResetHelper();
                 buildingCamera.GetComponent<BuildingCamera>().ZoomDisabled = true;
 
+                keys.gameObject.SetActive(false);
+
                 if (OnBuildingCancelled != null)
                     OnBuildingCancelled(tmp);
             }
@@ -145,6 +148,11 @@ public class BuildingMaker : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ShowKeys(bool value)
+    {
+        keys.gameObject.SetActive(value);
     }
 
     public void Init(Recipe recipe)

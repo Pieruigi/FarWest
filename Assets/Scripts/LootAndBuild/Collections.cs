@@ -30,7 +30,13 @@ public class AssetCollection<T> where T : Asset
             instance.objects = new List<T>();
             foreach (object o in tmp)
             {
+#if UNITY_EDITOR
                 instance.objects.Add((T)o);
+#else
+                if(!o.ToString().StartsWith("_"))
+                    instance.objects.Add((T)o);                
+#endif
+                
             }
 
         }

@@ -72,14 +72,18 @@ public class ScreenSaverCameraManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cameraListDefault = new Camera[cameras.Count];
-        cameras.CopyTo(cameraListDefault);
+        
 
         mainManager = GameObject.FindObjectOfType<MainManager>();
         //cameras = new List<Camera>(GetComponentsInChildren<Camera>());
 
         int.TryParse(ProfileCacheManager.Instance.GetValue("CameraType"), out cameraType);
         cameraType--; // We saved the option id, but we need the option value, that il optionId-1 in this case
+
+#if FORCE_SS
+        cameraType = -1;
+#endif
+
         if (cameraType < 0)
         {
             switchingDisabled = false;
@@ -112,9 +116,22 @@ public class ScreenSaverCameraManager : MonoBehaviour
             // Setting random camera
             time = Random.Range(minTime, maxTime);
             if(cameraType < 0)
+            {
                 currentCamera = cameras[Random.Range(0, cameras.Count)];
+            }
             else
+            {
                 currentCamera = cameras[cameraType];
+                cameras.RemoveAll(c => c != currentCamera);
+            }
+            //if(cameraType < 0)
+
+            //else
+            //{
+            //    currentCamera = cameras[cameraType];
+            //}
+            cameraListDefault = new Camera[cameras.Count];
+            cameras.CopyTo(cameraListDefault);
 
             Debug.Log("CurrentCamera:" + currentCamera);
 

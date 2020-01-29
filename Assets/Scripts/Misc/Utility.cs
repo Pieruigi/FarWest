@@ -195,6 +195,22 @@ for(int ii = 0 ; ii < indices.Length; ii+=3)
         GameObject.Destroy(obj, 1);
     }
 
+    /**
+     * Get a random point on the default navigation mesh;
+     * */
+    public static Vector3 GetRandomPointOnNavMesh()
+    {
+        Mesh groundMesh = GameObject.FindGameObjectWithTag("Ground").GetComponent<MeshCollider>().sharedMesh;
+        Vector3 source = Utility.GetRandomPointOnMesh(groundMesh);
+        UnityEngine.AI.NavMeshHit hit;
+        float radius = 10;
+        if (UnityEngine.AI.NavMesh.SamplePosition(source, out hit, radius, UnityEngine.AI.NavMesh.AllAreas))
+        {
+            source = hit.position;
+        }
+
+        return source;
+    }
 
 
     

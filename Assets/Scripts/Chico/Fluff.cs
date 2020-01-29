@@ -11,7 +11,7 @@ public class Fluff : MonoBehaviour
     [SerializeField]
     GameObject beard;
 
-    float moustacheTime = ( 60 * 60 * 24 ) /*one day */ * 2;
+    float moustacheTime = ( 60 * 60 * 5 ); // 5 hours
 
     bool moustacheVisible = false;
     public bool HasMoustache
@@ -19,7 +19,7 @@ public class Fluff : MonoBehaviour
         get { return moustacheVisible; }
     }
 
-    float beardTime = ( 60 * 60 * 24 ) /*one day */ * 5;
+    float beardTime = ( 60 * 60 * 10 ); // 10 hours
     bool beardVisible = false;
     public bool HasBeard
     {

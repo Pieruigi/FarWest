@@ -20,6 +20,8 @@ public class PlayerScreenSaver : MonoBehaviour
     ScreenSaverCameraManager cameraManager;
     
     bool isBusy = false;
+    
+
     bool isMoving = false;
     bool alreadyThere = false;
 
@@ -27,6 +29,18 @@ public class PlayerScreenSaver : MonoBehaviour
 
     // Free time action
     FreeTimeAction currentAction = null; // The current selected free time action
+    public bool IsDoingSomething
+    {
+        get { return currentAction != null; }
+    }
+
+    bool takeDecisionDisabled = false;
+    public bool TakeDecisionDisabled
+    {
+        get { return takeDecisionDisabled; }
+        set { takeDecisionDisabled = value; }
+    }
+
     int currentLoopId;
     int currentLoopCount = 0;
     int loopCount = 0; // The actual loop id
@@ -111,6 +125,10 @@ public class PlayerScreenSaver : MonoBehaviour
                         animator.SetBool("Walk", false);
                         agent.enabled = false;
 
+                        // Turn player 
+                        //float angle = Vector3.SignedAngle(transform.forward, currentAction.Target.forward, Vector3.up);
+                        //LeanTween.rotateAround(gameObject, Vector3.up, angle, 0.25f);
+
                         // Align player if needed
                         if (currentAction.Target)
                         {
@@ -179,7 +197,11 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void TakeDecision()
     {
-      
+        if (takeDecisionDisabled)
+            return;
+
+        Debug.Log("Player is taking decision...");
+
         isBusy = true;
         if (forceIdle)
         {

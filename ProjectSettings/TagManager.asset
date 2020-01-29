@@ -8,6 +8,7 @@ TagManager:
   - CameraClose
   - Door
   - Hat
+  - Ground
   layers:
   - Default
   - TransparentFX

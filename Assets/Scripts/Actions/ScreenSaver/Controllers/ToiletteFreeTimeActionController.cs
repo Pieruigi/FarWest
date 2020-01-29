@@ -73,7 +73,7 @@ public class ToiletteFreeTimeActionController : FreeTimeActionController
     {
         if (message == "DoorOpen")
         {
-            LeanTween.rotateLocal(door, -75f * Vector3.up, 0.6f);
+            LeanTween.rotateLocal(door, -90f * Vector3.up, 0.6f);
             doorSource.clip = doorOpen;
             doorSource.Play();
             return;

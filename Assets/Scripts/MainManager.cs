@@ -204,14 +204,14 @@ public class MainManager : MonoBehaviour
         else
         {
 #if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                //InGamePlaySS();
-                if (!sandboxMode)
-                    EnterSandboxMode();
-                else
-                    ExitSandboxMode();
-            }
+            //if (Input.GetKeyDown(KeyCode.A))
+            //{
+            //    //InGamePlaySS();
+            //    if (!sandboxMode)
+            //        EnterSandboxMode();
+            //    else
+            //        ExitSandboxMode();
+            //}
 #endif
             // Autosave
             if (autoSaveElapsed < autoSaveTime)

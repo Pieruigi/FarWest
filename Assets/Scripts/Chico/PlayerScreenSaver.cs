@@ -60,10 +60,13 @@ public class PlayerScreenSaver : MonoBehaviour
     bool forceIdle = false;
 
     const string animIdParameter = "SSId";
+    const string animLoopIdParameter = "SSLoopId";
     const string animEnterParameter = "SSEnter";
     const string animExitParameter = "SSExit";
     const string animLoopParameter = "SSLoop";
     const string animLoopExitParameter = "SSLoopExit";
+    const string animExitIdParameter = "SSExitId";
+    //const string animLoopDirectParameter = "SSLoopDirect";
 
     const string actionEnter = "ScreenSaverActionEnter";
     const string actionExit = "ScreenSaverActionExit";
@@ -144,7 +147,16 @@ public class PlayerScreenSaver : MonoBehaviour
 
                         // Check for any dedicated camera
                         currentAction.CameraController?.UpdateCameraList();
-                            
+
+                        // Set the exit animation id
+                        animator.SetFloat(animExitIdParameter, currentAction.ExitAnimationId);
+
+                        // Set the first loop ( used for animation blending )
+                        currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
+#if FORCE_SS
+                        //currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+#endif
+                        animator.SetFloat(animLoopIdParameter, currentLoopId);
 
                         if (currentAction.EnterAnimationId >= 0) // There is an enter animation
                         {
@@ -153,16 +165,26 @@ public class PlayerScreenSaver : MonoBehaviour
                         
                             // Start the action controller
                             currentAction.FreeTimeActionController?.ActionEnterStart(currentAction);
+
+                            // Set the next loop id
+//                            currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
+//#if FORCE_SS
+//                            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+//#endif
+                            
+                            //animator.SetFloat(animLoopIdParameter, currentLoopId);
                         }
                         else // No enter animation, loop directly
                         {
-                            currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
-#if FORCE_SS
-                            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
-#endif
+//                            currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
+//#if FORCE_SS
+//                            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+//#endif
 
-                            animator.SetFloat(animIdParameter, currentLoopId);
-                        
+                            //animator.SetFloat(animIdParameter, currentLoopId);
+                            //animator.SetFloat(animLoopIdParameter, currentLoopId);
+                            
+                            //animator.SetBool(animLoopDirectParameter, true);
                             animator.SetTrigger(animLoopParameter);
 
                             currentAction.FreeTimeActionController?.ActionLoopStart(currentAction, currentLoopId);
@@ -273,7 +295,7 @@ public class PlayerScreenSaver : MonoBehaviour
         currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
 
 #if FORCE_SS
-        currentAction = freeTimeActions[testActionId]; 
+        //currentAction = freeTimeActions[testActionId]; 
 #endif
 
         // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )
@@ -351,13 +373,15 @@ public class PlayerScreenSaver : MonoBehaviour
         
         currentAction.FreeTimeActionController?.ActionEnterCompleted(currentAction);
 
-        currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
-#if FORCE_SS
-        currentLoopId = currentAction.LoopAnimationIds[testLoopId];
-#endif
+        //        currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
+        //#if FORCE_SS
+        //        currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+        //#endif
 
-        animator.SetFloat(animIdParameter, currentLoopId);
-        animator.SetTrigger(animLoopParameter);
+        //animator.SetBool(animLoopDirectParameter, false);
+        //animator.SetFloat(animLoopIdParameter, currentLoopId);
+        //animator.SetTrigger(animLoopParameter);
+        //animator.SetTrigger(animLoopParameter);
 
         currentAction.FreeTimeActionController?.ActionLoopStart(currentAction, currentLoopId);
 
@@ -377,7 +401,7 @@ public class PlayerScreenSaver : MonoBehaviour
         {
             if(currentAction.ExitAnimationId >= 0)
             {
-                animator.SetFloat(animIdParameter, currentAction.ExitAnimationId);
+                //animator.SetFloat(animIdParameter, currentAction.ExitAnimationId);
                 animator.SetTrigger(animExitParameter);
                 currentAction.FreeTimeActionController?.ActionExitStart(currentAction);
             }

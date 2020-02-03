@@ -148,7 +148,7 @@ public class ChicoFXController : MonoBehaviour
         Play(handCraft, false);
     }
 
-    void StopPlaying()
+    public void StopPlaying()
     {
         source.Stop();
     }

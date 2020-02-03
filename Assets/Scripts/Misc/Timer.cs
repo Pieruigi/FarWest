@@ -8,12 +8,22 @@ public class Timer: ScriptableObject
     UnityAction<Timer> callbackFunc;
     float length;
     
-
-    public Timer(float length, UnityAction<Timer> callbackFunc)
+    public static  Timer Create(float length, UnityAction<Timer> callbackFunc)
     {
-        this.length = length;
-        this.callbackFunc = callbackFunc;
+        Timer t = ScriptableObject.CreateInstance(typeof(Timer)) as Timer;
+
+        t.length = length;
+        t.callbackFunc = callbackFunc;
+        return t;
     }
+
+    //public Timer(float length, UnityAction<Timer> callbackFunc)
+    //{
+    //    this.length = length;
+    //    this.callbackFunc = callbackFunc;
+    //}
+
+    void Start() { }
 
     public void Start(MonoBehaviour owner)
     {

@@ -4,23 +4,29 @@ using UnityEngine;
 
 public abstract class EventController : MonoBehaviour
 {
-    [SerializeField]
-    float minLength = 0; // Zero to avoid timer
+    //[SerializeField]
+    //float minLength = 0; // Zero to avoid timer
+
+    //[SerializeField]
+    //float maxLength = 0; // Leave it to zero if you don't want to randomize
 
     [SerializeField]
-    float maxLength = 0; // Leave it to zero if you don't want to randomize
+    FloatRandomizer lengthRandomizer;
+
+    [SerializeField]
+    float length;
 
     RandomEvent owner;
 
-    float currentLenght = 10;
+    float currentLenght = 0;
 
     protected abstract void Execute();
 
 
     protected virtual void Awake()
     {
-        if (maxLength < minLength)
-            maxLength = minLength;
+        //if (maxLength < minLength)
+        //    maxLength = minLength;
 
     }
 
@@ -38,11 +44,16 @@ public abstract class EventController : MonoBehaviour
     {
         this.owner = owner;
 
-        currentLenght = Random.Range(minLength, maxLength);
+        //currentLenght = Random.Range(minLength, maxLength);
+        if (lengthRandomizer)
+            currentLenght = lengthRandomizer.GetRandomValue();
+        else
+            currentLenght = length;
 
         if (currentLenght > 0)
         {
-            new Timer(currentLenght, Callback).Start(this);
+            //new Timer(currentLenght, Callback).Start(this);
+            Timer.Create(currentLenght, Callback).Start(this);
         }
        
         Execute();

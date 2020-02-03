@@ -8,7 +8,7 @@ public class RandomEvent : MonoBehaviour
     bool unbusyPlayerNeeded = false;
 
     [SerializeField]
-    float checkTime = 60; // Do check every X seconds
+    float checkTime = 0; // Do check every X seconds
 
     [SerializeField]
     float rate = 0.1f;
@@ -35,13 +35,14 @@ public class RandomEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            StartEvent();
-        }
-        return;
-#endif
+//#if UNITY_EDITOR
+//        if (Input.GetKeyDown(KeyCode.F))
+//        {
+//            StartEvent();
+            
+//        }
+//        return;
+//#endif
 
         if (isHappening)
             return;

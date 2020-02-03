@@ -19,11 +19,7 @@ public class FadeInOutAlpha : MonoBehaviour
     private void Awake()
     {
         isVisible = startVisible;
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
         rend = GetComponent<MeshRenderer>();
         if (!rend)
             rend = GetComponent<SkinnedMeshRenderer>();
@@ -42,6 +38,14 @@ public class FadeInOutAlpha : MonoBehaviour
             SetTransparentMode();
             SetAlpha(0);
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+       
+
+
 
         
     }

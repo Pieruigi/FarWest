@@ -380,8 +380,8 @@ public class PlayerScreenSaver : MonoBehaviour
 
         //animator.SetBool(animLoopDirectParameter, false);
         //animator.SetFloat(animLoopIdParameter, currentLoopId);
-        //animator.SetTrigger(animLoopParameter);
-        //animator.SetTrigger(animLoopParameter);
+        animator.SetTrigger(animLoopParameter);
+       
 
         currentAction.FreeTimeActionController?.ActionLoopStart(currentAction, currentLoopId);
 

@@ -6148,7 +6148,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 310107305}
   m_HandleRect: {fileID: 310107304}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -34066,6 +34066,90 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: CollisionModule.collisionMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: CollisionModule.maxKillSpeed
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: CollisionModule.multiplyColliderForceByCollisionAngle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: ShapeModule.type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: ShapeModule.length
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 505477964, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 314508014, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.506
+      objectReference: {fileID: 0}
+    - target: {fileID: 520723686, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 520723686, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 520723686, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 520723686, guid: a6cd201f917875044b871426ce13e397, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.023
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6cd201f917875044b871426ce13e397, type: 3}

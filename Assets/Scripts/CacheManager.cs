@@ -122,7 +122,7 @@ public class CacheManager
 
     public void Clear()
     {
-        Debug.LogError("Clearing cache");
+        
         cache.Clear();
         File.Delete(cachePath);
     }

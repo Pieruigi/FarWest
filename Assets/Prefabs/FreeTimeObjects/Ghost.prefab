@@ -1618,7 +1618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startVisible: 0
-  fadeTime: 1
+  fadeTime: 3
 --- !u!1 &8415861234395874729
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class BaseFreeTimeActionController : FreeTimeActionController
     ChicoFXController fx;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         fx = GameObject.FindObjectOfType<ChicoFXController>();
     }
@@ -19,6 +19,8 @@ public class BaseFreeTimeActionController : FreeTimeActionController
     public override void ActionMessage(string message)
     {
         string[] s = message.Split('_');
+
+        Debug.Log("message:" + message);
 
         // param: "start_count"
         if ("PlayRandomRange".Equals(s[0]))
@@ -35,6 +37,9 @@ public class BaseFreeTimeActionController : FreeTimeActionController
 
     void PlayRandomRange(int start, int count)
     {
+        Debug.Log("Start:" + start);
+        Debug.Log("Count:" + count);
+        Debug.Log("Clips.Length:" + clips.Count);
         fx.PlayRandom(clips.GetRange(start, count));
     }
 

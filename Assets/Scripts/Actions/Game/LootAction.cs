@@ -98,6 +98,9 @@ namespace SS
             if (!initialized)
                 return;
 
+            if (MainManager.Instance.SandboxMode)
+                return;
+
             // Grow up
             if (lootCurrent == 0)
             {

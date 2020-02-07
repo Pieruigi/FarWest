@@ -193,7 +193,14 @@ for(int ii = 0 ; ii < indices.Length; ii+=3)
     {
         LeanTween.scale(obj, Vector3.zero, 1f).setEaseInElastic();
         GameObject.Destroy(obj, 1);
+        //ObjectPopOut(obj, 1);
     }
+
+    //public static void ObjectPopOut(GameObject obj, float time)
+    //{
+    //    LeanTween.scale(obj, Vector3.zero, time).setEaseInElastic();
+    //    GameObject.Destroy(obj, time);
+    //}
 
     /**
      * Get a random point on the default navigation mesh;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InventoryTest : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -36,13 +37,15 @@ public class InventoryTest : MonoBehaviour
 
 
         inv.AddItem(hammer, 1, 0);
-       
+        inv.AddItem(pickaxe, 1, 1);
+        inv.AddItem(knife, 1, 2);
+
 
         inv.AddItem(wood, 40);
         inv.AddItem(rope, 30);
-        inv.AddItem(stone, 30);
+        inv.AddItem(stone, 40);
         inv.AddItem(dirt, 30);
-        inv.AddItem(water, 30);
+        inv.AddItem(water, 40);
         
     }
 }

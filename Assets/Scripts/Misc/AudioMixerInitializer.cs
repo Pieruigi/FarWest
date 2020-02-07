@@ -10,6 +10,10 @@ public class AudioMixerInitializer : MonoBehaviour
 
     [SerializeField]
     AudioMixer mixer;
+    public AudioMixer Mixer
+    {
+        get { return mixer; }
+    }
 
     int fxVolume, musicVolume;
  

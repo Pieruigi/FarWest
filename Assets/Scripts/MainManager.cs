@@ -491,6 +491,7 @@ public class MainManager : MonoBehaviour
         {
             StartCoroutine(StartExitDisableTimer());
         }
+        //CacheUtility.DebugCache(CacheManager.Instance);
     }
 
   

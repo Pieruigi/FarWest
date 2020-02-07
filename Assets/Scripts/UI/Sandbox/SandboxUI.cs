@@ -31,6 +31,7 @@ public class SandboxUI : MonoBehaviour
 
     ScrollRect recipeView;
     bool forceDescription = false;
+    bool noDescription = false;
 
     bool destroyEnabled = false;
     bool destroying = false;
@@ -196,10 +197,7 @@ public class SandboxUI : MonoBehaviour
         Utility.HideItemDescription(descriptionText);
         Utility.HideThanks(thanksText);
         ShowRecipes(false);
-        
-        
-        
-
+        noDescription = true;
     }
 
     Recipe GetSelectedRecipe()
@@ -240,12 +238,14 @@ public class SandboxUI : MonoBehaviour
     {
         FillRecipeSlots(true);
         ShowRecipes(true);
+        noDescription = false;
     }
 
     void HandleOnBuildingMakerCancelled(Recipe recipe)
     {
         destroyEnabled = false;
         ShowRecipes(true);
+        noDescription = false;
     }
 
     Recipe GetRecipeByBuildingPrefab(GameObject prefab)
@@ -282,6 +282,10 @@ public class SandboxUI : MonoBehaviour
 
     public void ShowItemDescription(string description)
     {
+        if (noDescription)
+            return;
+        
+
         forceDescription = true;
         Utility.ShowItemDescription(descriptionText, description);
         
@@ -289,6 +293,9 @@ public class SandboxUI : MonoBehaviour
 
     public void ShowThanks(string thanks)
     {
+        if (noDescription)
+            return;
+
         Utility.ShowThanks(thanksText, thanks);
     }
 

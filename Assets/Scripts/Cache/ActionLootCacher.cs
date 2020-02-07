@@ -78,9 +78,9 @@ public class ActionLootCacher : TransformCacher
 
     protected override void HandleOnSave()
     {
-        MainManager mainMan = GameObject.FindObjectOfType<MainManager>();
-        if (mainMan.SandboxMode)
-            return;
+        //MainManager mainMan = GameObject.FindObjectOfType<MainManager>();
+        //if (mainMan.SandboxMode)
+        //    return;
 
         base.HandleOnSave();
 

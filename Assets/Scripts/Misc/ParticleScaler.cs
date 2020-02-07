@@ -9,6 +9,11 @@ public class ParticleScaler : MonoBehaviour
 
     [SerializeField]
     float scale = 1;
+    public float Scale
+    {
+        get { return scale; }
+        set { scale = value; }
+    }
 
     ParticleSystem ps;
 

@@ -178,17 +178,36 @@ for(int ii = 0 ; ii < indices.Length; ii+=3)
 
     public static GameObject ObjectPopIn(GameObject prefab, Transform parent = null)
     {
-        GameObject g = GameObject.Instantiate(prefab, parent);
+        //GameObject g = GameObject.Instantiate(prefab, parent);
 
-        g.transform.localPosition = Vector3.zero;
-        g.transform.localRotation = Quaternion.identity;
+        //g.transform.localPosition = Vector3.zero;
+        //g.transform.localRotation = Quaternion.identity;
+        //g.transform.localScale = Vector3.zero;
+
+        //LeanTween.scale(g, Vector3.one, 1f).setEaseOutElastic();
+
+        //return g;
+        return ObjectPopIn(prefab, Vector3.zero, Vector3.zero, Vector3.one, parent);
+    }
+
+    public static GameObject ObjectPopIn(GameObject prefab, Vector3 localPosition, Vector3 localEulerAngles, Vector3 localScale, Transform parent = null)
+    {
+        GameObject g;
+        
+        if(parent != null)
+            g = GameObject.Instantiate(prefab, parent);
+        else
+            g = GameObject.Instantiate(prefab);
+
+        g.transform.localPosition = localPosition;
+        g.transform.localEulerAngles = localEulerAngles;
         g.transform.localScale = Vector3.zero;
 
-        LeanTween.scale(g, Vector3.one, 1f).setEaseOutElastic();
+        LeanTween.scale(g, localScale, 1f).setEaseOutElastic();
 
         return g;
     }
- 
+
     public static void ObjectPopOut(GameObject obj)
     {
         LeanTween.scale(obj, Vector3.zero, 1f).setEaseInElastic();

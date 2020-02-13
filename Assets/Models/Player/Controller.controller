@@ -1044,10 +1044,100 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: LootId
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -424143857489995833, guid: 95b907cb85c4b2745b5aadf744b2fb75,
+      type: 3}
+    m_Threshold: 25
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 4267450304817521154, guid: 2099b3e58611509429b57735a3f642b1,
+      type: 3}
+    m_Threshold: 26
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 6388590047326575344, guid: 11bc7c819e20e814c9696b21f8ff38db,
+      type: 3}
+    m_Threshold: 27
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -3017109405872293826, guid: 03d635aa71f4aad4eb702f806244c7db,
+      type: 3}
+    m_Threshold: 28
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -1585649964282318493, guid: 8e82f1f97766d9b4cb95bfb216ab2828,
+      type: 3}
+    m_Threshold: 29
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -1585649964282318493, guid: 90bd759b8fe86a346a822102cc90ee22,
+      type: 3}
+    m_Threshold: 30
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -1585649964282318493, guid: 69ed0560671a2e64ea8aebee9c62a973,
+      type: 3}
+    m_Threshold: 31
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -1585649964282318493, guid: eb47c04011aa9544d9475dcec10f4638,
+      type: 3}
+    m_Threshold: 32
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -1585649964282318493, guid: f2be56a3d1042544cb6584e6c15afcd6,
+      type: 3}
+    m_Threshold: 33
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -1585649964282318493, guid: 03a389a1320a5c94fbd7cca03f6be2e2,
+      type: 3}
+    m_Threshold: 34
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
   m_BlendParameter: SSLoopId
   m_BlendParameterY: LootId
   m_MinThreshold: 0
-  m_MaxThreshold: 24
+  m_MaxThreshold: 34
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0

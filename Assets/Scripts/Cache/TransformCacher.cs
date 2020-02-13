@@ -70,6 +70,19 @@ public class TransformCacher : Cacher
         
     }
 
+    protected override int GetDataLength(string data)
+    {
+        int ret = base.GetDataLength(data)+1;
+        if (Position)
+            ret++;
+        if (Rotation)
+            ret++;
+        if (Size)
+            ret++;
+
+        return ret;
+    }
+
     protected override void HandleOnSave()
     {
       

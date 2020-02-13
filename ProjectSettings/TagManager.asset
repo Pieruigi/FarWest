@@ -9,6 +9,11 @@ TagManager:
   - Door
   - Hat
   - Ground
+  - Tree
+  - Rock
+  - Soil
+  - Cactus
+  - Shrub
   layers:
   - Default
   - TransparentFX

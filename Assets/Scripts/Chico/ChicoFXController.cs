@@ -77,7 +77,7 @@ public class ChicoFXController : MonoBehaviour
     {
         return source.isPlaying;
     }
-    void PlaySteps()
+    public void PlaySteps()
     {
         PlayRandom(steps, false, 0.3f);
     }
@@ -109,6 +109,7 @@ public class ChicoFXController : MonoBehaviour
 
     void PlaySoilHand()
     {
+        Debug.Log("playsoilhand");
         PlayRandom(soilHands, false);
     }
 

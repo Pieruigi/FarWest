@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum EffectQualityLevel { None, Low, Medium, High }
 
+public enum LootableType { Tree, Rock, Shrub, Soil, Cactus}
 
 public class Constants
 {

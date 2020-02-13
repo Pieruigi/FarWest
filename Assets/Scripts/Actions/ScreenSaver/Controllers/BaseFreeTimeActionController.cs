@@ -8,10 +8,16 @@ public class BaseFreeTimeActionController : FreeTimeActionController
     List<AudioClip> clips;
    
     ChicoFXController fx;
+   
+    public GameObject Player
+    {
+        get { return fx.gameObject; }
+    }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        Debug.Log("ASSSSSSSSSSSSSSSSSS");
         fx = GameObject.FindObjectOfType<ChicoFXController>();
     }
 

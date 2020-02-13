@@ -35,6 +35,10 @@ namespace SS
 
         [SerializeField]
         List<Transform> targets;
+        protected IList<Transform> Targets
+        {
+            get { return targets; }
+        }
 
         [Header("Interaction")]
         [SerializeField]
@@ -49,7 +53,6 @@ namespace SS
         protected float DoSomethingDelay
         {
             get { return doSomethingDelay; }
-            
         }
         //float doSomethingDelayDefault;
 
@@ -108,6 +111,12 @@ namespace SS
         {
             get { return playerController; }
         }
+
+        PlayerScreenSaver playerScreenSaver;
+        protected PlayerScreenSaver PlayerScreenSaver
+        {
+            get { return playerScreenSaver; }
+        }
         #endregion
 
         protected virtual void Awake() 
@@ -122,6 +131,7 @@ namespace SS
         protected virtual void Start()
         {
             playerController = GameObject.FindObjectOfType<PlayerController>();
+            playerScreenSaver = GameObject.FindObjectOfType<PlayerScreenSaver>();
         }
 
         protected virtual void Update()
@@ -167,12 +177,27 @@ namespace SS
             
         }
 
-        public Transform GetActualTarget()
+        //public Transform GetActualTarget()
+        //{
+        //    switch (reachingMode)
+        //    {
+        //        case ReachingMode.Point:
+        //            lastTarget = GetClosestTarget();
+        //            return lastTarget;
+
+        //        default:
+        //            lastTarget = transform;
+        //            return transform;
+
+        //    }
+        //}
+
+        public virtual Transform GetActualTarget(Vector3 source)
         {
             switch (reachingMode)
             {
                 case ReachingMode.Point:
-                    lastTarget = GetClosestTarget();
+                    lastTarget = GetClosestTarget(source);
                     return lastTarget;
 
                 default:
@@ -181,7 +206,6 @@ namespace SS
 
             }
         }
-
 
         /**
          * Returns true if all prerequisites are satisfied, otherwise false; for example you can't cut down a tree without having an axe.
@@ -202,22 +226,66 @@ namespace SS
 
         }
 
-        private Transform GetClosestTarget()
+        //private Transform GetClosestTarget()
+        //{
+        //    Transform ret = null;
+        //    float sqrDist = 0;
+
+        //    foreach(Transform target in targets)
+        //    {
+        //        if (!ret)
+        //        {
+        //            ret = target;
+        //            if(playerController)
+        //                sqrDist = (ret.position - PlayerController.transform.position).sqrMagnitude;
+        //            else
+        //                sqrDist = (ret.position - PlayerScreenSaver.transform.position).sqrMagnitude;
+        //        }
+        //        else
+        //        {
+        //            float tmp;
+        //            if(playerController)
+        //                tmp = (target.position - PlayerController.transform.position).sqrMagnitude;
+        //            else
+        //                tmp = (target.position - PlayerScreenSaver.transform.position).sqrMagnitude;
+
+        //            if (tmp < sqrDist)
+        //            {
+        //                ret = target;
+        //                sqrDist = tmp;
+        //            }
+        //        }
+        //    }
+
+        //    return ret;
+            
+
+            
+        //}
+        protected void ReplaceTargets(List<Transform> targets)
+        {
+            this.targets = targets;
+        }
+
+        private Transform GetClosestTarget(Vector3 source)
         {
             Transform ret = null;
             float sqrDist = 0;
 
-            foreach(Transform target in targets)
+            foreach (Transform target in targets)
             {
                 if (!ret)
                 {
                     ret = target;
-                    sqrDist = (ret.position - PlayerController.transform.position).sqrMagnitude;
+                    sqrDist = (ret.position - source).sqrMagnitude;
+                    
                 }
                 else
                 {
-                    float tmp = (target.position - PlayerController.transform.position).sqrMagnitude;
-                    if(tmp < sqrDist)
+                    float tmp = (target.position - source).sqrMagnitude;
+                    
+
+                    if (tmp < sqrDist)
                     {
                         ret = target;
                         sqrDist = tmp;
@@ -226,9 +294,9 @@ namespace SS
             }
 
             return ret;
-            
 
-            
+
+
         }
 
         public virtual void ActionMessage(string message)

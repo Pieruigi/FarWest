@@ -27,6 +27,11 @@ namespace SS
         int equipmentAnimationId;
 
         [SerializeField]
+        List<Transform> equipmentTargets;
+
+        List<Transform> noEquipmentTargets;
+
+        [SerializeField]
         int lootMax = 10; // Quantity of loot left each time the action is done
         protected int LootMax
         {
@@ -73,9 +78,14 @@ namespace SS
         protected override void Awake()
         {
             lootCurrent = lootMax;
+
+            noEquipmentTargets = new List<Transform>();
+            foreach (Transform t in Targets)
+                noEquipmentTargets.Add(t);
             //parentColl = transform.parent.GetComponent<Collider>();
             base.Awake();
 
+            
         }
 
         protected override void Start()
@@ -131,6 +141,26 @@ namespace SS
             {
                 actionCollider.enabled = false;
             }
+        }
+
+        public override Transform GetActualTarget(Vector3 source)
+        {
+            
+            return GetActualTarget(source, PlayerController.Equipped);
+        }
+
+        public Transform GetActualTarget(Vector3 source, bool equipped)
+        {
+            if (equipmentTargets.Count > 0)
+            {
+                if (equipped)
+                    ReplaceTargets(equipmentTargets);
+                else
+                    ReplaceTargets(noEquipmentTargets);
+
+            }
+
+            return base.GetActualTarget(source);
         }
 
         public float GetHealthNormalized()

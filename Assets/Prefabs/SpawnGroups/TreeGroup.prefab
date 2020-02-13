@@ -50,7 +50,7 @@ MonoBehaviour:
     type: 3}
   prefabs:
   - {fileID: 51384233891346259, guid: 8f94807919ff72344a2481a54c6ca650, type: 3}
-  sizeMin: 0.7
+  sizeMin: 0.8
   sizeMax: 1
   amountMin: 2
   amountMax: 3

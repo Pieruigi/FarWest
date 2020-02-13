@@ -24,7 +24,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
+    importAnimatedCustomProperties: 1
     importConstraints: 1
     animationCompression: 0
     animationRotationError: 0.5
@@ -59,6 +59,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: OnActionMessage
+        data: TakeTool
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.19314642
         functionName: PlayKnifeHit
         data: 
@@ -68,6 +75,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.46105918
         functionName: StopPlaying
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: OnAnimationLoopCompleted
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -468,7 +468,7 @@ public class MainManager : MonoBehaviour
         isScreenSaver = false;
         isLoading = true;
 
-
+        CacheManager.Instance.Save(); ///////////////////////////////////// JUST ADDED TEST /////////////////////////////////////////////
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
 
         //UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/FakeLoadingScene");

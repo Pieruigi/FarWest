@@ -19,6 +19,7 @@ public class FreeTimeAction
     public Transform Target
     {
         get { return target; }
+        set { target = value; }
     }
 
     [SerializeField]
@@ -71,6 +72,7 @@ public class FreeTimeAction
     public int MinLoopCount
     {
         get { return minLoopCount; }
+        //set { minLoopCount = value; }
     }
 
     [SerializeField]
@@ -78,6 +80,7 @@ public class FreeTimeAction
     public int MaxLoopCount
     {
         get { return maxLoopCount; }
+        //set { maxLoopCount = value; }
     }
 }
 

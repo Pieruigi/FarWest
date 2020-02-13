@@ -782,6 +782,11 @@ public class InventoryUI : MonoBehaviour
         source.clip = clipOpen;
         source.Play();
 
+        bool alreadyOpened = false;
+
+        if (isOpened)
+            alreadyOpened = true;
+
         isOpened = true;
         recipeChanged = false;
         this.craftingEnabled = craftingEnabled;
@@ -813,7 +818,8 @@ public class InventoryUI : MonoBehaviour
             uiSlots.AddRange(storagePanel.GetComponentsInChildren<SlotUI>());
         }
 
-        playerController.SetInputEnabled(false);
+        if(!alreadyOpened)
+            playerController.SetInputEnabled(false);
 
         if (craftingEnabled)
             panel.SetActive(true);
@@ -824,8 +830,8 @@ public class InventoryUI : MonoBehaviour
         UpdateSlotsUI();
 
         
-
-        OnOpen?.Invoke();
+        if(!alreadyOpened)
+            OnOpen?.Invoke();
     }
 
     private void ClearRecipeContent()

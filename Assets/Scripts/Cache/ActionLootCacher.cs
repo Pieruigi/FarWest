@@ -86,8 +86,7 @@ public class ActionLootCacher : TransformCacher
 
         // Store loot data
         SS.LootAction action = GetComponentInChildren<SS.LootAction>();
-               
-
+     
         string extData = action.LootCurrent.ToString();
         
         if (action.LootCurrent == 0)

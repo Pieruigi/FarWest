@@ -6,6 +6,12 @@ ModelImporter:
   - first:
       74: -1585649964282318493
     second: LootSoilHand
+  - first:
+      74: 3946911570004774216
+    second: SS_LoopSoilHand
+  - first:
+      74: -3087391385773863053
+    second: SS_LootSoilHand
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -37,7 +43,7 @@ ModelImporter:
       has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
+    importAnimatedCustomProperties: 1
     importConstraints: 1
     animationCompression: 0
     animationRotationError: 0.5
@@ -228,6 +234,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.66163534
         functionName: PlaySoilHand
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: OnAnimationLoopCompleted
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

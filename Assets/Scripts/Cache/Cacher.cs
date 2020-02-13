@@ -13,6 +13,8 @@ public abstract class Cacher : MonoBehaviour
     protected abstract void HandleOnSave();
     protected abstract void Init(string data);
 
+    
+
     protected virtual void Awake()
     {
         CacheManager.Instance.OnSave += HandleOnSave;
@@ -39,5 +41,10 @@ public abstract class Cacher : MonoBehaviour
         name = cacheCode;
         this.spawnableIndex = spawnableIndex;
         //Debug.Log("InitCache:" + name + "," + spawnableIndex);
+    }
+
+    protected virtual int GetDataLength(string data)
+    {
+        return 0;
     }
 }

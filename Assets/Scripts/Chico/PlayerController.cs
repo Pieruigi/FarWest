@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
                     {
                         actionAllowed = true;
                         if (selAction)
-                            targetPos = selAction.GetActualTarget().position;
+                            targetPos = selAction.GetActualTarget(transform.position).position;
                         else
                             targetPos = destroyer.Target.position;
                         

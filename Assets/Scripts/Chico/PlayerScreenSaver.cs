@@ -13,7 +13,8 @@ public class PlayerScreenSaver : MonoBehaviour
         get { return lookAtTarget; }
     }
 
-    List<FreeTimeAction> freeTimeActions;
+    List<FreeTimeAction> freeTimeActions = new List<FreeTimeAction>();
+    bool actionsLoaded = false;
 
     Animator animator;
     NavMeshAgent agent;
@@ -29,6 +30,11 @@ public class PlayerScreenSaver : MonoBehaviour
 
     // Free time action
     FreeTimeAction currentAction = null; // The current selected free time action
+    public FreeTimeAction CurrentAction
+    {
+        get { return currentAction; }
+    }
+
     public bool IsDoingSomething
     {
         get { return currentAction != null; }
@@ -49,7 +55,7 @@ public class PlayerScreenSaver : MonoBehaviour
 #if FORCE_SS
     float idleRate = 0f; // From 0 to 1
     int testLoopId = 0;
-    int testActionId = 0;
+    int testActionId = 1;
 #else
     float idleRate = 0.5f; // From 0 to 1
 #endif
@@ -76,6 +82,7 @@ public class PlayerScreenSaver : MonoBehaviour
     {
         if (!GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
             Destroy(this);
+
     }
 
     // Start is called before the first frame update
@@ -101,8 +108,9 @@ public class PlayerScreenSaver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (freeTimeActions == null)
+        if (!actionsLoaded)
         {
+            actionsLoaded = true;
             LoadFreeTimeActions();
             return;
         }
@@ -134,62 +142,57 @@ public class PlayerScreenSaver : MonoBehaviour
 
                         // Align player if needed
                         if (currentAction.Target)
-                        {
-                            LeanTween.rotate(gameObject, currentAction.Target.eulerAngles, 0.5f);
-                            LeanTween.move(gameObject, currentAction.Target.position, 0.2f);
-                        }
-                      
-                        animator.applyRootMotion = true;
+                            LeanTween.rotate(gameObject, currentAction.Target.eulerAngles, 0.25f).setOnComplete(OnRotateCompleted);
+                        else
+                            StartFreeTimeActionAnimation();
 
-                        // Switch camera if needed
-                        if (currentAction.CameraCloseDisabled && Constants.TagCameraClose.Equals(cameraManager.CurrentCamera.tag))
-                            cameraManager.ForceSwitchCamera();
 
-                        // Check for any dedicated camera
-                        currentAction.CameraController?.UpdateCameraList();
+//                        animator.applyRootMotion = true;
 
-                        // Set the exit animation id
-                        animator.SetFloat(animExitIdParameter, currentAction.ExitAnimationId);
+//                        // Switch camera if needed
+//                        if (currentAction.CameraCloseDisabled && Constants.TagCameraClose.Equals(cameraManager.CurrentCamera.tag))
+//                            cameraManager.ForceSwitchCamera();
 
-                        // Set the first loop ( used for animation blending )
-                        currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
-#if FORCE_SS
-                        //currentLoopId = currentAction.LoopAnimationIds[testLoopId];
-#endif
-                        animator.SetFloat(animLoopIdParameter, currentLoopId);
+//                        // Check for any dedicated camera
+//                        currentAction.CameraController?.UpdateCameraList();
 
-                        if (currentAction.EnterAnimationId >= 0) // There is an enter animation
-                        {
-                            animator.SetFloat(animIdParameter, currentAction.EnterAnimationId);
-                            animator.SetTrigger(animEnterParameter);
+//                        // Set the exit animation id
+//                        animator.SetFloat(animExitIdParameter, currentAction.ExitAnimationId);
+
+//                        // Set the first loop ( used for animation blending )
+//                        currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
+//#if FORCE_SS
+//                        //currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+//#endif
+//                        animator.SetFloat(animLoopIdParameter, currentLoopId);
+
+//                        if (currentAction.EnterAnimationId >= 0) // There is an enter animation
+//                        {
+//                            animator.SetFloat(animIdParameter, currentAction.EnterAnimationId);
+//                            animator.SetTrigger(animEnterParameter);
                         
-                            // Start the action controller
-                            currentAction.FreeTimeActionController?.ActionEnterStart(currentAction);
+//                            // Start the action controller
+//                            currentAction.FreeTimeActionController?.ActionEnterStart(currentAction);
 
-                            // Set the next loop id
-//                            currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
-//#if FORCE_SS
-//                            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
-//#endif
+//                            // Set the next loop id
+
+////#if FORCE_SS
+////                            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+////#endif
                             
-                            //animator.SetFloat(animLoopIdParameter, currentLoopId);
-                        }
-                        else // No enter animation, loop directly
-                        {
-//                            currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
-//#if FORCE_SS
-//                            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
-//#endif
+//                        }
+//                        else // No enter animation, loop directly
+//                        {
 
-                            //animator.SetFloat(animIdParameter, currentLoopId);
-                            //animator.SetFloat(animLoopIdParameter, currentLoopId);
-                            
-                            //animator.SetBool(animLoopDirectParameter, true);
-                            animator.SetTrigger(animLoopParameter);
+////#if FORCE_SS
+////                            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+////#endif
+ 
+//                            animator.SetTrigger(animLoopParameter);
 
-                            currentAction.FreeTimeActionController?.ActionLoopStart(currentAction, currentLoopId);
-                            loopCount++; // I'm already inside the first and last loop
-                        }
+//                            currentAction.FreeTimeActionController?.ActionLoopStart(currentAction, currentLoopId);
+//                            loopCount++; // I'm already inside the first and last loop
+//                        }
                        
                     }
                     
@@ -203,10 +206,26 @@ public class PlayerScreenSaver : MonoBehaviour
 
     }
 
+    public void AddFreeTimeAction(FreeTimeAction action)
+    {
+        if (freeTimeActions == null)
+            return;
+
+        if (freeTimeActions.Contains(action))
+            return;
+
+        freeTimeActions.Add(action);
+    }
+
+    public void RemoveFreetimeAction(FreeTimeAction action)
+    {
+        freeTimeActions.Remove(action);
+    }
+
     void LoadFreeTimeActions()
     {
         // Get free time action collection
-        freeTimeActions = new List<FreeTimeAction>();
+        //freeTimeActions = new List<FreeTimeAction>();
         FreeTimeActionCollection[] tmp = GameObject.FindObjectsOfType<FreeTimeActionCollection>();
         for (int i = 0; i < tmp.Length; i++)
         {
@@ -222,7 +241,7 @@ public class PlayerScreenSaver : MonoBehaviour
         if (takeDecisionDisabled)
             return;
 
-        Debug.Log("Player is taking decision...");
+        
 
         isBusy = true;
         if (forceIdle)
@@ -291,8 +310,15 @@ public class PlayerScreenSaver : MonoBehaviour
             return;
         }
 
+        //if (freeTimeActions.Count == 0)
+        //{
+        //    currentAction = null;
+        //    return;
+        //}
+        Debug.Log("IsDoing before:" + IsDoingSomething);    
 
         currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
+        Debug.Log("IsDoing after:" + IsDoingSomething);
 
 #if FORCE_SS
         //currentAction = freeTimeActions[testActionId]; 
@@ -453,6 +479,59 @@ public class PlayerScreenSaver : MonoBehaviour
 
     void OnActionMessage(string message)
     {
-        currentAction.FreeTimeActionController?.ActionMessage(message);
+        
+        currentAction?.FreeTimeActionController?.ActionMessage(message);
+    }
+
+    void  StartFreeTimeActionAnimation()
+    {
+        animator.applyRootMotion = true;
+
+        // Switch camera if needed
+        if (currentAction.CameraCloseDisabled && Constants.TagCameraClose.Equals(cameraManager.CurrentCamera.tag))
+            cameraManager.ForceSwitchCamera();
+
+        // Check for any dedicated camera
+        currentAction.CameraController?.UpdateCameraList();
+
+        // Set the exit animation id
+        animator.SetFloat(animExitIdParameter, currentAction.ExitAnimationId);
+
+        // Set the first loop ( used for animation blending )
+        currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
+#if FORCE_SS
+        //currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+#endif
+        animator.SetFloat(animLoopIdParameter, currentLoopId);
+
+        if (currentAction.EnterAnimationId >= 0) // There is an enter animation
+        {
+            animator.SetFloat(animIdParameter, currentAction.EnterAnimationId);
+            animator.SetTrigger(animEnterParameter);
+
+            // Start the action controller
+            currentAction.FreeTimeActionController?.ActionEnterStart(currentAction);
+
+#if FORCE_SS
+            //currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+#endif
+            
+        }
+        else // No enter animation, loop directly
+        {
+ 
+#if FORCE_SS
+            //currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+#endif
+            animator.SetTrigger(animLoopParameter);
+
+            currentAction.FreeTimeActionController?.ActionLoopStart(currentAction, currentLoopId);
+            loopCount++; // I'm already inside the first and last loop
+        }
+    }
+
+    void OnRotateCompleted()
+    {
+        StartFreeTimeActionAnimation();
     }
 }

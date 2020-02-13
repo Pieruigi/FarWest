@@ -14,6 +14,10 @@ namespace SS
         [Header("Extended Section")]
         [SerializeField]
         List<GameObject> objectList;
+        public IList<GameObject> ObjectList
+        {
+            get { return objectList.AsReadOnly(); }
+        }
 
         [SerializeField]
         Item lootItem;

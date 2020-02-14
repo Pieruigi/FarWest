@@ -1274,7 +1274,7 @@ MonoBehaviour:
   position: 1
   rotation: 1
   size: 1
-  state: 1
+  state: 0
 --- !u!208 &1795758191662426152
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1426,6 +1426,7 @@ MonoBehaviour:
   boxPrefab: {fileID: 4052408252662422683, guid: ab5e324ebac496d4a89f8ee6f4605fb8,
     type: 3}
   whistleClip: {fileID: 8300000, guid: 72cc982cfd9b76d44b26af2c7f9c96ce, type: 3}
+  waterFallingClip: {fileID: 8300000, guid: a0f1b97c1673f5245a806a5a8de9db6e, type: 3}
   mixer: {fileID: 24100000, guid: d0aea98e5fbcd8041944cb32fdb5ca2c, type: 2}
 --- !u!1 &4827018422103076113
 GameObject:

@@ -39,6 +39,8 @@ public class InventoryTest : MonoBehaviour
         inv.AddItem(hammer, 1, 0);
         inv.AddItem(pickaxe, 1, 1);
         inv.AddItem(knife, 1, 2);
+        inv.AddItem(axe, 1, 3);
+        inv.AddItem(shovel, 1, 4);
 
 
         inv.AddItem(wood, 40);

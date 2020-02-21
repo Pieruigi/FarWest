@@ -1134,10 +1134,37 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: LootId
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -1585649964282318493, guid: b5e2f74dba47a3f4dbab60b6d875562a,
+      type: 3}
+    m_Threshold: 35
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -1585649964282318493, guid: 488713c46d9f9b54e9523a082578f616,
+      type: 3}
+    m_Threshold: 36
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -1585649964282318493, guid: d68aa5374a9f20b49b23058268b21cd2,
+      type: 3}
+    m_Threshold: 37
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
   m_BlendParameter: SSLoopId
   m_BlendParameterY: LootId
   m_MinThreshold: 0
-  m_MaxThreshold: 34
+  m_MaxThreshold: 37
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0

@@ -320,7 +320,7 @@ public class BuildingMaker : MonoBehaviour
         }
         else
         {
-            time = 12f;
+            time = 14f;
             anim.SetTrigger(Constants.AnimationNameUseHand);
         }
         

@@ -17,7 +17,7 @@ MonoBehaviour:
   freeTimeOnly: 1
   icon: {fileID: 21300000, guid: 184f52970f5896a49a78b8bd7002e951, type: 3}
   thanks: 
-  workbenchOnly: 1
+  workbenchOnly: 0
   output: {fileID: 11400000, guid: 21d8f2dca94095740a882aae9991f140, type: 2}
   resources:
   - item: {fileID: 11400000, guid: 75a3c97497b3f9049b39bf21f72fa89e, type: 2}

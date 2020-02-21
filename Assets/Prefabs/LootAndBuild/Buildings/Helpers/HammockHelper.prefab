@@ -77,8 +77,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.77, y: 1, z: 3.58}
-  m_Center: {x: 0, y: 0, z: 0.03}
+  m_Size: {x: 4.652943, y: 1.8936517, z: 1.5342715}
+  m_Center: {x: 0, y: 0.44682586, z: 0}
 --- !u!114 &3572045030752173755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,11 +202,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hammock
       objectReference: {fileID: 0}
-    - target: {fileID: -4934475398172682857, guid: d229423c63e492949b510bdf251fc49d,
+    - target: {fileID: 129350255495253916, guid: d229423c63e492949b510bdf251fc49d,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ddbb1983e8f13854982cdd610b5ed719, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d229423c63e492949b510bdf251fc49d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -262,11 +262,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 129350255495253916, guid: d229423c63e492949b510bdf251fc49d,
+    - target: {fileID: -4934475398172682857, guid: d229423c63e492949b510bdf251fc49d,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ddbb1983e8f13854982cdd610b5ed719, type: 2}
     m_RemovedComponents:
     - {fileID: -6057140222963153312, guid: d229423c63e492949b510bdf251fc49d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d229423c63e492949b510bdf251fc49d, type: 3}

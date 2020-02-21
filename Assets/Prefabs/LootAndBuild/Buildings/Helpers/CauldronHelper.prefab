@@ -167,9 +167,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3400359298319808716}
-  - component: {fileID: 7477559778295131855}
   - component: {fileID: 1088248417385639708}
   - component: {fileID: 3684380490913623540}
+  - component: {fileID: 8236361430865216436}
   m_Layer: 10
   m_Name: CauldronHelper
   m_TagString: Untagged
@@ -194,19 +194,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7477559778295131855
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3097078024480500405}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.38, y: 1, z: 1.65}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1088248417385639708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +225,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &8236361430865216436
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3097078024480500405}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2199781
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4027899301974394274
 GameObject:
   m_ObjectHideFlags: 0

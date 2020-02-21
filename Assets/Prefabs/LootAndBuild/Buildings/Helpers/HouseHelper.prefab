@@ -126,8 +126,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.87, y: 1, z: 8.4}
-  m_Center: {x: 0, y: 0, z: -0.2}
+  m_Size: {x: 8.85, y: 1, z: 8.16}
+  m_Center: {x: -0.25, y: 0, z: -0.21}
 --- !u!114 &1088248417385639708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +143,6 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: ddbb1983e8f13854982cdd610b5ed719, type: 2}
   target: {fileID: 8465470117183250607}
-  arrow: {fileID: 5840715053572641189}
 --- !u!54 &3684380490913623540
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -35,6 +35,8 @@ public class PlayerScreenSaver : MonoBehaviour
         get { return currentAction; }
     }
 
+    FreeTimeAction forcedAction = null;
+
     public bool IsDoingSomething
     {
         get { return currentAction != null; }
@@ -206,6 +208,12 @@ public class PlayerScreenSaver : MonoBehaviour
 
     }
 
+    public void ForceNextAction(FreeTimeAction action)
+    {
+        forcedAction = action;
+    }
+
+
     public void AddFreeTimeAction(FreeTimeAction action)
     {
         if (freeTimeActions == null)
@@ -304,10 +312,11 @@ public class PlayerScreenSaver : MonoBehaviour
     {
 
         // Get randam action
-        if (freeTimeActions == null || freeTimeActions.Count == 0)
+        if ((freeTimeActions == null || freeTimeActions.Count == 0) && forcedAction == null)
         {
             isBusy = false;
             return;
+            
         }
 
         //if (freeTimeActions.Count == 0)
@@ -315,9 +324,12 @@ public class PlayerScreenSaver : MonoBehaviour
         //    currentAction = null;
         //    return;
         //}
-        Debug.Log("IsDoing before:" + IsDoingSomething);    
+        Debug.Log("IsDoing before:" + IsDoingSomething);
 
-        currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
+        if (forcedAction != null)
+            currentAction = forcedAction;
+        else
+            currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
         Debug.Log("IsDoing after:" + IsDoingSomething);
 
 #if FORCE_SS

@@ -132,6 +132,16 @@ public class GardenFreeTimeActionController : BaseFreeTimeActionController
         {
             chicoFx.PlaySteps();
         }
+
+        if ("StartWater".Equals(message))
+        {
+            PlayWater(true);
+        }
+
+        if ("StopWater".Equals(message))
+        {
+            PlayWater(false);
+        }
     }
 
     void CreateVegetables(bool usingDelay)
@@ -173,6 +183,14 @@ public class GardenFreeTimeActionController : BaseFreeTimeActionController
             return potatoPrefab;
 
         return carrotPrefab;
+    }
+
+    void PlayWater(bool value)
+    {
+        if(value)
+            can.GetComponentInChildren<ParticleSystem>().Play();
+        else
+            can.GetComponentInChildren<ParticleSystem>().Stop();
     }
 
     IEnumerator DestroyVegetable(GameObject vegetable, float delay)

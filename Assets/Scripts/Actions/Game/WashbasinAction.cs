@@ -54,14 +54,16 @@ namespace SS
         {
             base.Start();
 
-            fluff = PlayerController.GetComponent<Fluff>();
-            hat = new List<Transform>(PlayerController.GetComponentsInChildren<Transform>()).Find(g => g.gameObject.tag.ToLower().Equals(Constants.TagHat.ToLower()));
-            handL = new List<Transform>(PlayerController.GetComponentsInChildren<Transform>()).Find(g => g.name.ToLower().Equals("hand.l"));
-            handR = new List<Transform>(PlayerController.GetComponentsInChildren<Transform>()).Find(g => g.name.ToLower().Equals("hand.r"));
-            head = new List<Transform>(PlayerController.GetComponentsInChildren<Transform>()).Find(g => g.name.ToLower().Equals("head.x"));
+            GameObject player = GameObject.FindGameObjectWithTag(Constants.TagPlayer);
+
+            fluff = player.GetComponent<Fluff>();
+            hat = new List<Transform>(player.GetComponentsInChildren<Transform>()).Find(g => g.gameObject.tag.ToLower().Equals(Constants.TagHat.ToLower()));
+            handL = new List<Transform>(player.GetComponentsInChildren<Transform>()).Find(g => g.name.ToLower().Equals("hand.l"));
+            handR = new List<Transform>(player.GetComponentsInChildren<Transform>()).Find(g => g.name.ToLower().Equals("hand.r"));
+            head = new List<Transform>(player.GetComponentsInChildren<Transform>()).Find(g => g.name.ToLower().Equals("head.x"));
             hatPosDefault = hat.localPosition;
             hatRotDefault = hat.localEulerAngles;
-            chicofx = PlayerController.GetComponent<ChicoFXController>();
+            chicofx = player.GetComponent<ChicoFXController>();
         }
 
         public override bool DoSomething()

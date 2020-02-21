@@ -17,7 +17,7 @@ MonoBehaviour:
   freeTimeOnly: 0
   icon: {fileID: 21300000, guid: 35c8f58dde5a0114da9413f3be9f2734, type: 3}
   thanks: Idea by Paraiba - Brasil Drop Keys
-  workbenchOnly: 1
+  workbenchOnly: 0
   output: {fileID: 11400000, guid: fef278e4d7c642f49929f3ebb8639c2a, type: 2}
   resources:
   - item: {fileID: 11400000, guid: 75a3c97497b3f9049b39bf21f72fa89e, type: 2}

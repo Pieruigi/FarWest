@@ -39,9 +39,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1276991396456442219}
-  - component: {fileID: 6435055821898383208}
   - component: {fileID: 3572045030752173755}
   - component: {fileID: 984534210670853203}
+  - component: {fileID: 1544761216750248224}
   m_Layer: 10
   m_Name: WellHelper
   m_TagString: Untagged
@@ -66,19 +66,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6435055821898383208
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473592014378138386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.77, y: 1, z: 3.58}
-  m_Center: {x: 0, y: 0, z: 0.03}
 --- !u!114 &3572045030752173755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +97,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1544761216750248224
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473592014378138386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.13
+  m_Height: 4.08
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2775972034215155121
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,17 +258,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2308300201269509063, guid: ebb82abe2ac15484f9821c76473f5b03,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ddbb1983e8f13854982cdd610b5ed719, type: 2}
     - target: {fileID: -3809179178880427703, guid: ebb82abe2ac15484f9821c76473f5b03,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ddbb1983e8f13854982cdd610b5ed719, type: 2}
     - target: {fileID: -2733303565801531087, guid: ebb82abe2ac15484f9821c76473f5b03,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ddbb1983e8f13854982cdd610b5ed719, type: 2}
-    - target: {fileID: -2308300201269509063, guid: ebb82abe2ac15484f9821c76473f5b03,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

@@ -62,6 +62,6 @@ public class FreeTimeStateManager : MonoBehaviour
         currentAction = actions[stateCacher.State];
 
         if (currentAction != null)
-            playerSS.AddFreeTimeAction(currentAction);
+            playerSS?.AddFreeTimeAction(currentAction);
     }
 }

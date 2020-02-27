@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class BuildFreeTimeActionController : FreeTimeActionController
 {
+    [SerializeField]
+    ParticleSystem psBuildingDust;
+
     bool useHammer;
     public bool UseHammer
     {
@@ -20,6 +23,12 @@ public class BuildFreeTimeActionController : FreeTimeActionController
     GameObject hammer;
 
     Transform handR;
+
+    private Vector3 particlePosition;
+    public Vector3 ParticlePosition
+    {
+        set { particlePosition = value; }
+    }
 
     private void Start()
     {
@@ -44,6 +53,8 @@ public class BuildFreeTimeActionController : FreeTimeActionController
 
         if (useHammer)
             TakeHammer();
+
+        StartCoroutine(PlayParticleSystem());
     }
 
     public override void ActionExitCompleted(FreeTimeAction action)
@@ -70,5 +81,13 @@ public class BuildFreeTimeActionController : FreeTimeActionController
     {
         Utility.ObjectPopOut(hammer);
         hammer = null;
+    }
+
+    IEnumerator PlayParticleSystem()
+    {
+        yield return new WaitForSeconds(1.5f);
+        psBuildingDust.transform.parent.position = particlePosition;
+        psBuildingDust.Play();
+        
     }
 }

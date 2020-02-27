@@ -20,7 +20,7 @@ public class BuildingHelper : MonoBehaviour
 
     public bool Allowed
     {
-        get { return count == 0; }
+        get { Debug.Log("AlloweProperty - Count:" + count); return count == 0; }
     }
 
     string buildingLayerName = "BuildingVolume";
@@ -55,6 +55,7 @@ public class BuildingHelper : MonoBehaviour
 
         // Get arrow
         arrow = GetComponentInChildren<SpriteRenderer>().gameObject;
+        
     }
 
     // Update is called once per frame
@@ -81,7 +82,8 @@ public class BuildingHelper : MonoBehaviour
 
     private void OnDestroy()
     {
-        Cursor.visible = true;
+        if(!MainManager.Instance.IsScreenSaver)
+            Cursor.visible = true;
     }
     
 
@@ -100,7 +102,8 @@ public class BuildingHelper : MonoBehaviour
                     materials[i].color = colorNotAllowed;
                 }
             }
-            
+
+            Debug.Log("TriggerEnter - count:" + count);
         }
     }
 
@@ -118,6 +121,8 @@ public class BuildingHelper : MonoBehaviour
                     materials[i].color = colorAllowed;
                 }
             }
+
+            Debug.Log("TriggerExit - count:" + count);
         }
     }
 

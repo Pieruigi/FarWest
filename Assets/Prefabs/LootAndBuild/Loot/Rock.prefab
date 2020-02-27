@@ -725,6 +725,7 @@ MonoBehaviour:
   equipment: {fileID: 11400000, guid: 4a8a7a0cd2a011846abf4b30b763ce56, type: 2}
   equipmentMultiplier: 2
   equipmentAnimationId: 2
+  equipmentTargets: []
   lootMax: 15
   lootUnit: 3
   growingTime: 120

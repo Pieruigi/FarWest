@@ -75,6 +75,8 @@ public class BuildingMaker : MonoBehaviour
         //{
         //    Destroy(gameObject);
         //}
+        if (MainManager.Instance.IsScreenSaver)
+            Destroy(gameObject);
     }
 
     // Start is called before the first frame update

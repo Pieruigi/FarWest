@@ -324,13 +324,12 @@ public class PlayerScreenSaver : MonoBehaviour
         //    currentAction = null;
         //    return;
         //}
-        Debug.Log("IsDoing before:" + IsDoingSomething);
-
+       
         if (forcedAction != null)
             currentAction = forcedAction;
         else
             currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
-        Debug.Log("IsDoing after:" + IsDoingSomething);
+        
 
 #if FORCE_SS
         //currentAction = freeTimeActions[testActionId]; 

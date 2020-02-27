@@ -182,14 +182,16 @@ public class MainManager : MonoBehaviour
             if (exitDisabled)
                 return;
 
+#if !UNITY_EDITOR
             if (Input.anyKeyDown)
             {
+
                 if (isPlayingScreenSaverInGame)
                     InGameStopSS();
                 else
                     Application.Quit();
             }
-                
+               
 
             if (Input.GetAxis("Mouse X")!=0 || Input.GetAxis("Mouse Y") != 0)
             {
@@ -198,7 +200,10 @@ public class MainManager : MonoBehaviour
                 else
                     Application.Quit();
             }
-                
+#else
+            if(Input.GetKeyDown(KeyCode.Escape))
+                InGameStopSS();
+#endif
 
         }
         else

@@ -43,7 +43,6 @@ namespace SS
 
         void HandleOnResourceTaken(DirectLootAction lootAction, GameObject resource)
         {
-            Debug.Log("Resourcetaken");
             if(resource == gameObject)
             {
                 StartCoroutine(Take());

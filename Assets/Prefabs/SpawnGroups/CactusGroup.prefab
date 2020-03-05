@@ -113,7 +113,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 3587036912217758665, guid: f36cbde0f56bebf498940292ae4460a3, type: 3}
   - {fileID: 5774871731465472064, guid: 5bf4d7c4675d5614cbf97f024d82ca5e, type: 3}
-  sizeMin: 0.5
+  sizeMin: 0.8
   sizeMax: 1
   amountMin: 3
   amountMax: 6

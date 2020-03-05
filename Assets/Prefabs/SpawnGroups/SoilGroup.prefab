@@ -170,7 +170,7 @@ MonoBehaviour:
   groupPrefab: {fileID: 0}
   prefabs:
   - {fileID: 3670699628642493010, guid: 373c7cfd0ba555046ba39081fc9bfd80, type: 3}
-  sizeMin: 0.5
+  sizeMin: 0.8
   sizeMax: 1
   amountMin: 2
   amountMax: 4

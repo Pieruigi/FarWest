@@ -14,10 +14,13 @@ public class FreeTimeStateManager : MonoBehaviour
     PlayerScreenSaver playerSS;
 
     List<FreeTimeAction> actions;
+    public IList<FreeTimeAction> Actions
+    {
+        get { return actions.AsReadOnly(); }
+    }
 
     private void Awake()
     {
-
 
         actions = new List<FreeTimeAction>();
         foreach (FreeTimeAction fta in actionCollection.FreeTimeActions)

@@ -92,9 +92,7 @@ public class FadeInOutAlpha : MonoBehaviour
     private void SetTransparentMode()
     {
         rend.enabled = false;
-        
         rend.material = transparentMat;
-        
         rend.enabled = true;
     }
 
@@ -125,5 +123,6 @@ public class FadeInOutAlpha : MonoBehaviour
         Color c = rend.material.color;
         c.a = alpha;
         rend.material.color = c;
+       
     }
 }

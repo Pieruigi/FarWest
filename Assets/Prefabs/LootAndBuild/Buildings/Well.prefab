@@ -839,7 +839,7 @@ Transform:
   - {fileID: 1150160789}
   - {fileID: 292564725}
   - {fileID: 191712657}
-  - {fileID: 5996309816875186346}
+  - {fileID: 1072161839539029585}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -852,8 +852,8 @@ NavMeshObstacle:
   m_GameObject: {fileID: 5000744387942208580}
   m_Enabled: 1
   serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.65, y: 0.5, z: 0.65}
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -1007,7 +1007,7 @@ MonoBehaviour:
   exhaustedClip: {fileID: 8300000, guid: 6483073541ed94743800ac63ec261461, type: 3}
   fallingClip: {fileID: 8300000, guid: 69f064f8d809da64c94c5f9248faf89d, type: 3}
   waterClip: {fileID: 8300000, guid: 5f414154e91eda040af3c1188917f1f2, type: 3}
-  splashPS: {fileID: 5996309816875186340}
+  splashPS: {fileID: 1072161839539029313}
 --- !u!1 &5737813626779381147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,7 +1204,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.13
+  m_Radius: 1.7
   m_Height: 4.08
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -1399,13 +1399,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3692c8830a02924f99dbaec0417796a, type: 3}
---- !u!4 &5996309816875186346 stripped
+--- !u!4 &1072161839539029585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6761655116848985786, guid: a3692c8830a02924f99dbaec0417796a,
     type: 3}
   m_PrefabInstance: {fileID: 1072161839539031568}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &5996309816875186340 stripped
+--- !u!198 &1072161839539029313 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6761655116848985780, guid: a3692c8830a02924f99dbaec0417796a,
     type: 3}

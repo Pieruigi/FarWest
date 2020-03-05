@@ -55,9 +55,10 @@ public class PlayerScreenSaver : MonoBehaviour
 
     // Idle
 #if FORCE_SS
+    
     float idleRate = 0f; // From 0 to 1
     int testLoopId = 0;
-    int testActionId = 1;
+    int testActionId = 0;
 #else
     float idleRate = 0.5f; // From 0 to 1
 #endif
@@ -90,6 +91,10 @@ public class PlayerScreenSaver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+#if FORCE_SS
+        Time.timeScale = 1;
+#endif
+
         if (!GameObject.FindObjectOfType<MainManager>().IsScreenSaver)
         {
             this.enabled = false;
@@ -133,68 +138,19 @@ public class PlayerScreenSaver : MonoBehaviour
                     }
                     else // Start action
                     {
-                       
+
+                        
+
                         animator.SetFloat("IdleId", Random.Range(0, idleAnimationCount));
                         animator.SetBool("Walk", false);
                         agent.enabled = false;
 
-                        // Turn player 
-                        //float angle = Vector3.SignedAngle(transform.forward, currentAction.Target.forward, Vector3.up);
-                        //LeanTween.rotateAround(gameObject, Vector3.up, angle, 0.25f);
 
                         // Align player if needed
                         if (currentAction.Target)
                             LeanTween.rotate(gameObject, currentAction.Target.eulerAngles, 0.25f).setOnComplete(OnRotateCompleted);
                         else
                             StartFreeTimeActionAnimation();
-
-
-//                        animator.applyRootMotion = true;
-
-//                        // Switch camera if needed
-//                        if (currentAction.CameraCloseDisabled && Constants.TagCameraClose.Equals(cameraManager.CurrentCamera.tag))
-//                            cameraManager.ForceSwitchCamera();
-
-//                        // Check for any dedicated camera
-//                        currentAction.CameraController?.UpdateCameraList();
-
-//                        // Set the exit animation id
-//                        animator.SetFloat(animExitIdParameter, currentAction.ExitAnimationId);
-
-//                        // Set the first loop ( used for animation blending )
-//                        currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
-//#if FORCE_SS
-//                        //currentLoopId = currentAction.LoopAnimationIds[testLoopId];
-//#endif
-//                        animator.SetFloat(animLoopIdParameter, currentLoopId);
-
-//                        if (currentAction.EnterAnimationId >= 0) // There is an enter animation
-//                        {
-//                            animator.SetFloat(animIdParameter, currentAction.EnterAnimationId);
-//                            animator.SetTrigger(animEnterParameter);
-                        
-//                            // Start the action controller
-//                            currentAction.FreeTimeActionController?.ActionEnterStart(currentAction);
-
-//                            // Set the next loop id
-
-////#if FORCE_SS
-////                            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
-////#endif
-                            
-//                        }
-//                        else // No enter animation, loop directly
-//                        {
-
-////#if FORCE_SS
-////                            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
-////#endif
- 
-//                            animator.SetTrigger(animLoopParameter);
-
-//                            currentAction.FreeTimeActionController?.ActionLoopStart(currentAction, currentLoopId);
-//                            loopCount++; // I'm already inside the first and last loop
-//                        }
                        
                     }
                     
@@ -233,7 +189,6 @@ public class PlayerScreenSaver : MonoBehaviour
     void LoadFreeTimeActions()
     {
         // Get free time action collection
-        //freeTimeActions = new List<FreeTimeAction>();
         FreeTimeActionCollection[] tmp = GameObject.FindObjectsOfType<FreeTimeActionCollection>();
         for (int i = 0; i < tmp.Length; i++)
         {
@@ -249,7 +204,6 @@ public class PlayerScreenSaver : MonoBehaviour
         if (takeDecisionDisabled)
             return;
 
-        
 
         isBusy = true;
         if (forceIdle)
@@ -277,36 +231,6 @@ public class PlayerScreenSaver : MonoBehaviour
         MoveTo(target);
     }
 
-    //    void StartDoingSomething()
-    //    {
-
-    //        // Get randam action
-    //        if (freeTimeActions == null || freeTimeActions.Count == 0)
-    //        {
-    //            isBusy = false;
-    //            return;
-    //        }
-
-
-    //        currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
-
-    //#if FORCE_SS
-    //        currentAction = freeTimeActions[testActionId]; 
-    //#endif
-
-    //        // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )
-    //        if (currentAction.CameraCloseDisabled) 
-    //            cameraManager.CameraCloseDisabled = true;
-
-    //        currentLoopCount = Random.Range(currentAction.MinLoopCount, currentAction.MaxLoopCount + 1);
-    //        loopCount = 0;
-
-
-    //        if (currentAction.Target)
-    //            MoveTo(currentAction.Target.position);
-    //        else
-    //            alreadyThere = true;
-    //    }
 
     void StartDoingSomething()
     {
@@ -329,11 +253,16 @@ public class PlayerScreenSaver : MonoBehaviour
             currentAction = forcedAction;
         else
             currentAction = freeTimeActions[Random.Range(0, freeTimeActions.Count)];
-        
+
 
 #if FORCE_SS
-        //currentAction = freeTimeActions[testActionId]; 
+        currentAction = freeTimeActions[testActionId]; 
 #endif
+
+        if(currentAction.Target != null)
+            Debug.Log("Action target:" + currentAction.Target.position);
+        else
+            Debug.Log("Action target: everywhere");
 
         // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )
         if (currentAction.CameraCloseDisabled)
@@ -354,10 +283,7 @@ public class PlayerScreenSaver : MonoBehaviour
 
         MoveTo(targetPos);
 
-        //if (currentAction.Target)
-        //    MoveTo(currentAction.Target.position);
-        //else
-        //    alreadyThere = true;
+
     }
 
     void MoveTo(Vector3 target)
@@ -511,7 +437,7 @@ public class PlayerScreenSaver : MonoBehaviour
         // Set the first loop ( used for animation blending )
         currentLoopId = currentAction.LoopAnimationIds[Random.Range(0, currentAction.LoopAnimationIds.Count)];
 #if FORCE_SS
-        //currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+        currentLoopId = currentAction.LoopAnimationIds[testLoopId];
 #endif
         animator.SetFloat(animLoopIdParameter, currentLoopId);
 
@@ -524,7 +450,7 @@ public class PlayerScreenSaver : MonoBehaviour
             currentAction.FreeTimeActionController?.ActionEnterStart(currentAction);
 
 #if FORCE_SS
-            //currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
 #endif
             
         }
@@ -532,7 +458,7 @@ public class PlayerScreenSaver : MonoBehaviour
         {
  
 #if FORCE_SS
-            //currentLoopId = currentAction.LoopAnimationIds[testLoopId];
+            currentLoopId = currentAction.LoopAnimationIds[testLoopId];
 #endif
             animator.SetTrigger(animLoopParameter);
 

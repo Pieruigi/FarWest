@@ -14,7 +14,13 @@ public class FreeTimeBuildManager : MonoBehaviour
     float buildTimer; // If the last time something was built is older than builderTime then force to build ( or destroy )
     float buildTimerDefault;
 
-    float minLimit = 5; 
+#if UNITY_EDITOR
+    float minLimit = 0;
+#else
+    float minLimit = 5;
+#endif
+
+
     float maxLimit = 10;
 
     float actionRate;
@@ -36,8 +42,6 @@ public class FreeTimeBuildManager : MonoBehaviour
     BuildingHelper buildingHelper;
 
     GameObject toDestroy = null;
-
-    //int testStep = 0;
     
     private void Awake()
     {
@@ -61,14 +65,14 @@ public class FreeTimeBuildManager : MonoBehaviour
 
         // Get all the building recipes
         recipeList = new List<Recipe>(RecipeCollection.GetAssetAll()).FindAll(r=>r.Output.GetType() == typeof(Building));
-        foreach (Recipe r in recipeList)
-            Debug.Log("Recipe:" + r.AssetName);
+        //foreach (Recipe r in recipeList)
+        //    Debug.Log("Recipe:" + r.AssetName);
 
         ComputeBuildingValues();
-        Debug.Log("BuildRate:" + buildRate);
+        //Debug.Log("BuildRate:" + buildRate);
 
-        foreach (GameObject g in spawnedList)
-            Debug.Log("Prefab " + g.name + " already spawned");
+        //foreach (GameObject g in spawnedList)
+        //    Debug.Log("Prefab " + g.name + " already spawned");
     }
 
     // Update is called once per frame
@@ -98,12 +102,6 @@ public class FreeTimeBuildManager : MonoBehaviour
             float r = UnityEngine.Random.Range(0f, 1f);
             if (r > buildRate)
                 destroy = true;
-
-            //if (testStep > 0)
-            //    destroy = true;
-
-            //if (testStep == 0)
-            //    testStep++;
 
             if (destroy) // We choose to destroy
                 DestroyRandomBuilding(); // Being here means there is something that can be destroyed for sure
@@ -140,12 +138,11 @@ public class FreeTimeBuildManager : MonoBehaviour
             isBuildingOrDestroying = false;
             return;
         }
-        Debug.Log("Destroying building " + toDestroy.name);
+        Debug.Log("Destroying building " + toDestroy.name + ":" + SpawnManager.GetSpawnable(toDestroy.GetComponent<Cacher>().SpawnableIndex));
+        
         ForceNextFreeTimeActionOnDestroying(toDestroy);
 
-        ///////////////// Test 
-        //SpawnManager.Unspawn(toDestroy);
-        //DestroyingCallback();
+
     }
 
     void ForceNextFreeTimeActionOnDestroying(GameObject building)
@@ -183,7 +180,7 @@ public class FreeTimeBuildManager : MonoBehaviour
 
     Recipe ChooseBuildingToCreate()
     {
-        Debug.Log("Choosing recipe to start building");
+        //Debug.Log("Choosing recipe to start building");
         if (spawnedList.Count == 0)
         {
             return recipeList[UnityEngine.Random.Range(0, recipeList.Count)];
@@ -205,7 +202,7 @@ public class FreeTimeBuildManager : MonoBehaviour
 
     IEnumerator SetPlaceWhereBuild()
     {
-        Debug.Log("************************************* START FINDING PLACE - "+currentRecipe+" *******************************");
+        //Debug.Log("************************************* START FINDING PLACE - "+currentRecipe+" *******************************");
 
         Vector3 position = Vector3.zero;
         Vector3 eulerAngles = Vector3.zero;
@@ -232,7 +229,7 @@ public class FreeTimeBuildManager : MonoBehaviour
         {
             Vector3 point = Utility.GetRandomPointOnNavMesh();
             point.y = 0;
-            Debug.Log("Checking Point:" + point);
+            //Debug.Log("Checking Point:" + point);
 
             buildingHelper.transform.position = point;
             buildingHelper.transform.eulerAngles = Vector3.up * UnityEngine.Random.Range(0f, 360f);
@@ -251,67 +248,43 @@ public class FreeTimeBuildManager : MonoBehaviour
                 
                 position = buildingHelper.transform.position;
                 eulerAngles = buildingHelper.transform.eulerAngles;
-                Debug.Log("BuildingHelper.Allowed is true - point:" + point);
-                Debug.Log("BuildingHelper.Allowed is true - HelperPos:" + buildingHelper.transform.position);
-                Debug.Log("BuildingHelper.Allowed is true - HelperAng:" + buildingHelper.transform.eulerAngles);
+                //Debug.Log("BuildingHelper.Allowed is true - point:" + point);
+                //Debug.Log("BuildingHelper.Allowed is true - HelperPos:" + buildingHelper.transform.position);
+                //Debug.Log("BuildingHelper.Allowed is true - HelperAng:" + buildingHelper.transform.eulerAngles);
 
             }
-            //else
-            //{
-            //    Debug.Log("BuildingHelper.Allowed is false - point:" + point);
-            //    Debug.Log("BuildingHelper.Allowed is false - HelperPos:" + buildingHelper.transform.position);
-            //    Debug.Log("BuildingHelper.Allowed is false - HelperAng:" + buildingHelper.transform.eulerAngles);
-            //}
                 
             count++;
 
             
         }
 
-        Debug.Log("FreeTimeBuilding - Count:" + count);
-        Debug.Log("FreeTimeBuilding - Found:" + found);
+        //Debug.Log("FreeTimeBuilding - Count:" + count);
+        //Debug.Log("FreeTimeBuilding - Found:" + found);
 
         if (!found)
         {
             isBuildingOrDestroying = false;
             Destroy(buildingHelper.gameObject);
             buildingHelper = null;
-            Debug.Log("No place has been found.");
+            //Debug.Log("No place has been found.");
             yield break;
         }
         else
         {
-            Debug.Log("Place has been found - Position:" + position);
-            Debug.Log("Place has been found - Angles:" + eulerAngles);
+            //Debug.Log("Place has been found - Position:" + position);
+            //Debug.Log("Place has been found - Angles:" + eulerAngles);
             OnSetPlaceWhereBuildCompleted(found, position, eulerAngles);
         }
 
-        Debug.Log("************************************* STOP FINDING PLACE *******************************");
+        //Debug.Log("************************************* STOP FINDING PLACE *******************************");
 
     }
 
 
-    //bool TryToPlaceBuilding(BuildingHelper buildingHelper, ref Vector3 position, ref Vector3 eulerAngles)
-    //{
-    //    Vector3 point = Utility.GetRandomPointOnNavMesh();
-    //    buildingHelper.transform.position = point;
-    //    buildingHelper.transform.eulerAngles = Vector3.up * UnityEngine.Random.Range(0f,360f);
-
-    //    Debug.Log("Allowed:" + buildingHelper.Allowed);
-
-    //    if (!buildingHelper.Allowed)
-    //        return false;
-
-
-    //    position = buildingHelper.transform.position;
-    //    eulerAngles = buildingHelper.transform.eulerAngles;
-
-    //    return true;
-    //}
-
     void OnSetPlaceWhereBuildCompleted(bool succeed, Vector3 position, Vector3 eulerAngles)
     {
-        Debug.Log("I have a building position:" + position);
+        //Debug.Log("I have a building position:" + position);
 
         if (!succeed)
         {
@@ -319,19 +292,10 @@ public class FreeTimeBuildManager : MonoBehaviour
             return;
         }
 
-        //GameObject.Destroy(buildingHelper.gameObject);
-        //buildingHelper = null;
-        //buildingHelper = GameObject.Instantiate((currentRecipe.Output as Building).CraftingHelper, position, Quaternion.identity).GetComponent<BuildingHelper>();
-        //buildingHelper.gameObject.transform.eulerAngles = eulerAngles;
-
+     
         ForceNextFreeTimeActionOnBuilding();
 
-        ////// TEST : we need to implement it yet
-        //GameObject building = SpawnManager.Spawn((currentRecipe.Output as Building).SceneObject);
-        //building.transform.position = position;
-        //building.transform.eulerAngles = eulerAngles;
-        //BuildingCallback();
-        //isBuildingOrDestroying = false;
+        
     }
 
 
@@ -404,8 +368,18 @@ public class FreeTimeBuildManager : MonoBehaviour
        
         //SpawnManager.Unspawn(toDestroy);
         FreeTimeActionCollection actionCollection = toDestroy.GetComponentInChildren<FreeTimeActionCollection>();
-        foreach (FreeTimeAction action in actionCollection.FreeTimeActions)
-            playerSS.RemoveFreetimeAction(action);
+        //foreach (FreeTimeAction action in actionCollection.FreeTimeActions)
+        //    playerSS.RemoveFreetimeAction(action);
+        if (actionCollection != null)
+        {
+            foreach (FreeTimeAction action in actionCollection.FreeTimeActions)
+                playerSS.RemoveFreetimeAction(action);
+        }
+        else
+        {
+            foreach (FreeTimeAction action in toDestroy.GetComponentInChildren<FreeTimeStateManager>().Actions)
+                playerSS.RemoveFreetimeAction(action);
+        }
 
         StartCoroutine(BuildingPopOut());
 
@@ -432,6 +406,7 @@ public class FreeTimeBuildManager : MonoBehaviour
             buildTimer = baseTimer + 5*spawnedList.Count; // Check every 30 seconds
             actionRate = 1 - spawnedList.Count/(2*minLimit); // Building or destroying rate
             buildRate = 1; // Only building
+          
         }
         else 
         if(spawnedList.Count <= maxLimit) // Between minLimit and maxLimit
@@ -439,8 +414,12 @@ public class FreeTimeBuildManager : MonoBehaviour
             buildTimer = baseTimer + 10*spawnedList.Count;
             actionRate = 0.5f;
             float v = maxLimit - (maxLimit - minLimit) * 0.2f;
+#if UNITY_EDITOR
+            buildRate = 1; // Build rate range: 1 - 0.45
+#else
             buildRate = 1 - (spawnedList.Count - minLimit) / v; // Build rate range: 1 - 0.45
-           
+#endif
+
         }
         else
         if(spawnedList.Count > maxLimit)

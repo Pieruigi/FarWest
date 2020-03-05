@@ -973,7 +973,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: d3e8c596a762371488b80fa9b1f3c1ee, type: 3}
   - {fileID: 2800000, guid: d888c060f758a88458decdce8610c274, type: 3}
   - {fileID: 2800000, guid: 57440fb1a00c5a5468f743d12141f8a1, type: 3}
-  - {fileID: 2800000, guid: 9be4b27d1bd83c1428cd44685db54b60, type: 3}
   magicClip: {fileID: 8300000, guid: 4ea2bc50d35fad54a9f1e2b8ef7ad0f6, type: 3}
   clapClip: {fileID: 8300000, guid: 75bba78aba8d2cf44adac1ff59f96853, type: 3}
   brushClip: {fileID: 8300000, guid: b5ea8788eac97a74eabba5ff3532d59c, type: 3}
@@ -1174,7 +1173,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6947792, y: 1, z: 1.8516273}
+  m_Size: {x: 2.54, y: 1, z: 2.2}
   m_Center: {x: -0.0038534403, y: 0, z: -0.4508705}
 --- !u!1 &6549839405813155778
 GameObject:

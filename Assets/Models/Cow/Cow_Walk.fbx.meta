@@ -39,7 +39,7 @@ ModelImporter:
       takeName: rig|rigAction
       internalID: 0
       firstFrame: 9
-      lastFrame: 88
+      lastFrame: 89
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -113,7 +113,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.0025
+    globalScale: 0.25
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

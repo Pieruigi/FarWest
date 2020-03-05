@@ -6,7 +6,6 @@ using UnityEngine;
 public class FreeTimeAction
 {
 
-
     [SerializeField]
     GameObject owner;
     public GameObject Owner
@@ -82,6 +81,8 @@ public class FreeTimeAction
         get { return maxLoopCount; }
         //set { maxLoopCount = value; }
     }
+
+
 }
 
 public class FreeTimeActionCollection: MonoBehaviour

@@ -132,6 +132,8 @@ namespace SS
 
         private void Shave()
         {
+            PlayerController.EquipItem(null);
+
             Animator anim = PlayerController.GetComponent<Animator>();
             anim.SetFloat("GenericActionId", 0);
             anim.SetTrigger("GenericAction");

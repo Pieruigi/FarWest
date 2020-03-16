@@ -20,7 +20,7 @@ public class BuildingHelper : MonoBehaviour
 
     public bool Allowed
     {
-        get { Debug.Log("AlloweProperty - Count:" + count); return count == 0; }
+        get { return count == 0; }
     }
 
     string buildingLayerName = "BuildingVolume";

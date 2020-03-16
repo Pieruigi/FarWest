@@ -133,7 +133,7 @@ public class ScreenSaverCameraManager : MonoBehaviour
             cameraListDefault = new Camera[cameras.Count];
             cameras.CopyTo(cameraListDefault);
 
-            Debug.Log("CurrentCamera:" + currentCamera);
+           
 
 #if FORCE_SS
             currentCamera = cameras[testCam];

@@ -57,7 +57,7 @@ public class PlayerScreenSaver : MonoBehaviour
 #if FORCE_SS
     
     float idleRate = 0f; // From 0 to 1
-    int testLoopId = 0;
+    int testLoopId = 1;
     int testActionId = 0;
 #else
     float idleRate = 0.5f; // From 0 to 1
@@ -91,6 +91,7 @@ public class PlayerScreenSaver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
 #if FORCE_SS
         Time.timeScale = 1;
 #endif
@@ -259,10 +260,10 @@ public class PlayerScreenSaver : MonoBehaviour
         currentAction = freeTimeActions[testActionId]; 
 #endif
 
-        if(currentAction.Target != null)
-            Debug.Log("Action target:" + currentAction.Target.position);
-        else
-            Debug.Log("Action target: everywhere");
+        //if(currentAction.Target != null)
+        //    Debug.Log("Action target:" + currentAction.Target.position);
+        //else
+        //    Debug.Log("Action target: everywhere");
 
         // We don't switch the camera yet ( we keep the current one just in case it has been switched recently )
         if (currentAction.CameraCloseDisabled)

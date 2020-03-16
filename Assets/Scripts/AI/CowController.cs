@@ -77,11 +77,13 @@ public class CowController : MonoBehaviour
             //}
             //else
             //{
+                
+
                 animator.speed = agent.velocity.magnitude / agent.speed;
 
                 float sqrDist = (agent.destination - transform.position).sqrMagnitude;
 
-                if (sqrDist <= sqrStoppingDistance || agent.speed == 0 || !agent.hasPath)
+                if (sqrDist <= sqrStoppingDistance || !agent.hasPath)
                 {
                     lastCheck = System.DateTime.UtcNow;
                     TakeDecision();
@@ -89,6 +91,8 @@ public class CowController : MonoBehaviour
             //}
             
         }
+
+
     }
 
     void TakeDecision()

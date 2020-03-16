@@ -78,6 +78,7 @@ public class MainManager : MonoBehaviour
     {
         if(instance == null)
         {
+            print("Starting app...");
             instance = this;
 
             appFolderName = Application.dataPath.Substring(0, Application.dataPath.LastIndexOf("/")); // The folder where the game has been installed

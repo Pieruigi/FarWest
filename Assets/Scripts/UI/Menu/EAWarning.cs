@@ -14,6 +14,8 @@ public class EAWarning : MonoBehaviour
 
     private void Awake()
     {
+        Destroy(gameObject);
+
         if (GameObject.FindObjectOfType<MainManager>().SandboxMode)
             Destroy(gameObject);
     }

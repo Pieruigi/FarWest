@@ -25,6 +25,12 @@ public class SculptingFreeTimeActionController : BaseFreeTimeActionController
     [SerializeField]
     GameObject chiselPrefab;
 
+    [SerializeField]
+    ParticleSystem particle;
+
+    [SerializeField]
+    List<AudioClip> chiselClips;
+
     GameObject statue;
 
     Transform handL, handR, head;
@@ -39,6 +45,7 @@ public class SculptingFreeTimeActionController : BaseFreeTimeActionController
     Vector3 ladderPositionDefault, ladderAnglesDefault;
 
     GameObject hammer, chisel;
+    AudioSource source;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -113,6 +120,11 @@ public class SculptingFreeTimeActionController : BaseFreeTimeActionController
         {
             DropTools();
         }
+
+        if ("PlayParticle".Equals(message))
+        {
+            PlayParticle();
+        }
     }
 
 
@@ -137,12 +149,7 @@ public class SculptingFreeTimeActionController : BaseFreeTimeActionController
         }
     }
 
-    public override void ActionExitCompleted(FreeTimeAction action)
-    {
-        base.ActionExitCompleted(action);
-
-        StartCoroutine(ResetLadder());
-    }
+    
 
     IEnumerator SwitchHat()
     {
@@ -161,6 +168,13 @@ public class SculptingFreeTimeActionController : BaseFreeTimeActionController
         LeanTween.moveLocal(minerShat, hatPositionDefault, 0.2f);
         LeanTween.rotateLocal(minerShat, hatEulerAnglesDefault, 0.2f);
         
+    }
+
+    void PlayParticle()
+    {
+        particle.Play();
+        source.clip = chiselClips[Random.Range(0, chiselClips.Count)];
+        source.Play();
     }
 
     void TakeRock()
@@ -187,8 +201,9 @@ public class SculptingFreeTimeActionController : BaseFreeTimeActionController
 
     IEnumerator ResetLadder()
     {
+        yield return new WaitForSeconds(1.5f);
         LeanTween.scale(ladder, Vector3.zero, 1).setEaseInOutElastic();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         ladder.transform.localPosition = ladderPositionDefault;
         ladder.transform.localEulerAngles = ladderAnglesDefault;
         LeanTween.scale(ladder, Vector3.one, 1).setEaseInOutElastic();
@@ -234,5 +249,7 @@ public class SculptingFreeTimeActionController : BaseFreeTimeActionController
     {
         Utility.ObjectPopOut(hammer);
         Utility.ObjectPopOut(chisel);
+
+        StartCoroutine(ResetLadder());
     }
 }

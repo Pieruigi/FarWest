@@ -65,6 +65,8 @@ public class SculptingFreeTimeActionController : BaseFreeTimeActionController
 
         ladderPositionDefault = ladder.transform.localPosition;
         ladderAnglesDefault = ladder.transform.localEulerAngles;
+
+        source = GetComponent<AudioSource>();
     }
 
     public override void ActionMessage(string message)

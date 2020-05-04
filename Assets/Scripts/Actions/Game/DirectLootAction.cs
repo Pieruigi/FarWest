@@ -26,7 +26,7 @@ namespace SS
 
         List<bool> takenFlags;
 
-        bool initialized = false;
+        //bool initialized = false;
 
         protected override void Start()
         {

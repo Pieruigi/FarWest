@@ -1215,10 +1215,19 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: LootId
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -1585649964282318493, guid: ca42df35f981fd145abeed53de42348c,
+      type: 3}
+    m_Threshold: 44
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: LootId
+    m_Mirror: 0
   m_BlendParameter: SSLoopId
   m_BlendParameterY: LootId
   m_MinThreshold: 0
-  m_MaxThreshold: 43
+  m_MaxThreshold: 44
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0

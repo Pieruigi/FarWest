@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3572045030752173755}
   - component: {fileID: 984534210670853203}
   m_Layer: 10
-  m_Name: WoodenEaselHelper
+  m_Name: GrindstoneHelper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +229,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4428659058405604859}
-  m_Mesh: {fileID: 7307181553914650079, guid: cb8a03f7614988a428befbddb1b28a29, type: 3}
+  m_Mesh: {fileID: -3453321166148179245, guid: 952341d748c4a064087460b45ae7d06e, type: 3}
 --- !u!23 &4428659058405604857
 MeshRenderer:
   m_ObjectHideFlags: 0

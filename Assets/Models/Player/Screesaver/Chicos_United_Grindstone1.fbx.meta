@@ -129,7 +129,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.74790984
-        functionName: NewEvent
+        functionName: OnActionMessage
         data: Grinding
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -152,6 +152,20 @@ ModelImporter:
       - time: 1
         functionName: OnAnimationLoopCompleted
         data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.50693953
+        functionName: OnActionMessage
+        data: StartParticles
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7729212
+        functionName: OnActionMessage
+        data: StopParticles
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

@@ -15,6 +15,9 @@ public class GrindstoneFreeTimeActionController : BaseFreeTimeActionController
     [SerializeField]
     AudioSource grindSource;
 
+    [SerializeField]
+    ParticleSystem particle;
+
    // [SerializeField]
     AudioSource source;
 
@@ -75,9 +78,27 @@ public class GrindstoneFreeTimeActionController : BaseFreeTimeActionController
         {
             PlayGrinding();
         }
+
+        if ("StopParticles".Equals(message))
+        {
+            StopParticles();
+        }
+        if ("StartParticles".Equals(message))
+        {
+            StartParticles();
+        }
     }
 
-    
+    void StartParticles()
+    {
+        particle.Play();
+    }
+
+    void StopParticles()
+    {
+        particle.Stop();
+    }
+
     void StartGrind()
     {
         grindAnimator.SetBool("Start", true);
